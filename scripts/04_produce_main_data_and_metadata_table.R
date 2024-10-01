@@ -16,7 +16,8 @@ meta_data_clean <- meta_data %>%
   # Drop rows where "Data" or "nama_indikator" columns have missing values
   drop_na(any_of(c("Data", "nama_indikator"))) %>%
   # Filter out rows with specific "No" values
-  filter(!No %in% c("V87", "V88", "V89", "V90", "V91", "V92", "V93", "V94", "V95", "V96"))
+  filter(!No %in% c("V87", "V88", "V89", "V90", "V91", "V92", "V93", "V94", "V95", "V96"))%>%
+  rename(variable = nama_indikator)
 
 # Save the cleaned metadata to a CSV file
 write_csv(meta_data_clean, "data_preprocessed/metadata.csv")
