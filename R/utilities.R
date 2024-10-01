@@ -151,3 +151,57 @@ create_heatmaps_by_group <- function(data, group_column) {
     )
   })
 }
+
+
+library(ggplot2)
+library(patchwork)
+library(tidyr)
+
+visualize_pca_results <- function(pca_result) {
+  # Extract eigenvalues
+  eigen <- pca_result$sdev^2
+  
+  # Plot eigenvalues
+  plot_eigen <- data.frame(
+    PC = paste0("PC", seq_along(eigen)),
+    Eigenvalue = eigen
+  ) %>%
+    ggplot(aes(x = reorder(PC, -Eigenvalue), y = Eigenvalue)) +
+    geom_point() +
+    geom_hline(yintercept = 1, color = "salmon") +
+    xlab("Principal Components") +
+    theme_bw()
+  
+  # Extract PVE and CVE
+  importance <- summary(pca_result)$importance
+  PVE <- importance["Proportion of Variance", ]
+  CVE <- importance["Cumulative Proportion", ]
+  
+  # Plot PVE and CVE
+  plot_pve_cve <- data.frame(
+    PC = seq_along(PVE),
+    PVE = PVE,
+    CVE = CVE
+  ) %>%
+    pivot_longer(cols = c(PVE, CVE), names_to = "metric", values_to = "variance_explained") %>%
+    ggplot(aes(x = PC, y = variance_explained)) +
+    geom_point() +
+    theme_bw() +
+    facet_wrap(~ metric, ncol = 1, scales = "free")
+  
+  # Plot Scree plot
+  plot_scree <- data.frame(
+    PC = seq_along(PVE),
+    PVE = PVE
+  ) %>%
+    ggplot(aes(x = PC, y = PVE, group = 1, label = PC)) +
+    geom_point() +
+    geom_line() +
+    geom_text(nudge_y = -.002) +
+    theme_bw()
+  
+  # Combine plots
+  plot_pca_evaluation_criterion_combined <- (plot_eigen / (plot_pve_cve + plot_scree))
+  
+  return(plot_pca_evaluation_criterion_combined)
+}
