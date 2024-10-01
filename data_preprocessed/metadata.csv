@@ -1,0 +1,83 @@
+Data,variable,Source,Unit,summarization_method
+Distance to canal,jarak_kanal,NA,m,median
+Distance to gambut biofisik,jarak_gambut,NA,m,median
+FEG Budidaya in the village,persentase_feg_budidaya,KLHK,%,mean
+FEG Lindung in the village,persentase_feg_lindung,KLHK,%,mean
+Distance to sawit,jarak_sawit,LC ICRAF 2019,m,median
+Distnace to karet,jarak_karet,LC ICRAF 2019,m,median
+Distance to plantation (hutan tanaman),jarak_hutan_tanaman,Peta Tutupan Lahan 2020 from KLHK,m,median
+Distance to road,jarak_jalan,BIG,m,median
+Distance to commodity processing factory,jarak_pabrik_pemrosesan,ICRAF (2016),m,median
+Distance to plantation concession,jarak_konsesi_kebun,RPPEG,m,median
+Distance to forest,jarak_hutan_alami,Peta Tutupan Lahan 2020 from KLHK,m,median
+Distance to river,jarak_sungai,BIG,m,median
+Distance to burned area,jarak_area_terbakar,KLHK 2019,m,median
+Percentage of agricultural area (small holder) in the village,persentase_area_budidaya,Peta Tutupan Lahan 2020 from KLHK,%,mean
+Percentage of plantation area per in the village,persentase_kebun,Peta Tutupan Lahan 2020 from KLHK,%,mean
+Percentage of forested area in the village,persentase_hutan_alami,Peta Tutupan Lahan 2020 from KLHK,%,mean
+Percentage of shrubland in the village,persentase_semak_belukar,Peta Tutupan Lahan 2020 from KLHK,%,mean
+Percentage of water area compared to sub-district area,persentase_badan_air,Peta Tutupan Lahan 2020 from KLHK,%,mean
+Distance to deforestation,jarak_deforestasi,Peta Tutupan Lahan 2020 from KLHK,m,median
+Deforestation area size,luas_deforestasi,Peta Tutupan Lahan 2020 from KLHK,km²,mean
+Arable land (%),persentase_lahan_garapan_potensial,Peta Tutupan Lahan 2020 from KLHK,%/desa,mean
+Indeks Bahaya Banjir,indeks_bahaya_banjir,RBI BNPB,index value,mean
+Indeks Bahaya Longsor,indeks_bahaya_longsor,RBI BNPB,index value,mean
+Buffer to 500m irigated land,persentase_terlayani_irigasi,BIG,% to desa,mean
+Aridity index,indeks_kekeringan,WORLDCLIM 2.1,index value,mean
+Total KK berdasarkan pengguna dan non pengguna listrik,jumlah_kk,Potensi desa BPS 2021,jumlah,mean
+Persentase elektrifikasi,persentase_elektrifikasi,Potensi desa BPS 2021,persen,mean
+Jumlah SMA dan sekolah sederajat,jumlah_sma,Potensi desa BPS 2021,jumlah,mean
+Jarak terdekat menuju Rumah sakit,jarak_rs_terdekat,Potensi desa BPS 2021,km,median
+Jumlah fasilitas kesehatan selain rumah sakit,jumlah_faskes,Potensi desa BPS 2021,jumlah,mean
+Persentase surat tanda miskin yang dikeluarkan,persentase_surat_miskin,Potensi desa BPS 2021,persen,mean
+Jumlah lembaga kemasyarakatan desa,jumlah_lemkemdes,Potensi desa BPS 2021,jumlah,mean
+Sinyal internet telepon seluler  handphone di sebagian besar wilayah di desa  kelurahan:,jenis_sinyal_internet,Potensi desa BPS 2021,kategori,mode
+Jumlah IMKM,jumlah_imk,Potensi desa BPS 2021,jumlah,mean
+Total Bank,jumlah_bank,Potensi desa BPS 2021,jumlah,mean
+Total Koperasi,jumlah_koperasi,Potensi desa BPS 2021,jumlah,mean
+Sumber penghasilan utama sebagian besar penduduk desa/kelurahan,jenis_penghasilan_utama,Potensi desa BPS 2021,kategori,mode
+Jenis komoditi utama sun sektor utama sebagian besar penduduk desa/kelurahan,jenis_komoditi_unggulan,Potensi desa BPS 2021,kategori,mode
+Persentase Keluarga yang tinggal di pemukiman kumuh,persentase_kk_pem_kumuh,Potensi desa BPS 2021,persen,mean
+Sumber air untuk minum sebagian besar keluarga,jenis_air_minum,Potensi desa BPS 2021,kategori,mode
+Sumber air untuk mandi cuci sebagian besar keluarga,jenis_air_mandi_cuci,Potensi desa BPS 2021,kategori,mode
+Kebiasaan masyarakat membakar ladang kebun di desa kelurahan untuk proses usaha pertanian selama setahun terakhir,ada_bakar_lahan,Potensi desa BPS 2021,kategori,mode
+"Kejadian pencemaran air, udara, atau tanah",ada_pencemaran,Potensi desa BPS 2021,kategori,mode
+annual mean temp,rerata_temperatur,WORLDCLIM 2.1,derajat C,mean
+temp change,perubahan_temperatur,WORLDCLIM 2.1,derajat C,mean
+annual mean prec,rerata_hujan,WORLDCLIM 2.1,mm/tahun,mean
+prec change,rerata_perubahan_hujan,WORLDCLIM 2.1,mm/tahun,mean
+Village population,jumlah_populasi,Kemendes 2024,jiwa,mean
+population density,kepadatan_populasi,Kemendes 2024,jiwa/hektar,mean
+Poverty rate,derajat_kemiskinan,IDM,%,mean
+Distance to mining area,jarak_area_tambang,BIG,m,median
+Penduduk pekerjaan bergantung SDA,pencaharian_berbasis_sda,Kemendes 2024,jumlah,mean
+a. Terjadi pencemaran air di Desa,kejadian_cemar_air,Kemendes 2024,kategori,mode
+b. Terjadi pencemaran tanah di Desa,kejadian_cemar_tanah,Kemendes 2024,kategori,mode
+c. Terjadi pencemaran udara di Desa,kejadian_cemar_udara,Kemendes 2024,kategori,mode
+Dampak pencemaran lingkungan,dampak_cemar,Kemendes 2024,kategori,mode
+Terdapat sungai yang terkena pembuangan limbah,kejadian_limbah_di_sungai,Kemendes 2024,kategori,mode
+a. Frekuensi Kejadian Bencana Tanah Longsor,kejadian_tanah_longsor,Kemendes 2024,kategori,mode
+b. Frekuensi Kejadian Bencana Banjir,kejadian_banjir,Kemendes 2024,kategori,mode
+c. Frekuensi Kejadian Bencana Gempa Bumi,kejadian_gempa,Kemendes 2024,kategori,mode
+d. Frekuensi Kejadian Bencana Tsunami,kejadian_tsunami,Kemendes 2024,kategori,mode
+e. Frekuensi Kejadian Bencana Gelombang Pasang Laut,kejadian_gelombang_pasang,Kemendes 2024,kategori,mode
+f. Frekuensi Kejadian Bencana Angin Puyuh / Puting Beliung / Topan,kejadain_angin_puyuh,Kemendes 2024,kategori,mode
+g. Frekuensi Kejadian Bencana Gunung Meletus,kejadian_gunung_meletus,Kemendes 2024,kategori,mode
+h. Frekuensi Kejadian Bencana Kebakaran Hutan,kejadian_kebakaran_hutan,Kemendes 2024,kategori,mode
+i. Frekuensi Kejadian Bencana Kekeringan Lahan,kejadian_kekeringan_lahan,Kemendes 2024,kategori,mode
+j. Frekuensi Kejadian Bencana Lainnya,kejadian_bencana_lain,Kemendes 2024,kategori,mode
+a. Terdapat Fasilitas Mitigasi Bencana Alam di Desa Berupa  Peringatan Dini Bencana,ada_sistem_prngtn_dini_bencana,Kemendes 2024,kategori,mode
+b. Terdapat Fasilitas Mitigasi Bencana Alam di Desa Berupa Sistem Peringatan Dini Khusus Tsunami,ada_sistem_prngtn_dini_tsunami,Kemendes 2024,kategori,mode
+c. Terdapat Fasilitas Mitigasi Bencana Alam di Desa Berupa Perlengkapan Keselamatan,ada_perlengkapan_keselamatan,Kemendes 2024,kategori,mode
+d. Terdapat Fasilitas Mitigasi Bencana Alam di Desa Berupa Jalur Evakuasi,ada_jalur_evakuasi,Kemendes 2024,kategori,mode
+kejadian_cemar_udara,NA,NA,NA,NA
+Farm holdings smaller than 2 ha (%),NA,BPS,%,NA
+Mean yield of major crops (kg ha−1),NA,BPS,kg ha−1,NA
+Climate driven changes in major crop suitability,NA,ECOCROP,% change,NA
+keberadaan sungai di desa/kelurahan,NA,Potensi desa BPS 2020,kategori,NA
+Kejadian tanah longsor,NA,Potensi desa BPS 2019,kategori,NA
+Banyak kejadian tanah longsor 2019 (Januari-April),NA,Potensi desa BPS 2019,events/year,NA
+Korban jiwa tanah longsor 2019 (Januari-April),NA,Potensi desa BPS 2019,people/year,NA
+Sistem peringatan dini khusus tsunami,NA,Potensi desa BPS 2019,kategori,NA
+Unemployment rate (%),NA,BPS,%,NA
+Erosion risk (t ha−1 yr−1),NA,RUSLE,t ha−1 yr−1,NA
