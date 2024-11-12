@@ -66,10 +66,12 @@ df_pca_input <- df_pre_pca %>%
 # Perform PCA with scaling
 pca_result <- prcomp(df_pca_input, scale. = TRUE)
 
+write_rds(pca_result, "output/pca_result_sumsel.rds")
+
 # Plot PCA Evaluation
 pca_plot_path <- file.path(output_dir, paste0("plot_pca_eval_", location_name, ".png"))
-png(filename = pca_plot_path, width = 20, height = 10, units = "in", res = 300)
-visualize_pca_results(pca_result)
+png(filename = pca_plot_path, width = 8, height = 4, units = "in", res = 300)
+visualize_pca_results(pca_result, n_components = 20)
 dev.off()
 
 # Feature Space Dissimilarity -------------------------------------------------
@@ -122,6 +124,7 @@ sumsel_cluster_results <- cluster_k %>%
 
 # Write Clustered Map to Shapefile --------------------------------------------
 shapefile_path <- file.path(output_dir, paste0("cluster_map_", location_name, ".shp"))
+
 st_write(
   sumsel_cluster_results,
   shapefile_path,
@@ -130,8 +133,6 @@ st_write(
 )
 
 # Hierarchical Clustering Evaluation Plot --------------------------------------
-hclust_plot_path <- file.path(output_dir, paste0("plot_hclust_eval_", location_name, ".png"))
-png(filename = hclust_plot_path, width = 20, height = 10, units = "in", res = 300)
 
 # Generate Evaluation Plots
 plot_elbow <- fviz_nbclust(df_pca_input, FUN = hcut, method = "wss", k.max = 12) +
@@ -143,8 +144,9 @@ plot_silhouette <- fviz_nbclust(df_pca_input, FUN = hcut, method = "silhouette",
 plot_gap_stat <- fviz_nbclust(df_pca_input, FUN = hcut, method = "gap_stat", k.max = 12) +
   ggtitle("(C) Gap Statistic")
 
+hclust_plot_path <- file.path(output_dir, paste0("plot_hclust_eval_", location_name, ".png"))
 # Combine and Display Plots
 combined_plot <- plot_elbow + plot_silhouette + plot_gap_stat
-print(combined_plot)
-
+png(filename = hclust_plot_path, width = 9, height = 3, units = "in", res = 300)
+combined_plot
 dev.off()

@@ -157,14 +157,25 @@ library(ggplot2)
 library(patchwork)
 library(tidyr)
 
-visualize_pca_results <- function(pca_result) {
+visualize_pca_results <- function(pca_result, n_components = 5) {
   # Extract eigenvalues
   eigen <- pca_result$sdev^2
   
+  # If n_components is not specified, use all components
+  if (is.null(n_components)) {
+    n_components <- length(eigen)
+  } else {
+    # Ensure n_components doesn't exceed the available components
+    n_components <- min(n_components, length(eigen))
+  }
+  
+  # Create sequence for selected components
+  selected_components <- seq_len(n_components)
+  
   # Plot eigenvalues
   plot_eigen <- data.frame(
-    PC = paste0("PC", seq_along(eigen)),
-    Eigenvalue = eigen
+    PC = paste0("PC", seq_along(eigen)[selected_components]),
+    Eigenvalue = eigen[selected_components]
   ) %>%
     ggplot(aes(x = reorder(PC, -Eigenvalue), y = Eigenvalue)) +
     geom_point() +
@@ -179,9 +190,9 @@ visualize_pca_results <- function(pca_result) {
   
   # Plot PVE and CVE
   plot_pve_cve <- data.frame(
-    PC = seq_along(PVE),
-    PVE = PVE,
-    CVE = CVE
+    PC = seq_along(PVE)[selected_components],
+    PVE = PVE[selected_components],
+    CVE = CVE[selected_components]
   ) %>%
     pivot_longer(cols = c(PVE, CVE), names_to = "metric", values_to = "variance_explained") %>%
     ggplot(aes(x = PC, y = variance_explained)) +
@@ -191,8 +202,8 @@ visualize_pca_results <- function(pca_result) {
   
   # Plot Scree plot
   plot_scree <- data.frame(
-    PC = seq_along(PVE),
-    PVE = PVE
+    PC = seq_along(PVE)[selected_components],
+    PVE = PVE[selected_components]
   ) %>%
     ggplot(aes(x = PC, y = PVE, group = 1, label = PC)) +
     geom_point() +
@@ -204,4 +215,79 @@ visualize_pca_results <- function(pca_result) {
   plot_pca_evaluation_criterion_combined <- (plot_eigen / (plot_pve_cve + plot_scree))
   
   return(plot_pca_evaluation_criterion_combined)
+}
+
+create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
+  # Ensure clusters_kec is read as an sf object
+  if (!inherits(clusters_kec, "sf")) {
+    clusters_kec <- st_read(clusters_kec, quiet = TRUE)
+  }
+  
+  # Validate col_names if provided
+  if (!is.null(col_names)) {
+    # Check if col_names is a single string
+    if (length(col_names) != 1) {
+      stop("col_names must be a single character string")
+    }
+    
+    # Check if the column exists in clusters_kec
+    if (!col_names %in% names(clusters_kec)) {
+      stop(sprintf("Column '%s' not found in clusters_kec dataset", col_names))
+    }
+    
+    # Select the specified column if col_names is provided
+    clusters_kec <- clusters_kec |> select(any_of(col_names)) %>% rename(cluster=1)
+  }
+  
+  # Read the cluster lookup table
+  if (is.character(cluster_lookup)) {
+    cluster_lookup <- readr::read_csv(cluster_lookup)
+  }
+  
+  # Join the data with cluster names
+  clusters_kec_with_name <- clusters_kec |> 
+    right_join(cluster_lookup, by = "cluster") |> 
+    mutate_at(.vars = c("cluster", "name"), .funs = as.factor)
+  
+  # Set up the color palette
+  pal <- colorFactor(palette = "Set1", domain = clusters_kec_with_name$name)
+
+  # Constructing the label string
+  clusters_kec_with_name$label_content <- with(
+    clusters_kec_with_name,
+    paste0(
+      # "<strong>Kabupaten:</strong> ",
+      # nmkab,
+      # "<br>",
+      # "<strong>Kecamatan:</strong> ",
+      # nmkec,
+      # "<br>",
+      "<strong>Tipologi:</strong> ",
+      name
+    )
+  ) |> lapply(htmltools::HTML)
+  
+  # Create the leaflet map with HTML-rendered labels
+  leaflet_map <- leaflet(clusters_kec_with_name) |>
+    addProviderTiles(providers$CyclOSM) |>
+    addPolygons(
+      fillColor = ~ pal(name),
+      weight = 0.5,
+      opacity = 1,
+      color = "white",
+      dashArray = "3",
+      fillOpacity = 0.7,
+      highlight = highlightOptions(
+        weight = 5,
+        color = "#666",
+        dashArray = "",
+        fillOpacity = 0.7,
+        bringToFront = TRUE
+      ),
+      label = ~ label_content,
+      labelOptions = labelOptions(noHide = FALSE, direction = 'auto')
+    ) |>
+    addLegend(pal = pal, values = ~ name, title = "Typology")
+  
+  return(leaflet_map)
 }

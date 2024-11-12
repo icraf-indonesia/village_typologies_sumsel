@@ -50,3 +50,6 @@ rsconnect/
 
 data/
 
+
+/.quarto/
+/_site/

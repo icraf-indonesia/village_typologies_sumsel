@@ -1,0 +1,1114 @@
+---
+title: "[DRAFT] Tipologi Perdesaan Provinsi Sumatera Selatan Dalam Lingkup Kerentanan Iklim pada Penghidupan Berbasis Lahan"
+format: 
+  html:
+    toc: true
+    number-sections: true
+    embed-resources: false
+editor: visual
+execute:
+  echo: false
+project:
+  type: website
+  output-dir: docs
+editor_options: 
+  chunk_output_type: inline
+comments:
+  utterances:
+    repo: icraf-indonesia/village_typologies_sumsel
+---
+
+```{r session info}
+# sessionInfo()
+# Sys.getenv()
+# .libPaths()
+
+# If the sessioninfo package is available, 
+# it provides output that is easier to read,
+# and can write its results to a file
+sessioninfo:::session_info(to_file = "quarto-session-info-output.txt")
+
+```
+
+```{r load library}
+#| warning: false
+#| message: false
+library(tibble)
+library(targets)
+library(tarchetypes)
+library(ggplot2)
+library(leaflet)
+library(gt)
+library(sf)
+library(dplyr)
+library(plotly)
+library(readr)
+library(factoextra)
+```
+
+# Pendahuluan
+
+::: panel-tabset
+## Abstrak
+
+Penghidupan berbasis lahan kini makin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi mereka masih sangat terbatas. Draft dokumen ini disusun untuk mengisi kekosongan ini dengan mengevaluasi berbagai jenis kerentanan yang mempengaruhi mata pencaharian berbasis pertanian di tingkat provinsi. Pada kajian ini, dilakukan penilaian kerentanan untuk mengidentifikasi risiko serta penyebabnya, dan potensi adaptasi, dengan fokus pada peningkatan taraf hidup, keberlanjutan produksi komoditas-komoditas kunci, dan pengelolaan lahan secara menyeluruh. Mengingat tingginya keanekaragaman lanskap di Provinsi Sumatera Selatan, kajian ini memfokuskan perhatian pada desa-desa dengan fitur biofisik dan sosial-ekonomi yang mirip. Ini membantu kami mempermudah tugas dalam mengidentifikasi risiko yang identik antar desa. Kajian ini mendefinisikan area-area homogen ini, atau ‘tipologi,’ dengan menggunakan pengelompokan K-means. Pengelompokan ini didasarkan pada komposit dari indikator biofisik dan sosial-ekonomi. Untuk mempermudah proses pengelompokan, kami menggunakan analisis PCA untuk menyederhanakan dimensi data.
+
+## Tujuan
+
+-   Analisis ini bertujuan untuk mengidentifikasi ‘tipologi’ desa-desa, yang memiliki karakter sosial-ekonomi dan lingkungan yang mirip di Provinsi Sumatera Selatan, dengan menggunakan pengelompokan K-means pada data yang disederhanakan oleh PCA.
+-   Tipologi tersebut kemudian digunakan untuk mendeskripsikan konteks kerentanan penghidupan berbasis pertanian akibat perubahan iklim di Provinsi Sumatera Selatan dan potensi intervensi untuk meningkatkan ketahanan terhadap perubahan iklim
+:::
+
+# Deskripsi wilayah & Metodologi
+
+::: panel-tabset
+## Deskripsi Sumatera Selatan
+
+Sumatera Selatan beribukota di Kota Palembang yang merupakan dataran rendah dengan ketinggian rata-rata kurang lebih 8 meter diatas permukaan laut. Provinsi ini terletak pada posisi 1’-4’ Lintang Selatan dan antara 102’-106’ Bujur Timur. Luas wilayah Sumatera Selatan, adalah berupa daratan seluas 86.771,68 km2 . Wilayah administrasi Provinsi Sumatera Selatan terdiri dari 13 wilayah kabupaten dan empat kota. Kabupaten/Kota yang memiliki wilayah paling luas adalah Kabupaten Ogan Komering Ilir yaitu sekitar 17.071,33 km2. Sedangkan yang memiliki luas paling kecil adalah Kota Palembang dengan luas wilayah 352,51 km2. Wilayah Provinsi Sumatera Selatan bagian utara berbatasan dengan Provinsi Jambi, bagian timur berbatasan dengan Provinsi BangkaBelitung, bagian selatan berbatasan dengan Provinsi Lampung, dan bagian barat berbatasan dengan Provinsi Bengkulu. Berdasarkan data yang diperoleh dari BMKG, selama tahun 2023 suhu rata-rata di seluruh wilayah Provinsi Sumatera Selatan adalah 30,2ºC, jumlah curah hujan setinggi 2.218,9 mm dan jumlah hari hujan sebanyak 199 hari. Penduduk Provinsi Sumatera Selatan tahun 2023 berdasarkan Hasil Proyeksi Penduduk Indonesia 2020–2050 Hasil Sensus Penduduk 2020 sebanyak 8,74 juta jiwa yang terdiri atas 4,45 juta jiwa penduduk laki-laki dan 4,29 juta jiwa penduduk perempuan. Dibandingkan dengan jumlah penduduk tahun 2020, penduduk Provinsi Sumatera Selatan mengalami pertumbuhan sebesar 1,21 persen. Sementara itu besarnya angka rasio jenis kelamin tahun 2023 penduduk laki-laki terhadap penduduk perempuan sebesar 103,83. Kepadatan penduduk di Provinsi Sumatera Selatan tahun 2023 mencapai 100,76 jiwa/km2 . Kepadatan Penduduk di 17 kabupaten/kota cukup beragam dengan kepadatan penduduk tertinggi terletak di kota Palembang dengan kepadatan sebesar 4.840,63 jiwa/km2 dan terendah di Kabupaten Musi Rawas Utara sebesar 33 jiwa/km2. Di tahun 2023, luas panen padi mencapai 502,16 ribu ha dengan total produksi mencapai 2,76 juta ton GKG dan produktivitas 55,00 ku/ha. Sementara itu, produksi tanaman palawija pada tahun 2023 masingmasing adalah 826,84 ribu ton jagung dan 48,79 ton kedelai. Data Dinas Kehutanan Provinsi Sumatera Selatan memperlihatkan bahwa hutan di Sumatera Selatan luasnya mencapai 3.385,01 ribu ha, yang terdiri dari hutan lindung seluas 566,62 ribu ha, konservasi seluas 511,97 ribu ha, suaka alam dan pelestarian alam seluas 256,23 ribu ha, dan hutan produksi seluas 2.050,22 ribu ha. Produk Domestik Regional Bruto (PDRB) adalah indikator utama untuk mengukur perkembangan perekonomian di suatu wilayah. Selama lima tahun terakhir, PDRB Sumsel atas dasar harga berlaku terus mengalami peningkatan. Pada tahun 2019 nilai yang terbentuk sebesar 453,40 triliun rupiah dan terus tumbuh hingga pada tahun 2023, nilainya menjadi sebesar 629,10 triliun rupiah atau naik sekitar 38,75 persen. Terdapat tiga lapangan usaha yang memberikan peranan cukup besar terhadap PDRB. Pada tahun 2023, tiga lapangan usaha yang memberikan peranan terbesar adalah pertambangan dan penggalian, diikuti oleh Industri Pengolahan kemudian Pertanian, Kehutanan, dan Perikanan. Pada tahun 2023 peranan masingmasing lapangan usaha di atas secara berurutan adalah 26,61 persen, 17,84 persen, dan 13,10 persen. Secara umum, laju perekonomian Sumatera Selatan pada tahun 2023 mengalami penurunan, yaitu dari 5,23 persen pada tahun 2022 menjadi 5,08 persen pada tahun 2023. Jika dibandingkan dengan provinsi lain untuk wilayah Sumatera bagian Selatan, Provinsi Sumatera Selatan memiliki jumlah penduduk miskin terbesar yaitu 1,04 juta jiwa pada tahun 2023. Angka ini masih jauh lebih tinggi bila dibandingkan dengan Provinsi Kepulauan Bangka Belitung yang memiliki jumlah penduduk miskin 0,068 juta jiwa. (BPS. Provinsi Sumatera Selatan Dalam Angka Tahun 2024).
+
+## Daftar Variabel
+
+**Unit analisis terkecil**: Desa
+
+```{r}
+#| warning: false
+#| message: false
+read_csv("data_preprocessed/metadata.csv") |> 
+  gt(rowname_col = "No")
+```
+
+## Skema Teknis Pembuatan Tipologi
+
+![](data/workflow.svg){height="1200" width="800" fig-align="center"}
+
+## Intisari Hasil PCA
+
+```{r PCA Summary}
+#| warning: false
+#| message: false
+pca_result <- read_rds("output/pca_result_sumsel.rds") 
+pca_summary <- pca_result %>% 
+  summary() 
+
+# Extracting the relevant parts of the summary
+std_dev <- pca_summary$importance["Standard deviation", ]
+prop_variance <- pca_summary$importance["Proportion of Variance", ]
+cumul_prop <- pca_summary$importance["Cumulative Proportion", ]
+
+# Creating a data frame
+pca_df <- tibble(
+  PC = names(std_dev),
+  StandardDeviation = std_dev,
+  ProportionOfVariance = prop_variance,
+  CumulativeProportion = cumul_prop
+) |> head(n = 12)
+
+pca_df |> 
+  gt() |> 
+  tab_header(
+    title = "Intisari Analisis Komponen Utama (PCA)",
+    subtitle = "Tingkat Kepentingan Komponen"
+  ) |> 
+  cols_label(
+    PC = "Komponen",
+    StandardDeviation = "Standar Deviasi",
+    ProportionOfVariance = "Proporsi Variansi",
+    CumulativeProportion = "Proporsi Kumulatif"
+  ) |> 
+  fmt_number(
+    columns = vars(StandardDeviation, ProportionOfVariance, CumulativeProportion),
+    decimals = 4
+  ) |> 
+  tab_options(
+    heading.background.color = "lightblue",
+    column_labels.font.size = "small"
+  )
+```
+
+------------------------------------------------------------------------
+
+### Interpretasi Komponen Utama (PCs)
+
+**PC1: Predominan Bahaya Longsor, Tutupan Hutan, Topografi dan Demografi**
+
+```{r loadings_PC1}
+#| warning: false
+#| message: false
+#| 
+var <- get_pca_var(pca_result)
+fviz_cos2(pca_result, choice = "var", axes = 1, top=10)
+```
+
+
+
+
+**PC2: Predominan Bahaya Hidrologis dan Ketersediaan Air Permukaan**
+```{r loadings_PC2}
+#| warning: false
+#| message: false
+#| 
+var <- get_pca_var(pca_result)
+fviz_cos2(pca_result, choice = "var", axes = 2, top=10)
+```
+
+**PC3: Predominan Aksesibilitas terhadap air dan luas Kecamatan** 
+```{r loadings_PC3}
+#| warning: false
+#| message: false
+#| 
+var <- get_pca_var(pca_result)
+fviz_cos2(pca_result, choice = "var", axes = 3, top=10)
+```
+
+**PC4: Predominan karakteristik iklim**
+```{r loadings_PC4}
+#| warning: false
+#| message: false
+#| 
+var <- get_pca_var(pca_result)
+fviz_cos2(pca_result, choice = "var", axes = 4, top=10)
+```
+
+**PC5: Predominan Aktivitas perubahan tutupan hutan dan fasilitas publik**
+```{r loadings_PC5}
+#| warning: false
+#| message: false
+#| 
+var <- get_pca_var(pca_result)
+fviz_cos2(pca_result, choice = "var", axes = 5, top=10)
+```
+
+### Evaluasi Hasil Analisis Komponen Utama
+![](output/plot_pca_eval_SumSEL.png)
+
+Grafik Eigenvalue (atas) menunjukkan nilai eigen untuk setiap komponen utama (PC), di mana PC1 memiliki nilai tertinggi sekitar 8 dan nilai semakin menurun untuk PC berikutnya. Garis merah pada nilai 1 menandakan batas minimum nilai eigen yang biasanya digunakan sebagai acuan pemilihan komponen yang penting.
+
+**Grafik CVE (Cumulative Variance Explained,** kiri bawah**)** menunjukkan total variasi data yang dapat dijelaskan secara kumulatif, di mana dengan 20 PC pertama dapat menjelaskan sekitar 65% variasi data. **PVE (Proportion of Variance Explained,** kiri bawah**)** memperlihatkan kontribusi masing-masing PC, dengan PC1 menjelaskan sekitar 15% variasi data.
+
+Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap komponen utama. Titik 'siku' dari sebuah grafik scree adalah titik di mana menambahkan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru. Hal tersebut dapat terlihat penurunan tajam dari PC1 hingga PC5 dan kemudian mulai mendatar. Bentuk kurva ini membantu kita menentukan berapa banyak komponen yang sebaiknya dipertahankan dalam analisis.
+
+
+## Hasil Pengelompokan K-means
+
+### Diagram pencar 3D tipologi desa-desa di Provinsi Sumatera Selatan
+
+-   Sumbu x,y dan z dari diagram pencar merupakan tiga komponen utama teratas dari hasil PCA.
+    -   **PC1: Predominan Bahaya Longsor, Tutupan Hutan, Topografi dan Demografi**
+    -   **PC2: Predominan Bahaya Hidrologis dan Ketersediaan Air Permukaan**
+    -   **PC3: Predominan Aksesibilitas terhadap air dan luas Kecamatan**
+-   Tiap-titiknya mewakili sebuah kecamatan di Provinsi Nusa Tenggara Timur
+-   Titik yang berwarna sama berarti tergolong dalam tipologi yang sama.
+
+```{r K-means cluster}
+#| warning: false
+#| message: false
+# tar_load(plot_3d_scatter)
+# plot_3d_scatter
+```
+
+### Validasi Klaster
+
+![](output/plot_hclust_eval_SumSel.png)
+
+Grafik Elbow Method (A) menunjukkan penurunan total variasi dalam kelompok seiring bertambahnya jumlah kelompok (k). Titik siku (elbow) menandakan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru.
+
+Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain. 
+
+Grafik Gap Statistic (C)  membandingkan pengelompokan data asli dengan data acak. Semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan.
+
+:::
+
+# Hasil & Interpretasi Sementara (Draft)
+
+**Tipologi Kerentanan Terhadap Perubahan Iklim pada Penghidupan Berbasis Pertanian di Provinsi Sumatera Selatan**
+
+::::::::::::::: panel-tabset
+## Peta Tipologi
+
+```{r Map}
+#| warning: false
+#| message: false
+
+source("R/utilities.R")
+
+tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", cluster_lookup = "data_preprocessed/cluster_names.csv", col_names = "k_8")
+
+tp_map
+```
+
+<!-- ## Komposisi Luas Wilayah -->
+
+```{r komposisi kecamatan}
+#| warning: false
+#| message: false
+
+# intisari_desk_kec <- readr::read_csv("data/interpretasi_tipologi_bone.csv") |> 
+#   dplyr::mutate(`Kepadatan RT` = `Luas (Ha)`/`Rumah Tangga`) |> 
+#   mutate(color_pal = c( "#377EB8","#E41A1C","#FF7F00" ,  "#4DAF4A", "black" ))
+# 
+# fig_luas <- intisari_desk_kec |> 
+#   filter(Nama != "Total") |> 
+#   plot_ly( labels = ~Nama, values = ~`Luas (Ha)`,
+#                marker = list(colors = ~color_pal))|> 
+#   add_pie(hole = 0.6) |> 
+#   layout(title = "Komposisi Luas Wilayah (Ha)",
+#          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+#          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))  
+# 
+# # Show the plot
+# fig_luas
+```
+
+## Komposisi Demografi
+
+```{r donat RT}
+# Create the plot for Jumlah RT
+# 
+# tar_load(clusters_kec_tbl)
+# tar_load(df_raw)
+# tar_load(cluster_lookup)
+# 
+# Total_KK <- clusters_kec_tbl |> ungroup() |>
+#   select("cluster") |>
+#   bind_cols(df_raw) |>
+#   left_join(cluster_lookup, by = "cluster") |>
+#   select(name, total_kk) |>
+#   group_by(name) |>
+#   summarise(total_kk = sum(total_kk)) |> 
+#   rename(Nama = name, `Rumah Tangga` = total_kk) |> 
+#   mutate(color_pal = c("#E41A1C", "#377EB8", "#4DAF4A", "purple", "#FF7F00", "yellow"))
+# 
+# 
+# fig_RT <- Total_KK |>
+#   plot_ly(
+#     labels = ~ Nama,
+#     values = ~ `Rumah Tangga`,
+#      marker = list(colors = ~color_pal)
+#   ) |>
+#   add_pie(hole = 0.6) |>
+#   layout(
+#     title = "Jumlah Rumah Tangga",
+#     xaxis = list(
+#       showgrid = FALSE,
+#       zeroline = FALSE,
+#       showticklabels = FALSE
+#     ),
+#     yaxis = list(
+#       showgrid = FALSE,
+#       zeroline = FALSE,
+#       showticklabels = FALSE
+#     )
+#   )  
+# 
+# # Show the plot
+# fig_RT
+```
+
+## **Klaster 1**
+
+::: callout-tip
+Tipologi padat penduduk di daratan rendah kering dan panas, dengan ekonomi yang ditopang oleh sektor non-pertanian dan tutupan lahan alami yang sedikit. Tipologi ini memiliki infrastruktur dan fasilitas publik yang baik, serta angka penderita gizi buruk dan kemiskinan yang relatif rendah.
+:::
+
+### Karakteristik berdasarkan analisis SWOT
+
+::: {layout-ncol="2"}
+#### Kekuatan (*Strengths*)
+
+Faktor-faktor internal yang membantu pencapaian tujuan:
+
+-   Kepadatan rumah tangga yang tinggi menandakan aktivitas ekonomi niaga dan jasa dapat memberikan stabilitas ekonomi karena tidak terlalu tergantung pada satu sektor.
+
+-   Angka penderita gizi buruk yang rendah dan tingkat kemiskinan paling rendah mencerminkan tingkat kesejahteraan yang lebih baik.
+
+-   Rasio elektrifikasi tinggi menunjukkan akses yang baik ke infrastruktur dasar dan mendukung aktivitas ekonomi.
+
+-   Fasilitas kesehatan, pasar, sekolah tinggi, dan rumah sakit yang relatif banyak menandakan infrastruktur yang baik.
+
+-   Aksesibilitas tinggi ke transportasi udara dan pelabuhan mendukung distribusi hasil niaga dan jasa
+
+    ------------------------------------------------------------------------
+
+#### Kelemahan (*Weaknesses*)
+
+Faktor-faktor internal yang menghalangi pencapaian tujuan:
+
+-   Tidak punya lahan untuk memproduksi pangan secara mandiri, karena area yang dapat digunakan untuk pertanian sangat sedikit.
+
+-   Area kering dan panas: Daerah dengan level kekeringan lahan tinggi, hal ini ditambah dengan rendahnya curah hujan rata-rata tahunan.
+
+-   Rendahnya persentase area lindung dan tutupan hijau, menunjukkan ketergantungan atas penyediaan jasa lingkungan air bersih dari tipologi sekitarnya.
+
+    ------------------------------------------------------------------------
+
+#### Peluang (*Opportunities*)
+
+Faktor-faktor eksternal yang membantu pencapaian tujuan:
+
+-   Pembangunan infrastruktur niaga: Memiliki akses yang baik, terdapat peluang untuk meningkatkan infrastruktur niaga, pengembangan pasar yang mendukung pertumbuhan bisnis.
+
+-   Diversifikasi usaha: Kondisi topografi yang mendukung, aksesibilitas tinggi dan infrastruktur yang baik memberikan peluang untuk diversifikasi usaha di sektor niaga dan jasa, seperti pengembangan pusat perbelanjaan, hotel, atau pusat hiburan.
+
+    ------------------------------------------------------------------------
+
+#### Ancaman (*Threats*)
+
+Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+
+-   Ketergantungan bahan baku pertanian: Bergantung pada suplai pangan dari luar tipologi, sehingga tidak dapat menjaga stok kebutuhan pangan penduduk sekaligus kestabilan harga. Hal ini menjadi ancaman serius karena tipologi 1 memiliki jumlah penduduk paling tinggi dibandingkan dengan tipologi lainnya.
+
+-   Rentan cuaca ekstrem: Memiliki suhu tinggi, kekeringan lahan dan tanpa area penyangga perlindungan lingkungan memberikan ancaman kesehatan penduduk, bencana alam dan kelangsungan operasional sektor niaga dan jasa.
+
+-   Kesenjangan ekonomi lebar: Masih terdapat cukup besar penduduk dengan kesejahteraan ekonomi rendah saat sebagian kecil penduduk memiliki kesejahteraan sangat tinggi. Ketidak merataan ekonomi dapat menjadi hambatan bagi perkembangan ekonomi dan usaha.
+:::
+
+### Karakteristik Umum
+
+**Aspek Demografi dan Ekonomi**
+
+-   **Kepadatan rumah tangga yang paling tinggi**, yaitu 5.89 rumah tangga/hektar (SD = 6.08), di mana lahan dibagi untuk menampung jumlah penduduk yang lebih besar dalam area yang lebih terbatas dibanding di tipologi lainnya.
+-   Angka penderita gizi buruk yang relatif rendah dibandingkan dengan beberapa tipologi lainnya.
+-   Rasio elektrifikasi tinggi (97.6%), menunjukkan akses yang baik ke listrik sehingga mendukung kegiatan ekonomi dan meningkatkan kualitas hidup penduduk.
+-   Tingkat kemiskinan di tipologi satu paling rendah dibandingkan dengan beberapa tipologi lainnya 21.64 % (8.48). Ini dapat menggambarkan bahwa perekonomian dari niaga dan jasa memberikan kontribusi pada peningkatan kesejahteraan ekonomi di wilayah ini. Namun karena tipologi ini padat penduduk, secara jumlah, jumlah rumah tangga yang tergolong rentan secara ekonomi berada pada peringkat 3, rata-rata 2048 rumah tangga.
+-   Memiliki total fasilitas kesehatan, pasar, sekolah tinggi, dan jumlah rumah sakit yang relatif tinggi. Ini menandakan adanya infrastruktur yang baik untuk mendukung kesejahteraan masyarakat.
+
+**Aspek iklim dan lingkungan**
+
+-   Indeks ariditas paling tinggi diantara tipologi lainnya (0.77 dengan SD 0.06), menunjukkan kondisi terkering, sehingga memerlukan manajemen air yang baik. Risiko kekeringan yang tinggi juga tercermin dari Indeks Bahaya Kekeringan sebesar 0.72, menempatkan tipologi 1 di peringkat kedua dalam hal kerentanan terhadap kekeringan. Ditambah dengan rata-rata bulan basah yang hanya sekitar 2.79 bulan, ini mengindikasikan bahwa tipologi 1 mengalami periode curah hujan yang lebih singkat dibandingkan kluster lainnya.
+-   Memiliki curah hujan rata-rata relatif rendah (1315 mm/tahun), sehingga simpanan air pada musim hujan akan sedikit, berpotensi kering pada musim kemarau. Meskipun begitu, bahaya banjir dapat mengintai di musim hujan, ditunjuukan melalui indeks bahaya banjir menunjukkan nilai 0.09, tertinggi kedua dibandingkan tipologi lainnya.
+-   Nilai suhu rata-rata kedua tertinggi dari seluruh tipologi, dengan rata-rata 25.51°C (standar deviasi 1.27°C). Hal ini mengindikasikan kondisi iklim yang daratan rendah yang hangat. tipologi ini diperkirakan akan mengalami peningkatan suhu sebesar 1.35°C pada dengan deviasi 0.07°C, menempatkannya di peringkat ketiga di antara enam kluster.
+-   Risiko erosi paling rendah (447.46) dibandingkan dengan tipologi lainnya. Karakteristik area yang cenderung datar relatif lebih aman dari potensi kerusakan tanah akibat erosi.
+-   Tutupan hijau dan vegetasi alami (hutan dan savana) paling rendah dibandingkan tipologi lainnya. Namun pada tipologi ini tercatat kejadian kebakaran hutan dan lahan tertinggi kedua, meski nilainya tergolong rendah.
+
+**Aspek tutupan lahan dan aksesibilitas**
+
+-   Persentase lahan yang dapat ditanami paling rendah rendah (8.12%), menunjukkan area yang berfokus pada sektor non-pertanian. Suplai hasil-hasil pertanian akan tergantung dari area di luar tipologi.
+-   Tipologi dengan area kehilangan hutan paling rendah (358 ha), dibandingkan beberapa tipologi lainnya. Salah satu faktor karena pada tipologi ini area hutan sudah sangat kecil.
+-   Jarak dari kegiatan deforestasi paling jauh (3.129 km) dibandingkan dari keseluruhan tipologi. Kondisi ini sejalan dengan karakteristik rendahnya area kehilangan hutan.
+-   Persentase area lindung paling rendah (5.55%), karena sedikit memiliki area dengan peruntukkan perlindungan.
+-   Jarak ke sungai tidak terlalu jauh (4.6 Km), menunjukkan akses yang cukup baik ke sumber air.
+-   Jarak ke jalan cukup baik (1.2 Km), menunjukkan akses yang baik ke infrastruktur jalan.
+-   tipologi yang memiliki akses termudah ke transportasi udara. Jarak ke pelabuhan terdekat nomor dua (49,67 Km), menunjukkan ketersediaan infrastruktur untuk logistik dalam distribusi hasil niaga dan jasa yang baik.
+
+## **Klaster 2**
+
+::: callout-tip
+Tipologi ini memiliki curah hujan tinggi dan tutupan hutan yang baik, menawarkan potensi pariwisata alam dan lahan pertanian pangan berkelanjutan. Namun, terdapat risiko banjir, erosi, dan longsor yang tinggi, disertai dengan infrastruktur publik yang terbatas dan kecenderungan gizi buruk yang tinggi.
+:::
+
+### Karakteristik berdasarkan analisis SWOT
+
+::: {layout-ncol="2"}
+#### Kekuatan (*Strengths*)
+
+Faktor-faktor internal yang membantu pencapaian tujuan:
+
+-   Jasa lingkungan tinggi: Memiliki curah hujan yang paling tinggi, dengan suhu paling rendah diantara tipologi lain. Tingkat ketersediaan keanekaragaman hayati cukup besar karena berdekatan dengan tutupan hutan.
+
+-   Suhu sejuk: suhu rata-rata yang lebih rendah (23.74°C), nyaman untuk ditinggali dan lebih tahan terhadap prediksi peningkatan suhu + 1.41 °C di 2050.
+
+-   Kondisi elevasi tinggi dan savana memberikan peluang untuk energi terbarukan dari angin (PLTB).
+
+-   Potensi Pariwisata Alam: Tingginya persentase area hutan dan savana (68.02%) memberikan potensi untuk pengembangan pariwisata alam yang dapat mendukung sektor ekowisata jasa lingkungan.
+
+    ------------------------------------------------------------------------
+
+#### Kelemahan (*Weaknesses*)
+
+Faktor-faktor internal yang menghalangi pencapaian tujuan:
+
+-   Risiko Perubahan Iklim: curah hujan yang tinggi (2084.31 mm), dipadu dengan elevasi dan kelerengan tinggi meningkatkan risiko banjir, risiko erosi dan tanah longsor.
+
+-   Keterbatasan fasilitas niaga dan jasa: Jumlah minimarket, pasar desa, dan pusat niaga lainnya yang rendah dapat menjadi kendala dalam mendukung distribusi hasil bumi, serta aktivitas niaga dan jasa.
+
+-   Penderita gizi buruk kedua tertinggi, dapat menjadi indikator adanya masalah kesehatan dan kesejahteraan yang perlu diatasi.
+
+    ------------------------------------------------------------------------
+
+#### Peluang (*Opportunities*)
+
+Faktor-faktor eksternal yang membantu pencapaian tujuan:
+
+-   Pengembangan pertanian berkelanjutan: Kondisi tanah yang paling cukup air, ada peluang untuk mengembangkan pertanian berkelanjutan.
+
+-   Pengelolaan hutan yang berkelanjutan: Keterlibatan dengan pengelolaan hutan yang berkelanjutan dapat mendukung keberlanjutan sumber daya alam.
+
+-   Pengembangan energi terbarukan: Ketersediaan savana yang luas pada elevasi tinggi, memberikan peluang untuk penembangan energi terbarukan terutama PLTB.
+
+    ------------------------------------------------------------------------
+
+#### Ancaman (*Threats*)
+
+Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+
+-   Bencana alam erosi dan longsor: tipologi dengan risiko erosi dan longsor tinggi, ditambah curah hujan yang paling tinggi. Pengelolaan yang tidak baik dapat meningkatkan terjadinya bencana alam erosi dan longsong.
+
+-   Ancaman perubahan iklim: Risiko banjir dan pergeseran musim dan kuantitas hujan dapat menjadi ancaman serius terhadap sektor pertanian jika pengelolaan air tidak dikelola dengan baik.
+
+-   Ketergantungan pada pertanian: Tingginya persentase pemilik lahan pertanian kecil dapat menjadi ancaman jika wilayah ini terlalu bergantung pada sektor pertanian yang mungkin rentan terhadap fluktuasi iklim.
+:::
+
+### Karakteristik Umum
+
+##### Sosio-Demografi:
+
+-   Memiliki persentase penderita gizi buruk kedua tertinggi (15.94%).
+-   Rasio elektrifikasi cenderung rendah (68.65%).
+-   Jumlah minimarket, pasar desa, dan pusat niaga lainnya cukup rendah.
+
+##### Aksesibilitas Terhadap Infrastruktur dan Lahan:
+
+-   Persentase lahan yang dapat ditanami tertinggi kedua (42.24%).
+-   Infrastruktur irigasi untuk sawah masih sedikit.
+-   Jarak ke pelabuhan paling dekat (44.4 Km), menunjukkan akses yang baik ke jalur distribusi. Deforestasi moderat (969.66 ha).
+-   Keterlibatan terhadap kegiatan perkebunan cukup tinggi.
+-   Akses terhadap jalan (978.97) dan sungai (3865.4) sangat dekat.
+-   Cakupan bandara yang relatif rendah (0.63), menunjukkan keterhubungan yang rendah.
+
+##### Iklim dan Lingkungan:
+
+-   Memiliki persentase area hutan dan savana yang cukup tinggi (68.02%), menunjukkan potensi keanekaragaman hayati dan lingkungan.
+-   Indeks ariditas paling rendah (0.47), menunjukkan kondisi iklim yang mendukung kegiatan pertanian. Indeks bahaya kekeringan rendah (0.66).
+-   Elevasi paling tinggi (579.9), menunjukkan variasi topografi.
+-   Potensi erosi paling tinggi (1611.66), berjalan selaras dengan kejadian tanah longsor yang paling tinggi (3.28).
+-   Tipologi dengan jarang ke area terbakar paling jauh (17187.88).
+-   Memiliki rata-rata curah hujan paling tinggi (2084.31 mm).
+-   Kondisi suhu rata-rata tipologi 2 merupakan yang paling rendah (23.74°C). - Persentase lahan pertanian campuran tertinggi kedua (42.24%).
+
+## **Klaster 3**
+
+::: callout-tip
+Tipologi padat penduduk di daratan rendah kering dan panas, dengan ekonomi yang ditopang oleh sektor non-pertanian dan tutupan lahan alami yang sedikit. Tipologi ini memiliki infrastruktur dan fasilitas publik yang baik, serta angka penderita gizi buruk dan kemiskinan yang relatif rendah.
+:::
+
+### Karakteristik berdasarkan analisis SWOT
+
+::: {layout-ncol="2"}
+#### Kekuatan (*Strengths*)
+
+Faktor-faktor internal yang membantu pencapaian tujuan:
+
+-   Dengan 34.9% lahan yang dapat ditanami, kawasan ini menawarkan potensi untuk peningkatan produksi pertanian.
+
+-   Area lindung atau konservasi yang moderat (13.73%) dan persentase tutupan hutan tertinggi (40.47%)
+
+-   Jarak rata-rata ke jalan raya yang dekat (0.987 km) memudahkan transportasi dan distribusi produk lokal.
+
+    ------------------------------------------------------------------------
+
+#### Kelemahan (*Weaknesses*)
+
+Faktor-faktor internal yang menghalangi pencapaian tujuan:
+
+-   Kepadatan rumah tangga yang rendah dan tingkat kemiskinan yang tinggi (61.64%) menjadi tantangan dalam meningkatkan kesejahtraan dan pertumbuhan ekonomi.
+
+-   Keterbatasan fasilitas kesehatan dan pendidikan, termasuk akses listrik yang rendah, menjadi hambatan utama dalam meningkatkan kesejahtraan.
+
+-   Jarak jauh ke pelabuhan dan transportasi udara, serta keterbatasan akses ke sumber air, membatasi peluang untuk perkembangan dan pertumbuhan ekonomi berbasis pertanian
+
+    ------------------------------------------------------------------------
+
+#### Peluang (*Opportunities*)
+
+Faktor-faktor eksternal yang membantu pencapaian tujuan:
+
+-   Investasi dalam infrastruktur kesehatan, pendidikan, dan transportasi dapat meningkatkan kualitas hidup dan membuka peluang ekonomi.
+
+-   Tutupan hutan dan savanna yang luas serta area konservasi dapat menjadi daya tarik untuk pariwisata berkelanjutan.
+
+-   Praktik pertanian cerdas iklim: dataran tinggi dengan suhu sejuk, dapat dimanfatkan untuk produksi tanaman pangan dan komoditi dengan iklim kering dan sejuk.
+
+-   Dengan peningkatan suhu dan kekeringan, ada peluang untuk mengembangkan teknologi pertanian,penanaman komoditi dan varietas tanaman pangan yang lebih sesuai dengan iklim di masa mendatang.
+
+    ------------------------------------------------------------------------
+
+#### Ancaman (*Threats*)
+
+Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+
+-   Risiko longsor yang tinggi, kebakaran hutan, dan perubahan iklim yang signifikan mengancam keberlanjutan lingkungan dan kehidupan masyarakat.
+
+-   Ketergantungan pada sumber air yang jauh dan terbatas dapat menjadi masalah serius dalam pengembangan pertanian dan kehidupan sehari-hari.
+
+-   Kehilangan hutan yang signifikan dan potensi erosi tanah menimbulkan bencana, seperti banjir bandang, longsor dan kekeringan di musim kemarau
+:::
+
+### Karakteristik Umum
+
+#### Sosio-Demografi:
+
+-   Tipologi 3 memiliki kepadatan yang rendah, yaitu hanya 29 rumah tangga per km², urutan kelima di banding tipologi lainnya di Nusa Tenggara Timur.
+-   Sekitar 61.64% rumah tangga berada di bawah garis kemiskinan, menempati urutan terakhir dalam kesejahteraan, dengan jumlah rumah tangga kurang sejahtera mencapai 1714.22, urutan keempat tertinggi.
+-   Ada sekitar 17 kasus gizi buruk per kecamatan di tahun 2018-2019, menempatkan tipologi ini di urutan kedua. Namun, hanya sekitar 3 fasilitas kesehatan tersedia per kecamatan, dengan ketersediaan rumah sakit yang terbatas.
+-   Hanya 57.76% rumah tangga yang terlayani listrik, paling rendah di antara tipologi lainnya.
+-   Terdapat 2 pasar dan pasar desa, tetapi minimarket jarang ditemui, menunjukkan kegiatan ekonomi informal yang dominan.
+-   Terbatas pada rata-rata hanya 1.9 sekolah tinggi per kecamatan dengan sangat sedikit universitas.
+
+#### Aspek Iklim dan Lingkungan
+
+-   Terletak di perbukitan dan kaki gunung dengan elevasi rata-rata 508.56 mdpl dan suhu rata-rata 24.06 °C. Peningkatan suhu diperkirakan 1.42 °C pada tahun 2050.
+-   Indeks kekeringan 0.79 dengan curah hujan tahunan 1428.59 mm. Hanya 3.55 bulan basah per tahun, dengan penurunan curah hujan -34.45 mm diperkirakan pada tahun 2050.
+-   Risiko banjir rendah (indeks 0.03), tetapi risiko longsor cukup tinggi (indeks 0.39). Potensi erosi tanah moderat. Kebakaran hutan dan lahan dengan frekuensi 0.13 kejadian tahun 2018-2019.
+
+#### Aksesibilitas terhadap infrastruktur dan tutupan lahan:
+
+-   Kawasan ini memiliki lahan terluas di Nusa Tenggara Timur, dengan 34.9% lahan yang dapat ditanami. Lahan perkebunan sangat sedikit, hanya 0.31% per kecamatan.
+
+-   Area lindung atau konservasi moderat sekitar 13.73% atau 19.42 km² per kecamatan. Persentase tutupan hutan tertinggi (40.47%) dan savanna (11%). Kehilangan hutan antara 2015-2020 mencapai 5000 Ha, menjadikannya tipologi dengan luas deforestasi tertinggi.
+
+-   Jarak rata-rata ke jalan raya adalah 0.987 km. Jarak ke pelabuhan, tergolong paling jauh, rata-rata 80.379 km begitu pula dengan jaraknya dari garis pantai. Akses transportasi udara juga tergolong paling terbatas.
+
+-   Kecamatan rata-rata berjarak 17.85 km dari sungai dan 43.46 km dari badan air lainnya, dengan 12 embung per kecamatan. Area irigasi rata-rata hampir 78.44 hektar per kecamatan.
+
+## **Klaster 4**
+
+::: callout-tip
+Tipologi daerah pesisir berbukit dengan kelerengan curam. Curah hujan rendah dan akses terbatas ke sumber air meningkatkan risiko kekeringan. Kendati terbatasnya irigasi dan tantangan infrastruktur, 89.26% rumah tangga terlayani listrik dan ekonomi didukung oleh sektor kelautan dan perikanan. Tingkat gizi buruk yang rendah mengindikasikan kesehatan yang memadai, namun keterbatasan akses ke pelabuhan dan bandara menghambat potensi perdagangan dan pariwisata.
+:::
+
+### Karakteristik berdasarkan analisis SWOT
+
+::: {layout-ncol="2"}
+#### Kekuatan (*Strengths*)
+
+Faktor-faktor internal yang membantu pencapaian tujuan:
+
+-   Kepadatan rumah tangga yang menengah dengan 81 rumah tangga per km², menggerakkan ekonomi lokal.
+
+-   Rendahnya kejadian gizi buruk (7 per kecamatan), menandakan tingkat kesehatan yang memadai.
+
+-   Tingkat pelayanan listrik yang cukup tinggi (89.26% rumah tangga).
+
+-   Kegiatan ekonomi yang didukung oleh sektor kelautan, perikanan, niaga, dan wisata.
+
+-   Akses mudah ke jalan raya (rata-rata 1.1 km), mendukung mobilitas dan logistik.
+
+-   Risiko kekeringan yang moderat dan terendah di antara tipologi lain (indeks 0.64).
+
+    ------------------------------------------------------------------------
+
+#### Kelemahan (*Weaknesses*)
+
+Faktor-faktor internal yang menghalangi pencapaian tujuan:
+
+-   Sekitar 4 dari 10 warga yang tinggal di tipologi ini masih kurang sejahtera.
+
+-   Rentan terhadap bahaya kekeringan, karena curah hujan yang sedikit dan hanya 2.5 bulan basah.
+
+-   Tidak memiliki area yang teraliri irigasi berdasarkan data daerah irigasi KemenPUPR, serta jumlah embung yang rendah (0.82 per kecamatan).
+
+-   Persentase tutupan lahan badan air terendah dan Berada paling jauh dari badan air berdasarkan peta tutupan lahan
+
+-   Indeks bahaya longsor tertinggi menurut BNPB karena berada di daerah kelerengan tinggi.
+
+-   Topografi dengan kelerengan tinggi mempersulit proses pembangunan infrastruktur
+
+-   Fasilitas Kesehatan dan pendidikan yang Terbatas: Hanya ada 3.62 fasilitas kesehatan per kecamatan dan 1 rumah sakit untuk 12 kecamatan, kurangnya sekolah tinggi dan tidak adanya universitas membatasi akses pendidikan tinggi.
+
+-   Hanya 12% lahan yang dapat ditanami.
+
+-   Hanya 9.24% wilayah yang merupakan area lindung atau konservasi.
+
+-   Akses Terbatas ke Pelabuhan dan Bandara yang menghambat ekspansi perdagangan dan pariwisata.
+
+    ------------------------------------------------------------------------
+
+#### Peluang (*Opportunities*)
+
+Faktor-faktor eksternal yang membantu pencapaian tujuan:
+
+-   Pembangunan fasilitas kesehatan dan pendidikan untuk meningkatkan kualitas hidup masyarakat.
+
+-   Potensi Ekspansi Sektor Kelautan dan Pariwisata: Lokasi pesisir menawarkan peluang untuk mengembangkan ekonomi berbasis kelautan dan pariwisata.
+
+-   Pengembangan Infrastruktur Transportasi: Meningkatkan akses ke pelabuhan dapat meningkatkan konektivitas dan pertumbuhan ekonomi.
+
+-   Penggunaan Lahan Pertanian: Memanfaatkan lahan kelerengan yang ada untuk pertanian berbasis pohon dengan praktik cerdas iklim.
+
+    ------------------------------------------------------------------------
+
+#### Ancaman (*Threats*)
+
+Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+
+-   Perubahan Iklim: Kenaikan suhu yang diperkirakan (1.31°C pada 2050) akan berdampak pada bertambahnya frekuensi cuaca eksrim dibarengi dengan penurunan curah hujan sebesar -24.74mm pada 2050, memperburuk kondisi kekeringan.
+-   Risiko Kekeringan dan Longsor: Risiko kekeringan moderat dan risiko longsor yang tinggi memerlukan pengelolaan sumber daya alam dan mitigasi bencana yang efektif.
+-   Keterbatasan Pengembangan Infrastruktur: Akses terbatas ke sumber daya air dan infrastruktur pendidikan serta kesehatan dapat membatasi pertumbuhan ekonomi dan sosial.
+:::
+
+### Karakteristik Umum
+
+#### Sosio-Demografi:
+
+-   Tipologi 4, yang umumnya terletak di perdesaan pesisir berbukit, menunjukkan kepadatan rumah tangga yang menengah dengan sekitar 81 rumah tangga per km², yang merupakan yang tertinggi kedua di Nusa Tenggara Timur setelah sentra niaga dan jasa.
+
+-   Meskipun memiliki kepadatan yang moderat, wilayah ini hanya memiliki sekitar 43.65% rumah tangga yang kurang sejahtera, yang menempati urutan kedua dalam hal kesejahteraan dan memiliki jumlah rumah tangga kurang sejahtera terendah (1225 per kecamatan).
+
+-   Dalam bidang kesehatan, terdapat sekitar 7 kasus gizi buruk per kecamatan, menempatkan wilayah ini pada urutan kedua terendah setelah sentra niaga dan jasa.
+
+-   Sebanyak 89.26% rumah tangga telah terlayani oleh jaringan listrik, namun fasilitas kesehatan terbatas dengan hanya 3.62 per kecamatan dan 1 rumah sakit melayani sekitar 12 kecamatan.
+
+-   Dari sisi ekonomi, terdapat pasar dan pasar daerah dengan jumlah masing-masing 1.23 dan 0.42 per kecamatan, serta 0.4 minimarket per kecamatan.
+
+-   Mengingat lokasinya yang mayoritas di pesisir, ekonomi wilayah ini didukung oleh sektor kelautan, perikanan, niaga, dan wisata.
+
+-   Namun, pendidikan, khususnya di tingkat tinggi, terbatas dengan rata-rata hampir 2 sekolah tinggi per kecamatan dan tercatat tidak ada universitas.
+
+#### Iklim dan Lingkungan:
+
+-   Secara umum, tipologi 4 berada di perbukitan pesisir dengan elevasi rata-rata 412 mdpl dan suhu rata-rata 23.95°C, dengan perkiraan kenaikan suhu sebesar 1.31°C pada tahun 2050 akibat perubahan iklim.
+
+-   Wilayah ini menghadapi risiko kekeringan yang moderat dengan indeks 0.64 dan curah hujan tahunan sekitar 1266 mm. Hanya terdapat sekitar 2.5 bulan basah dalam setahun, dan diperkirakan akan terjadi penurunan curah hujan sebesar -24.74mm pada tahun 2050.
+
+-   Banjir bukan merupakan bencana utama di wilayah ini, tetapi risiko longsor cukup tinggi dengan indeks 0.48 per kecamatan. Tipologi ini memiliki kelerengan yang paling curam.
+
+-   Kejadian kebakaran hutan dan lahan pada tahun 2018-2019 sangat kecil, dengan nilai 0.03.
+
+#### Aksesibilitas Terhadap Infrastruktur dan Lahan:
+
+-   Dalam hal tutupan lahan, Tipologi 4 memiliki cakupan yang kecil di Nusa Tenggara Timur dengan hanya 12% dari luasnya yang dapat ditanami dan sangat sedikit lahan perkebunan.
+-   Area lindung atau konservasi juga sedikit, hanya mencakup 9.24% atau 641 km² per kecamatan, dengan persentase tutupan hutan sekitar 28.49% dan tutupan savanna paling kecil (7.49%).
+-   Kecamatan di cluster ini rata-rata hanya berjarak 1.1 km dari jalan raya, namun akses ke pelabuhan dan bandara terbatas, dengan jarak rata-rata ke pelabuhan 60 km dan kapasitas serta frekuensi penerbangan yang rendah.
+-   Akses ke sumber air juga menjadi tantangan, dengan rata-rata jarak 8.3 km dari sungai dan 15.49 km dari badan air lainnya, serta tidak terdapat jaringan irigasi pertanian dan hanya 0.82 embung per kecamatan.
+
+## **Klaster 5**
+
+::: callout-tip
+Tipologi dengan tutupan hutan dan savanna yang luas, serta kawasan lindung yang besar, berkontribusi pada keanekaragaman hayati dan penyediaan jasa lingkungan, namun frekuensi kebakaran hutan & lahan yang cenderung tinggi. Terdapat lahan pertanian sebagai sumber penghidupan, namun memiliki tantangan kemiskinan relatif tinggi, iklim kering, akses terbatas ke sumber air dan infrastruktur transportasi.
+:::
+
+### Karakteristik berdasarkan analisis SWOT
+
+::: {layout-ncol="2"}
+#### Kekuatan (*Strengths*)
+
+Faktor-faktor internal yang membantu pencapaian tujuan:
+
+-   Tutupan hutan dan savanna yang luas (72% dan 25% dari luas tipologi) berkontribusi pada habitat keanekaragaman hayati
+
+-   Kawasan dengan fungsi lindung atau konservasi yang besar (sekitar 21.83%) menunjukkan upaya konservasi alam.
+
+-   Masih memiliki lahan yang dapat ditanami, aktivitas pertanian didominasi oleh petani kecil dengan sedikit lahan perkebunan.
+
+-   Sebagian besar kecamatan berada atau dekat dari garis pantai, membuka peluang aktivitas ekonomi maritim.
+
+    ------------------------------------------------------------------------
+
+#### Kelemahan (*Weaknesses*)
+
+Faktor-faktor internal yang menghalangi pencapaian tujuan:
+
+-   Iklim kering dan akses terhadap sumber air yang terbatas, baik dari segi sungai maupun badan air lainnya.
+
+-   Angka kejadian gizi buruk yang relatif tinggi dan keterbatasan rumah sakit.
+
+-   Tingkat kemiskinan yang tinggi dengan sekitar 49.7% rumah tangga kurang sejahtera, dengan 14.45 % nya belum mendapatkan layanan listrik.
+
+-   Infrastruktur terbatas, ditunjukkan dengan jarak yang jauh dari jalan raya, pelabuhan, dan bandara, serta minimnya fasilitas pendidikan tinggi, artinya setiap individu yang ingin mengenyam pendidikan tinggi perlu merantau ke tipologi lain yang memiliki perguruan tinggi.
+
+-   Akses ke jalan darat, pelabuhan, dan bandara tergolong terbatas dibanding tipologi lainnya.
+
+-   Frekuensi kebakaran hutan dan lahan yang tinggi, menyebabkan kerusakan lingkungan dan keanekaragaman hayati.
+
+-   Jarak ke area terbakar pada tipologi ini adalah yang terdekat dibanding tipologi lainnya, yakni dengan rata-rata 5164.40 m (SD=3639.23). Hal ini berhubungan erat dengan kejadian kebakaran hutan dan lahan pada tahun 2018-2019 yang terjadi sebanyak 2.12 kali dan merupakan yang paling sering di antara tipologi lainnya.
+
+    ------------------------------------------------------------------------
+
+#### Peluang (*Opportunities*)
+
+Faktor-faktor eksternal yang membantu pencapaian tujuan:
+
+-   Luas tutupan lahan alami yang tinggi berpotensi memberikan jasa lingkungan berupa suplai air yang kontinu dan perlindungan dari bahaya longsor dan erosi.
+
+-   Potensi untuk mengembangkan ekowisata berkat keanekaragaman hayati dan kawasan konservasi.
+
+-   Ketersediaan lahan luas dan cakupan hutan dapat dimanfaatkan untuk peningkatan kualitas hidup melalui perhutanan sosial.
+
+-   Peluang untuk meningkatkan infrastruktur dasar, termasuk jalan dan akses ke air, yang dapat membantu pembangunan ekonomi.
+
+-   Meningkatkan pendidikan dan kesadaran lingkungan di kalangan penduduk lokal untuk konservasi dan pengelolaan sumber daya alam.
+
+    ------------------------------------------------------------------------
+
+#### Ancaman (*Threats*)
+
+Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+
+-   Indeks kekeringan yang tinggi dan penurunan curah hujan yang diperkirakan dapat mengancam ketersediaan air untuk pertanian dan penggunaan rumah tangga. Infrastruktur penampung air juga tergiolong terbatas.
+
+-   Potensi erosi tanah dan bahaya longsor yang tinggi akibat topografi dan kondisi tanah.
+
+-   Akses terbatas ke layanan dasar seperti pendidikan, kesehatan, dan infrastruktur dapat menghambat pembangunan sosial dan ekonomi.
+:::
+
+### Karakteristik Umum
+
+#### Sosio-Demografi:
+
+-   Tipologi 5 menonjol dengan kepadatan rumah tangga yang rendah, hanya 21 rumah tangga per km², terendah di antara tipologi lain di Nusa Tenggara Timur.
+-   Meskipun demikian, ada sekitar 49.7% rumah tangga yang kurang sejahtera, menempati urutan ke-4 dalam hal kesejahteraan, dengan jumlah rata-rata rumah tangga kurang sejahtera mencapai 1,512, yang merupakan yang kedua tertinggi.
+-   Di bidang kesehatan, terdapat sekitar 15.13 kejadian gizi buruk per kecamatan, menempatkan tipologi ini di urutan ke-4.
+-   Sekitar 85% rumah tangga telah terlayani oleh jaringan listrik, namun hanya ada hampir 5 fasilitas kesehatan per kecamatan, dengan ketersediaan rumah sakit yang terbatas (peringkat 5).
+-   Dari sisi ekonomi, tipologi ini memiliki pasar dan pasar daerah dalam jumlah yang tinggi, tetapi minimarket sangat sedikit, menggambarkan dominasi aktivitas ekonomi informal perdesaan.
+-   Pendidikan, khususnya di tingkat tinggi, terbatas dengan rata-rata hanya 2.35 sekolah tinggi per kecamatan dan hampir tidak ada universitas.
+
+#### Iklim dan Lingkungan:
+
+-   Tipologi 5 umumnya terletak di perbukitan dan kaki gunung, dengan elevasi rata-rata 393 mdpl dan suhu rata-rata 24.57°C. Diperkirakan akan terjadi peningkatan suhu sebesar 1.33°C pada tahun 2050 akibat perubahan iklim.
+-   Tipologi ini menghadapi risiko kekeringan yang tinggi, dengan indeks kekeringan 0.69 dan curah hujan tahunan sekitar 1350 mm.
+-   Hanya ada sekitar 3 bulan basah dalam setahun, dengan proyeksi penurunan curah hujan sebesar -21.25 mm pada tahun 2050.
+-   Meskipun tidak rentan terhadap banjir (indeks bahaya banjir 0.02), daerah ini memiliki risiko longsor yang moderat (0.4) dan potensi erosi tanah yang tinggi.
+-   Terjadi kebakaran hutan dan lahan dengan frekuensi tertinggi pada tahun 2018-2019, dengan nilai 2.12 (SD=35.2), dan lokasi kebakaran lahan rata-rata berjarak 5.16 km, yang terdekat dibandingkan tipologi lainnya.
+-   Bentang alam yang kompleks. Terletak diperbukitan, dengan elevasi rata-rata 393 mdpl, namun juga banyak kecamatannya yang terletak di tepi laut. Suhu rata-rata 24.57 derajat Celcius, dan peningkatan temperatur akibat perubahan iklim +1.33 derajat celcius di 2050.
+-   Bahaya kekeringan mengintai tipologi ini. Indeks kekeringan tergolong tinggi, yaitu 0.69. Tipologi ini memperoleh sekitar 1350 mm curah hujan setiap tahunnya, dengan jumlah bulan basah sekitar 3 bulan, dengan indeks kekeringan 0.75. Menandakan tipologi ini tergolong beriklim kering, dan proyeksi iklim di 2050 menunjukkan penurunan curah hujan sebesar -21.25 mm.
+-   Karena elevasinya, daerah ini tidak rentan terhadap bahaya banjir. Indeks bahaya banjir menunjukkan rata-rata 0.02.
+-   Tipologi ini memiliki bahaya longsor yang moderat (0.4) namun terindikasi memiliki potensi erosi tanah yang tinggi, terutama pada musim hujan. Salah satunya disebabkan oleh kelerengan yang cenderung tinggi di topografi ini.
+-   Kejadian kebakaran hutan dan lahan pada tahun 2018-2019 tertinggi dengan nilai 2.12 (SD=35.2). Tipologi ini juga paling dekat dengan lokasi kebakaran lahan, dengan jarak rata-rata 5.16 km.
+
+#### Aksesibilitas Terhadap Infrastruktur dan Lahan:
+
+-   Tipologi 5 memiliki cakupan lahan terluas di Provinsi Nusa Tenggara Timur, dengan 36.6% dari luasnya dapat ditanami.
+-   Namun, hanya sekitar 36% dari lahan ini yang dikelola oleh petani kecil, dan lahan kelas perkebunan sangat terbatas, rata-rata hanya 0.25 hektar per kecamatan.
+-   Kawasan ini juga memiliki proporsi terbesar untuk area lindung atau konservasi, sekitar 21.83% atau 49 km² per kecamatan. Tipologi ini menonjol dengan persentase tutupan hutan tertinggi (72%) dan tutupan savanna yang mencapai 25%.
+-   Kecamatan di tipologi ini rata-rata berjarak 1.6 km dari jalan utama, menunjukkan tantangan dalam perpindahan barang dan masyarakat. Akses ke pelabuhan terbatas dengan rata-rata jarak 59 km, dan akses ke bandara juga terbatas, dengan kapasitas dan frekuensi penerbangan yang rendah.
+-   Dari segi akses air, kecamatan di tipologi ini rata-rata berjarak 12 km dari sungai dan 13 km dari badan air lainnya, dengan rata-rata 7.62 embung per kecamatan. Area irigasi rata-rata hampir 50 hektar per kecamatan, menandakan hanya sebagian kecil dari kecamatan yang terlayani irigasi.
+
+## **Klaster 6**
+
+::: callout-tip
+Tipologi ini, yang terletak di dataran rendah, memiliki kepadatan rumah tangga moderat dan luas lahan pertanian dengan infrastruktur irigasi terluas. Meski menghadapi tantangan seperti tingginya persentase rumah tangga kurang sejahtera dan kencenderungan gizi buruk tinggi, wilayah memiliki aksesibilitas transportasi yang baik dan akses ke sumber air yang dekat.
+:::
+
+### Karakteristik berdasarkan analisis SWOT
+
+::: {layout-ncol="2"}
+#### Kekuatan (*Strengths*)
+
+Faktor-faktor internal yang membantu pencapaian tujuan:
+
+-   Secara umum merupakan daratan rendah yang landai, memudahkan aktivitas pertanian dan pengembangan infrastruktur.
+
+-   Kepadatan rumah tangga yang moderat (37 rumah tangga per km²) dengan jumlah rumah tangga terbanyak di NTT (22.5%), menjadi modal dalam menggerakkan ekonomi lokal.
+
+-   Luas lahan pertanian besar (54.32% dari luas wilayah) dengan area irigasi terluas (383.33 ha per kecamatan).
+
+-   Dekat dengan sumber air (kurang dari 5 km dari sungai) dan memiliki jumlah embung tertinggi (727.05 per kecamatan).
+
+-   Fasilitas kesehatan dan pendidikan yang baik dibandingkan tipologi lainnya: 7.3 fasilitas kesehatan per kecamatan, 4 sekolah tinggi, dan 1 universitas setiap 2 atau 3 kecamatan, serta satu rumah sakit setiap 5 kecamatan.
+
+-   Aksesibilitas transportasi yang baik (rata-rata berjarak 1.26 km dari jalan raya).
+
+    ------------------------------------------------------------------------
+
+#### Kelemahan (*Weaknesses*)
+
+Faktor-faktor internal yang menghalangi pencapaian tujuan:
+
+-   Terdapat 1 dari 4 Rumah Tangga di Tipologi ini yang belum memperoleh aliran listrik ke rumahnya,
+
+-   Tingginya persentase rumah tangga kurang sejahtera (49%).
+
+-   Tingkat kejadian gizi buruk tertinggi dengan rata-rata 29.53 kasus per kecamatan.
+
+-   Jarak ke pelabuhan yang umumnya relatif jauh (rata-rata 71.3 km). Meski umumnya terlayani transporasi udara, pada umumnya terbatas pada penerbangan dengan muatan kecil dengan frekuensi yang jarang.
+
+    ------------------------------------------------------------------------
+
+#### Peluang (*Opportunities*)
+
+Faktor-faktor eksternal yang membantu pencapaian tujuan:
+
+-   Jaringan jalan yang tergolong baik dapat mempermudah proses pembangunan seperti:
+
+    -   Peningkatan layanan listrik dan fasilitas kesehatan untuk meningkatkan kualitas hidup.
+
+    -   Pembangunan fasilitas pendidikan untuk meningkatkan akses dan kualitas pendidikan bagi generasi muda
+
+    -   Meningkatkan akses ke pelabuhan untuk mendukung kegiatan ekonomi dan perdagangan.
+
+    -   Pengembangan irigasi dan pengelolaan sumber daya air untuk meningkatkan ketahanan terhadap kekeringan.
+
+-   Praktik pertanian cerdas iklim dapat memaksimalkan efisiensi penggunaan air dan mengurangi emisi GRK dari praktik pertanian.
+
+-   Perlindungan tutupan lahan alami untuk menjaga kelangsungan jasa lingkungan seperti penyediaan air.
+
+    ------------------------------------------------------------------------
+
+#### Ancaman (*Threats*)
+
+Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+
+1.  Prevalensi gizi buruk yang tinggi jika tidak ditangani segera, akan berdampak pada kualitas SDM di masa depan.
+
+2.  Perubahan iklim yang diperkirakan meningkatkan suhu sebesar 1.35°C pada 2050, akan sangat berpengaruh untuk tipologi daratan rendah yang hari ini kondisi iklimnya sudah panas. Cuaca panas terik akan semakin sering ditemui, dan akan berpengaruh pada setiap sendi penghidupan, termasuk produksi pangan.
+
+3.  Proyeksi penurunan curah hujan sebesar -20.77 mm pada 2050 yang dapat memperburuk kondisi kekeringan untuk tipologi yang hari ini sudah memiliki iklim kering (indeks kekeringan 0.69 ) dan bulan basah yang pendek. Namun dalam kondisi cuaca ekstrim di musim hujan, risiko banjir mengintai (indeks 0.13).
+:::
+
+### Karakteristik Umum
+
+#### Sosio-Demografi:
+
+-   Kepadatan rumah tangga di tipologi 6 adalah 37 rumah tangga per km², termasuk moderat di Nusa Tenggara Timur, namun secara jumlah rumah tangga adalah yang terbanyak (22.5% dari total rumah tangga di NTT).
+
+-   Sebanyak 49% rumah tangga kurang sejahtera, dengan rata-rata 2345 rumah tangga kurang sejahtera per kecamatan, yang kedua tertinggi.
+
+-   Tingkat kejadian gizi buruk adalah yang tertinggi, dengan rata-rata 29.53 kasus per kecamatan.
+
+-   Rata-rata 75% rumah tangga terlayani listrik, dengan 7.3 fasilitas kesehatan dan 1 rumah sakit setiap 5 kecamatan.
+
+-   Pasar desa rata-rata 6.28 unit per kecamatan, tertinggi di antara tipologi lain, serta pasar dan minimarket yang tersedia di setiap kecamatan.
+
+-   Akses pendidikan baik, dengan 4 sekolah tinggi per kecamatan dan 1 universitas setiap 2 atau 3 kecamatan.
+
+##### Iklim dan Lingkungan:
+
+-   Kontur landai dan datar, dengan elevasi rata-rata 152.72 mdpl dan kelerengan terendah (4.95°).
+
+-   Suhu rata-rata 25.69°C, paling hangat dibandingkan tipologi lainnya. Diperkirakan semakin menghangat sebesar +1.35°C pada 2050.
+
+-   Risiko banjir tergolong paling tinggi (indeks 0.13) dibandingkan dengan tipologi lainnya, dengan kejadian banjir dan banjir bandang tertinggi (3.29 dan 0.22 per kecamatan) dan 21.24 unit sistem peringatan dini.
+
+-   Risiko kekeringan tinggi (indeks 0.69) dengan curah hujan tahunan 1350 mm dan proyeksi penurunan -20.77 mm pada 2050. Menunjukkan bahaya kekeringan, terutama di periode anomali musim, seperti el-nino.
+
+-   Kebakaran hutan dan lahan terjadi dengan luasan rendah (0.36) dan lokasi rata-rata 13 km dari kecamatan.
+
+-   Potensi longsor dan erosi sangat rendah.
+
+#### Aksesibilitas Terhadap Infrastruktur dan Lahan:
+
+-   Tipologi 6 memiliki luas lahan terluas kedua di NTT.
+
+-   Lahan pertanian terbesar dengan 54.32% dari luas wilayah, dengan ditunjang area irigasi terbesar di antara tipologi lain (383.33 ha per kecamatan). Menunjukkan pertanian memiliki fungsi yang penting dalam penggerak ekonomi di tipologi ini. Namun lahan perkebunan sangat terbatas (hampir 1%).
+
+-   Disamping itu, tipologi ini juga masih memiliki area lindung atau konservasi yang luas (21.83% atau 49 km² per kecamatan), dengan tutupan hutan 42.68% dan savanna 17.21%.
+
+-   Aksesibilitas transportasi tergolong baik. Dengan jarak rata-rata 1.26 km dari jalan raya, dengan jarak ke pelabuhan yang agak jaug (71.3 km) namun cukup terlayani oleh bandara-bandara kapasitas kecil dan menengah.
+
+-   Dekat dengan sumber air (kurang dari 5 km dari sungai), dengan 727.05 embung per kecamatan, tertinggi di daerah lain. Menunjukkan kemudahan akses terhadap aliran dan tampungan air permukaan.
+:::::::::::::::
+
+**Tabel statistik deskriptif**
+
+:::: panel-tabset
+## Tabel Interpretasi Tipologi
+
+```{r NTT}
+#| warning: false
+#| message: false
+# tabel_intisari <- tar_read(summary_table_kec)|> 
+#   #dplyr::select(-Kepulauan) |> 
+#   dplyr::mutate(variable = dplyr::case_when(
+#     variable == "annual_mean_prec" ~ "curah hujan rata-rata tahunan",
+#     variable == "annual_mean_temp" ~ "suhu rata-rata tahunan",
+#     variable == "arable_land_percent" ~ "persentase lahan pertanian",
+#     variable == "aridity_index" ~ "indeks kekeringan",
+#     variable == "distance_to_burned_area" ~ "jarak ke area terbakar",
+#     variable == "distance_to_commodity_processing_factory" ~ "jarak ke pabrik pengolahan komoditas",
+#     variable == "distance_to_deforestation" ~ "jarak ke area deforestasi",
+#     variable == "distance_to_forest" ~ "jarak ke hutan",
+#     variable == "distance_to_plantation" ~ "jarak ke perkebunan",
+#     variable == "distance_to_plantation_concession" ~ "jarak ke konsesi perkebunan",
+#     variable == "distance_to_river" ~ "jarak ke sungai",
+#     variable == "distance_to_road" ~ "jarak ke jalan",
+#     variable == "erosion_risk_t_ha_1_yr_1" ~ "risiko erosi t ha per tahun",
+#     variable == "indeks_bahaya_banjir" ~ "indeks risiko banjir",
+#     variable == "indeks_bahaya_longsor" ~ "indeks risiko longsor",
+#     variable == "irrigated_land" ~ "lahan irigasi",
+#     variable == "percentage_deforestation_area_size" ~ "persentase ukuran area deforestasi",
+#     variable == "percentage_of_agricultural_area_small_holder_in_the_village" ~ "persentase area pertanian skala kecil",
+#     variable == "percentage_of_plantation_area_per_sub_district" ~ "persentase area perkebunan per kecamatan",
+#     variable == "prec_change" ~ "perubahan curah hujan",
+#     variable == "rasio_40pers_ekon_rendah_rt" ~ "rasio 40 persen ekonomi rendah RT",
+#     variable == "rasio_faskes_1" ~ "rasio fasilitas kesehatan 1",
+#     variable == "rasio_minimarket_swalayan" ~ "rasio minimarket swalayan",
+#     variable == "rasio_pt" ~ "rasio perguruan tinggi",
+#     variable == "rasio_rs" ~ "rasio rumah sakit",
+#     variable == "temp_change" ~ "perubahan suhu",
+#     variable == "total_kk_berdasarkan_pengguna_dan_non_pengguna_list…" ~ "total KK berdasarkan pengguna dan non pengguna listrik",
+#     variable == "wet_months" ~ "bulan basah",
+#     # Add other translations here
+#     TRUE ~ variable # default action to keep the original name if not matched
+#   )) |> 
+#   dplyr::mutate(variable = gsub("_", " ", variable)) |> 
+#   dplyr::rename(Variabel = variable)
+#   
+# tabel_intisari_formatted <- tabel_intisari |> 
+#   gt()|>
+#   tab_header(
+#     title = "Karakteristik Sosio-ekonomi dan Lingkungan di Berbagai Kelas Tipologi: Analisis Rata-rata dan Standar Deviasi") |> 
+#     opt_align_table_header(align = "left")
+# 
+# tabel_intisari_formatted
+```
+
+::: callout-tip
+## Apa itu rata-rata dan standar deviasi?
+
+**Rata-Rata**
+
+Rata-rata adalah angka yang sering kita gunakan untuk mengetahui gambaran umum dari sekelompok data. Misalnya, jika rata-rata jarak ke jalan terdekat di daerah urban cuma 0,24 km, ini menunjukkan bahwa umumnya daerah tersebut dekat dengan jalan raya.
+
+**Standar Deviasi**
+
+Standar deviasi (SD) memberitahu kita seberapa besar variasi atau perbedaan antar angka dalam sekelompok data. Semakin tinggi SD, makin besar juga variasinya. Misalnya, rata-rata jarak ke jalan terdekat di daerah urban adalah 0,24 km dengan SD 0,45 km. Ini artinya yang sangat dekat dengan jalan, tetapi juga ada yang jauh---bahkan lebih dari dua kali lipat dari rata-rata.
+
+Nilai standar deviasi (SD) yang besar, seperti contoh diatas, menjadi indikasi bahwa, rata-rata mungkin tidak memberikan gambaran yang mewakili suatu tipologi. Dalam hal ini, standar deviasi memberikan konteks tambahan yang penting untuk memahami sejauh mana data bervariasi.
+:::
+
+## Tabel Interpretasi tipologi (Berwarna)
+
+Kode warna pada tabel dibawah menunjukkan rentang nilai dari variabel yang diberikan untuk masing-masing tipe wilayah. Warna biru gelap menunjukkan nilai yang lebih tinggi, sementara warna yang lebih merah terang menunjukkan nilai yang lebih rendah.
+
+```{r color coded table}
+#| warning: false
+#| message: false
+
+# tar_read(summary_table_color)
+
+```
+
+<!-- ## Tabel ranking tipologi 1 -->
+
+<!-- ```{r ranking 1} -->
+
+<!-- #| warning: false -->
+
+<!-- #| message: false -->
+
+<!-- # List all files in the 'output' folder -->
+
+<!-- files <- list.files("output", pattern = "^Cluster 1", full.names = TRUE) -->
+
+<!-- # Assuming there is only one file that begins with "Cluster 1" -->
+
+<!-- file_to_read <- files[1] -->
+
+<!-- # Read the file using read_csv -->
+
+<!-- cluster_1_data <- read_csv(file_to_read) |> arrange(rank) -->
+
+<!-- cluster_1_data |> gt() -->
+
+<!-- ``` -->
+
+<!-- ## Tabel ranking tipologi 2 -->
+
+<!-- ```{r ranking 2} -->
+
+<!-- #| warning: false -->
+
+<!-- #| message: false -->
+
+<!-- # List all files in the 'output' folder -->
+
+<!-- files <- list.files("output", pattern = "^Cluster 2", full.names = TRUE) -->
+
+<!-- # Assuming there is only one file that begins with "Cluster 2" -->
+
+<!-- file_to_read <- files[1] -->
+
+<!-- # Read the file using read_csv -->
+
+<!-- cluster_2_data <- read_csv(file_to_read) |> arrange(rank) -->
+
+<!-- cluster_2_data |> gt() -->
+
+<!-- ``` -->
+
+<!-- ## Tabel ranking tipologi 3 -->
+
+<!-- ```{r ranking 3} -->
+
+<!-- #| warning: false -->
+
+<!-- #| message: false -->
+
+<!-- # List all files in the 'output' folder -->
+
+<!-- files <- list.files("output", pattern = "^Cluster 3", full.names = TRUE) -->
+
+<!-- # Assuming there is only one file that begins with "Cluster 3" -->
+
+<!-- file_to_read <- files[1] -->
+
+<!-- # Read the file using read_csv -->
+
+<!-- cluster_3_data <- read_csv(file_to_read) |> arrange(rank) -->
+
+<!-- cluster_3_data |> gt() -->
+
+<!-- ``` -->
+
+<!-- ## Tabel ranking tipologi 4 -->
+
+<!-- ```{r ranking 4} -->
+
+<!-- #| warning: false -->
+
+<!-- #| message: false -->
+
+<!-- # List all files in the 'output' folder -->
+
+<!-- files <- list.files("output", pattern = "^Cluster 4", full.names = TRUE) -->
+
+<!-- # Assuming there is only one file that begins with "Cluster 4" -->
+
+<!-- file_to_read <- files[1] -->
+
+<!-- # Read the file using read_csv -->
+
+<!-- cluster_4_data <- read_csv(file_to_read) |> arrange(rank) -->
+
+<!-- cluster_4_data |> gt() -->
+
+<!-- ``` -->
+
+<!-- ## Tabel ranking tipologi 5 -->
+
+<!-- ```{r ranking 5} -->
+
+<!-- #| warning: false -->
+
+<!-- #| message: false -->
+
+<!-- # List all files in the 'output' folder -->
+
+<!-- files <- list.files("output", pattern = "^Cluster 5", full.names = TRUE) -->
+
+<!-- # Assuming there is only one file that begins with "Cluster 5" -->
+
+<!-- file_to_read <- files[1] -->
+
+<!-- # Read the file using read_csv -->
+
+<!-- cluster_5_data <- read_csv(file_to_read) |> arrange(rank) -->
+
+<!-- cluster_5_data |> gt() -->
+
+<!-- ``` -->
+
+<!-- ## Tabel ranking tipologi 6 -->
+
+<!-- ```{r ranking 6} -->
+
+<!-- #| warning: false -->
+
+<!-- #| message: false -->
+
+<!-- # List all files in the 'output' folder -->
+
+<!-- files <- list.files("output", pattern = "^Cluster 6", full.names = TRUE) -->
+
+<!-- # Assuming there is only one file that begins with "Cluster 6" -->
+
+<!-- file_to_read <- files[1] -->
+
+<!-- # Read the file using read_csv -->
+
+<!-- cluster_6_data <- read_csv(file_to_read) |> arrange(rank) -->
+
+<!-- cluster_6_data |> gt() -->
+
+<!-- ``` -->
+::::
