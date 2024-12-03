@@ -4,7 +4,7 @@ format:
   html:
     toc: true
     number-sections: true
-    embed-resources: false
+    embed-resources: true
 editor: visual
 execute:
   echo: false
@@ -73,13 +73,13 @@ Sumatera Selatan beribukota di Kota Palembang yang merupakan dataran rendah deng
 ```{r}
 #| warning: false
 #| message: false
-read_csv("data_preprocessed/metadata.csv") |> 
+read_csv("data_preprocessed/metadata_bahasa_indonesia.csv") |> 
   gt(rowname_col = "No")
 ```
 
 ## Skema Teknis Pembuatan Tipologi
 
-![](data/workflow.svg){height="1200" width="800" fig-align="center"}
+![](output/flowchart_typology.svg){height="800" width="1200" fig-align="center"}
 
 ## Intisari Hasil PCA
 
