@@ -59,14 +59,12 @@ Penghidupan berbasis lahan kini makin rentan terhadap perubahan iklim, tetapi in
 -   Tipologi tersebut kemudian digunakan untuk mendeskripsikan konteks kerentanan penghidupan berbasis pertanian akibat perubahan iklim di Provinsi Sumatera Selatan dan potensi intervensi untuk meningkatkan ketahanan terhadap perubahan iklim
 :::
 
-# Deskripsi wilayah & Metodologi
 
-::: panel-tabset
-## Deskripsi Sumatera Selatan
+# Deskripsi Sumatera Selatan
 
 Sumatera Selatan beribukota di Kota Palembang yang merupakan dataran rendah dengan ketinggian rata-rata kurang lebih 8 meter diatas permukaan laut. Provinsi ini terletak pada posisi 1’-4’ Lintang Selatan dan antara 102’-106’ Bujur Timur. Luas wilayah Sumatera Selatan, adalah berupa daratan seluas 86.771,68 km2 . Wilayah administrasi Provinsi Sumatera Selatan terdiri dari 13 wilayah kabupaten dan empat kota. Kabupaten/Kota yang memiliki wilayah paling luas adalah Kabupaten Ogan Komering Ilir yaitu sekitar 17.071,33 km2. Sedangkan yang memiliki luas paling kecil adalah Kota Palembang dengan luas wilayah 352,51 km2. Wilayah Provinsi Sumatera Selatan bagian utara berbatasan dengan Provinsi Jambi, bagian timur berbatasan dengan Provinsi BangkaBelitung, bagian selatan berbatasan dengan Provinsi Lampung, dan bagian barat berbatasan dengan Provinsi Bengkulu. Berdasarkan data yang diperoleh dari BMKG, selama tahun 2023 suhu rata-rata di seluruh wilayah Provinsi Sumatera Selatan adalah 30,2ºC, jumlah curah hujan setinggi 2.218,9 mm dan jumlah hari hujan sebanyak 199 hari. Penduduk Provinsi Sumatera Selatan tahun 2023 berdasarkan Hasil Proyeksi Penduduk Indonesia 2020–2050 Hasil Sensus Penduduk 2020 sebanyak 8,74 juta jiwa yang terdiri atas 4,45 juta jiwa penduduk laki-laki dan 4,29 juta jiwa penduduk perempuan. Dibandingkan dengan jumlah penduduk tahun 2020, penduduk Provinsi Sumatera Selatan mengalami pertumbuhan sebesar 1,21 persen. Sementara itu besarnya angka rasio jenis kelamin tahun 2023 penduduk laki-laki terhadap penduduk perempuan sebesar 103,83. Kepadatan penduduk di Provinsi Sumatera Selatan tahun 2023 mencapai 100,76 jiwa/km2 . Kepadatan Penduduk di 17 kabupaten/kota cukup beragam dengan kepadatan penduduk tertinggi terletak di kota Palembang dengan kepadatan sebesar 4.840,63 jiwa/km2 dan terendah di Kabupaten Musi Rawas Utara sebesar 33 jiwa/km2. Di tahun 2023, luas panen padi mencapai 502,16 ribu ha dengan total produksi mencapai 2,76 juta ton GKG dan produktivitas 55,00 ku/ha. Sementara itu, produksi tanaman palawija pada tahun 2023 masingmasing adalah 826,84 ribu ton jagung dan 48,79 ton kedelai. Data Dinas Kehutanan Provinsi Sumatera Selatan memperlihatkan bahwa hutan di Sumatera Selatan luasnya mencapai 3.385,01 ribu ha, yang terdiri dari hutan lindung seluas 566,62 ribu ha, konservasi seluas 511,97 ribu ha, suaka alam dan pelestarian alam seluas 256,23 ribu ha, dan hutan produksi seluas 2.050,22 ribu ha. Produk Domestik Regional Bruto (PDRB) adalah indikator utama untuk mengukur perkembangan perekonomian di suatu wilayah. Selama lima tahun terakhir, PDRB Sumsel atas dasar harga berlaku terus mengalami peningkatan. Pada tahun 2019 nilai yang terbentuk sebesar 453,40 triliun rupiah dan terus tumbuh hingga pada tahun 2023, nilainya menjadi sebesar 629,10 triliun rupiah atau naik sekitar 38,75 persen. Terdapat tiga lapangan usaha yang memberikan peranan cukup besar terhadap PDRB. Pada tahun 2023, tiga lapangan usaha yang memberikan peranan terbesar adalah pertambangan dan penggalian, diikuti oleh Industri Pengolahan kemudian Pertanian, Kehutanan, dan Perikanan. Pada tahun 2023 peranan masingmasing lapangan usaha di atas secara berurutan adalah 26,61 persen, 17,84 persen, dan 13,10 persen. Secara umum, laju perekonomian Sumatera Selatan pada tahun 2023 mengalami penurunan, yaitu dari 5,23 persen pada tahun 2022 menjadi 5,08 persen pada tahun 2023. Jika dibandingkan dengan provinsi lain untuk wilayah Sumatera bagian Selatan, Provinsi Sumatera Selatan memiliki jumlah penduduk miskin terbesar yaitu 1,04 juta jiwa pada tahun 2023. Angka ini masih jauh lebih tinggi bila dibandingkan dengan Provinsi Kepulauan Bangka Belitung yang memiliki jumlah penduduk miskin 0,068 juta jiwa. (BPS. Provinsi Sumatera Selatan Dalam Angka Tahun 2024).
 
-## Daftar Variabel
+# Daftar Variabel
 
 **Unit analisis terkecil**: Desa
 
@@ -77,13 +75,20 @@ read_csv("data_preprocessed/metadata_bahasa_indonesia.csv") |>
   gt(rowname_col = "No")
 ```
 
-## Skema Teknis Pembuatan Tipologi
-
-![](output/flowchart_typology.svg){height="800" width="1200" fig-align="center"}
 :::
 
-## Intisari Hasil PCA
+# Skema Teknis Pembuatan Tipologi
 
+![](output/flowchart_typology.svg){height="800" width="1200" fig-align="center"}
+
+
+
+
+------------------------------------------------------------------------
+## Intisari Hasil PCA
+::: panel-tabset
+
+### Tabel Kontribusi Komponen Utama (PCs)
 ```{r PCA Summary}
 #| warning: false
 #| message: false
@@ -126,8 +131,6 @@ pca_df |>
   )
 ```
 
-------------------------------------------------------------------------
-::: panel-tabset
 ### Interpretasi Komponen Utama (PCs)
 
 **PC1: Predominan Gradien Daratan Rendah-Tinggi**
@@ -227,12 +230,23 @@ pca_plot_3d <- plot_ly(
   color = ~cluster,
   type = "scatter3d",
   text = ~paste(
-    "District:", district_name,
-    "<br>Subdistrict:", subdistrict_name,
-    "<br>Village:", village_name
+    "Kabupaten:", district_name,
+    "<br>Kecamatan:", subdistrict_name,
+    "<br>Desa:", village_name
   ),
   mode = "markers"
+) %>% 
+layout(
+  scene = list(
+    xaxis = list(title = "Gradien Elevasi"),
+    yaxis = list(title = "Gradien Demografi"),
+    zaxis = list(title = "Gradien Intensitas Penggunaan Lahan")
+  )
 )
+pca_plot_3d
+```
+
+For 3D plots in plotly, we use the `scene` parameter in layout to set axis titles.
 
 pca_plot_3d
 ```
