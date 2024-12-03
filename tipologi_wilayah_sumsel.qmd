@@ -1,5 +1,6 @@
 ---
-title: "[DRAFT] Tipologi Perdesaan Provinsi Sumatera Selatan Dalam Lingkup Kerentanan Iklim pada Penghidupan Berbasis Lahan"
+title: "[DRAFT] Tipologi Perdesaan Provinsi Sumatera Selatan"
+subtitle: "Analisis Kerentanan Penghidupan Berbasis Lahan Terhadap Perubahan Iklim"
 format: 
   html:
     toc: true
@@ -53,16 +54,46 @@ library(factoextra)
 ::: panel-tabset
 ## Abstrak
 
-Penghidupan berbasis lahan kini makin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi mereka masih sangat terbatas. Draft dokumen ini disusun untuk mengisi kekosongan ini dengan mengevaluasi berbagai jenis kerentanan yang mempengaruhi mata pencaharian berbasis pertanian di tingkat provinsi. Pada kajian ini, dilakukan penilaian kerentanan untuk mengidentifikasi risiko serta penyebabnya, dan potensi adaptasi, dengan fokus pada peningkatan taraf hidup, keberlanjutan produksi komoditas-komoditas kunci, dan pengelolaan lahan secara menyeluruh. Mengingat tingginya keanekaragaman lanskap di Provinsi Sumatera Selatan, kajian ini memfokuskan perhatian pada desa-desa dengan fitur biofisik dan sosial-ekonomi yang mirip. Ini membantu kami mempermudah tugas dalam mengidentifikasi risiko yang identik antar desa. Kajian ini mendefinisikan area-area homogen ini, atau ‘tipologi,’ dengan menggunakan pengelompokan K-means. Pengelompokan ini didasarkan pada komposit dari indikator biofisik dan sosial-ekonomi. Untuk mempermudah proses pengelompokan, kami menggunakan analisis PCA untuk menyederhanakan dimensi data.
+Sumatera Selatan memiliki keragaman lanskap perdesaan yang kompleks, dengan masyarakat yang bergantung pada penghidupan berbasis lahan. Penghidupan berbasis lahan disinyalir semakin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi masih terbatas. Draft dokumen ini disusun untuk mengisi kekosongan ini dengan memahami berbagai jenis kerentanan yang mempengaruhi penghidupan berbasis lahan di Sumatera Selatan.
 
-## Tujuan
+Menggunakan pendekatan analisis klaster berbasis K-means yang dipadukan dengan Principal Component Analysis (PCA), kajian ini mengidentifikasi tipologi perdesaan berdasarkan karakteristik biofisik dan sosial-ekonomi yang homogen. Pengelompokan ini memungkinkan pemahaman yang lebih mendalam tentang pola kerentanan spesifik dan kebutuhan mitigasi dan adaptasi yang sesuai dengan konteks lokal. Hasil analisis diharapkan dapat mendukung pengembangan strategi adaptasi perubahan iklim yang lebih tepat sasaran untuk masing-masing tipologi di Sumatera Selatan.
+
+::: callout-note
+**Tujuan**
 
 -   Analisis ini bertujuan untuk mengidentifikasi ‘tipologi’ desa-desa, yang memiliki karakter sosial-ekonomi dan lingkungan yang mirip di Provinsi Sumatera Selatan, dengan menggunakan pengelompokan K-means pada data yang disederhanakan oleh PCA.
--   Tipologi tersebut kemudian digunakan untuk mendeskripsikan konteks kerentanan penghidupan berbasis pertanian akibat perubahan iklim di Provinsi Sumatera Selatan dan potensi intervensi untuk meningkatkan ketahanan terhadap perubahan iklim
+
+-   Tipologi tersebut kemudian digunakan untuk mendeskripsikan konteks kerentanan penghidupan berbasis lahan akibat perubahan iklim di Provinsi Sumatera Selatan dan potensi intervensi yang tepat sasaran untuk meningkatkan ketahanan terhadap perubahan iklim.
+:::
 
 ## Deskripsi Sumatera Selatan
 
-Sumatera Selatan beribukota di Kota Palembang yang merupakan dataran rendah dengan ketinggian rata-rata kurang lebih 8 meter diatas permukaan laut. Provinsi ini terletak pada posisi 1’-4’ Lintang Selatan dan antara 102’-106’ Bujur Timur. Luas wilayah Sumatera Selatan, adalah berupa daratan seluas 86.771,68 km2 . Wilayah administrasi Provinsi Sumatera Selatan terdiri dari 13 wilayah kabupaten dan empat kota. Kabupaten/Kota yang memiliki wilayah paling luas adalah Kabupaten Ogan Komering Ilir yaitu sekitar 17.071,33 km2. Sedangkan yang memiliki luas paling kecil adalah Kota Palembang dengan luas wilayah 352,51 km2. Wilayah Provinsi Sumatera Selatan bagian utara berbatasan dengan Provinsi Jambi, bagian timur berbatasan dengan Provinsi BangkaBelitung, bagian selatan berbatasan dengan Provinsi Lampung, dan bagian barat berbatasan dengan Provinsi Bengkulu. Berdasarkan data yang diperoleh dari BMKG, selama tahun 2023 suhu rata-rata di seluruh wilayah Provinsi Sumatera Selatan adalah 30,2ºC, jumlah curah hujan setinggi 2.218,9 mm dan jumlah hari hujan sebanyak 199 hari. Penduduk Provinsi Sumatera Selatan tahun 2023 berdasarkan Hasil Proyeksi Penduduk Indonesia 2020–2050 Hasil Sensus Penduduk 2020 sebanyak 8,74 juta jiwa yang terdiri atas 4,45 juta jiwa penduduk laki-laki dan 4,29 juta jiwa penduduk perempuan. Dibandingkan dengan jumlah penduduk tahun 2020, penduduk Provinsi Sumatera Selatan mengalami pertumbuhan sebesar 1,21 persen. Sementara itu besarnya angka rasio jenis kelamin tahun 2023 penduduk laki-laki terhadap penduduk perempuan sebesar 103,83. Kepadatan penduduk di Provinsi Sumatera Selatan tahun 2023 mencapai 100,76 jiwa/km2 . Kepadatan Penduduk di 17 kabupaten/kota cukup beragam dengan kepadatan penduduk tertinggi terletak di kota Palembang dengan kepadatan sebesar 4.840,63 jiwa/km2 dan terendah di Kabupaten Musi Rawas Utara sebesar 33 jiwa/km2. Di tahun 2023, luas panen padi mencapai 502,16 ribu ha dengan total produksi mencapai 2,76 juta ton GKG dan produktivitas 55,00 ku/ha. Sementara itu, produksi tanaman palawija pada tahun 2023 masingmasing adalah 826,84 ribu ton jagung dan 48,79 ton kedelai. Data Dinas Kehutanan Provinsi Sumatera Selatan memperlihatkan bahwa hutan di Sumatera Selatan luasnya mencapai 3.385,01 ribu ha, yang terdiri dari hutan lindung seluas 566,62 ribu ha, konservasi seluas 511,97 ribu ha, suaka alam dan pelestarian alam seluas 256,23 ribu ha, dan hutan produksi seluas 2.050,22 ribu ha. Produk Domestik Regional Bruto (PDRB) adalah indikator utama untuk mengukur perkembangan perekonomian di suatu wilayah. Selama lima tahun terakhir, PDRB Sumsel atas dasar harga berlaku terus mengalami peningkatan. Pada tahun 2019 nilai yang terbentuk sebesar 453,40 triliun rupiah dan terus tumbuh hingga pada tahun 2023, nilainya menjadi sebesar 629,10 triliun rupiah atau naik sekitar 38,75 persen. Terdapat tiga lapangan usaha yang memberikan peranan cukup besar terhadap PDRB. Pada tahun 2023, tiga lapangan usaha yang memberikan peranan terbesar adalah pertambangan dan penggalian, diikuti oleh Industri Pengolahan kemudian Pertanian, Kehutanan, dan Perikanan. Pada tahun 2023 peranan masingmasing lapangan usaha di atas secara berurutan adalah 26,61 persen, 17,84 persen, dan 13,10 persen. Secara umum, laju perekonomian Sumatera Selatan pada tahun 2023 mengalami penurunan, yaitu dari 5,23 persen pada tahun 2022 menjadi 5,08 persen pada tahun 2023. Jika dibandingkan dengan provinsi lain untuk wilayah Sumatera bagian Selatan, Provinsi Sumatera Selatan memiliki jumlah penduduk miskin terbesar yaitu 1,04 juta jiwa pada tahun 2023. Angka ini masih jauh lebih tinggi bila dibandingkan dengan Provinsi Kepulauan Bangka Belitung yang memiliki jumlah penduduk miskin 0,068 juta jiwa. (BPS. Provinsi Sumatera Selatan Dalam Angka Tahun 2024).
+**Kondisi Geografis dan Administrasi**
+
+Provinsi Sumatera Selatan dengan ibukota Kota Palembang merupakan wilayah dataran rendah dengan ketinggian rata-rata 8 meter di atas permukaan laut. Secara geografis, provinsi ini terletak pada posisi 1'-4' Lintang Selatan dan antara 102'-106' Bujur Timur, dengan luas daratan mencapai 86.771,68 km2. Wilayah ini berbatasan dengan Provinsi Jambi di utara, Provinsi Bangka-Belitung di timur, Provinsi Lampung di selatan, dan Provinsi Bengkulu di barat.
+
+Secara administratif, Provinsi Sumatera Selatan terdiri dari 13 kabupaten dan empat kota. Kabupaten Ogan Komering Ilir merupakan wilayah terluas dengan area 17.071,33 km2, sementara Kota Palembang menjadi wilayah terkecil dengan luas 352,51 km2.
+
+
+**Iklim dan Kondisi Lingkungan**
+
+Berdasarkan data BMKG tahun 2023, Sumatera Selatan memiliki suhu rata-rata 30,2ºC dengan curah hujan mencapai 2.218,9 mm dan 199 hari hujan. Wilayah hutan di Sumatera Selatan mencakup area seluas 3.385,01 ribu ha, yang terbagi menjadi hutan lindung (566,62 ribu ha), konservasi (511,97 ribu ha), suaka alam dan pelestarian alam (256,23 ribu ha), serta hutan produksi (2.050,22 ribu ha).
+
+**Demografi**
+
+Menurut Hasil Proyeksi Penduduk Indonesia 2020-2050 berdasarkan Sensus Penduduk 2020, populasi Sumatera Selatan pada tahun 2023 mencapai 8,74 juta jiwa, terdiri dari 4,45 juta jiwa laki-laki dan 4,29 juta jiwa perempuan. Pertumbuhan penduduk sejak tahun 2020 tercatat sebesar 1,21 persen, dengan rasio jenis kelamin 103,83.
+
+Kepadatan penduduk provinsi ini mencapai 100,76 jiwa/km2, dengan variasi signifikan antar kabupaten/kota. Kota Palembang memiliki kepadatan tertinggi sebesar 4.840,63 jiwa/km2, sedangkan Kabupaten Musi Rawas Utara tercatat terendah dengan 33 jiwa/km2.
+
+**Sektor Pertanian dan Ekonomi**
+
+Sektor pertanian tahun 2023 mencatat luas panen padi 502,16 ribu ha dengan produksi 2,76 juta ton GKG dan produktivitas 55,00 ku/ha. Produksi tanaman palawija mencapai 826,84 ribu ton jagung dan 48,79 ton kedelai.
+
+Perkembangan ekonomi yang diukur melalui PDRB menunjukkan peningkatan dari 453,40 triliun rupiah pada 2019 menjadi 629,10 triliun rupiah pada 2023, atau naik 38,75 persen. Tiga sektor utama penyumbang PDRB tahun 2023 adalah pertambangan dan penggalian (26,61 persen), industri pengolahan (17,84 persen), dan pertanian, kehutanan, dan perikanan (13,10 persen).
+
+**Tantangan Sosial Ekonomi**
+
+Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami penurunan dari 5,23 persen (2022) menjadi 5,08 persen (2023). Dalam konteks regional Sumatera bagian Selatan, Sumatera Selatan mencatat jumlah penduduk miskin tertinggi sebesar 1,04 juta jiwa pada 2023, jauh di atas Provinsi Kepulauan Bangka Belitung yang hanya memiliki 0,068 juta jiwa penduduk miskin.
 :::
 
 # Skema Teknis Pembuatan Tipologi
@@ -136,6 +167,7 @@ pca_df |>
 ## Interpretasi 3 Komponen Utama (PCs) Paling Berpengaruh
 
 **PC1: Predominan Gradien Daratan Rendah-Tinggi**
+
 Komponen Utama 1 (PC1) menunjukkan gradien daratan tinggi-rendah (elevasi) yang dicerminkan dari variabel-variabel seperti jarak ke kanal dan gambut, rata-rata temperatur, indeks bahaya longsor, serta potensi perubahan temperatur di masa mendatang.
 
 
@@ -197,7 +229,7 @@ Grafik Gap Statistic (C)  membandingkan pengelompokan data asli dengan data acak
 
 ## Diagram pencar 3D tipologi desa-desa di Provinsi Sumatera Selatan
 
--   Sumbu x,y dan z dari diagram pencar merupakan tiga komponen utama teratas dari hasil PCA.
+-   Sumbu x, y dan z dari diagram pencar merupakan tiga komponen utama teratas dari hasil PCA.
     -   **PC1: Predominan Gradien Daratan Rendah-Tinggi**
     -   **PC2: Predominan Gradien Demografi**
     -   **PC3: Predominan Gradien Intensitas Penggunaan Lahan**
@@ -284,7 +316,7 @@ tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", clu
 
 tp_map
 ```
-
+## Karakteristik Tipologi
 ::::::::::::::: panel-tabset
 
 <!-- ## Komposisi Luas Wilayah -->
@@ -797,7 +829,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
 :::::::::::::::
 
-# Tabel Informasi Detail
+#  Informasi Lanjutan
 
 ::: panel-tabset
 
@@ -845,3 +877,13 @@ Modus (Modulus) memberitahu kita ......
 Nilai tengah (median) memberitahu kita ......
 
 :::
+---
+
+**Catatan**
+
+<p class="small">
+- Dokumen ini merupakan draft awal yang masih dalam proses pengembangan dan penelaahan. Seluruh informasi, analisis, dan temuan yang disajikan bersifat tentatif dan dapat mengalami perubahan substansial pada versi finalnya. Data dan interpretasi yang terkandung dalam dokumen ini tidak dapat dijadikan acuan untuk pengambilan keputusan atau kebijakan dalam bentuk apapun.
+
+- Setiap kesalahan, ketidakakuratan, atau inkonsistensi yang ditemukan dalam dokumen ini akan menjadi subjek revisi pada tahap-tahap berikutnya. Pembaca diharapkan untuk merujuk pada dokumen final yang nantinya telah divalidasi dan dipublikasikan secara resmi untuk keperluan pengutipan atau referensi.
+
+</p>
