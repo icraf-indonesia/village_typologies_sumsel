@@ -310,7 +310,7 @@ tp_map
 # fig_luas
 ```
 
-## Komposisi Demografi
+<!-- ## Komposisi Demografi -->
 
 ```{r donat RT}
 # Create the plot for Jumlah RT
@@ -797,233 +797,51 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
 :::::::::::::::
 
-# Tabel Statistik Deskriptif
+# Tabel Informasi Detail
+
+::: panel-tabset
+
+## Tabel Interpretasi (Nilai Variabel Tiap Tipologi) 
 
 ```{r}
-readxl::read_xlsx("output/summary_table_sumsel_k8.xlsx") %>% DT::datatable()
-```
-
-
-:::: panel-tabset
-
-## Tabel Interpretasi Tipologi
-
-```{r NTT}
 #| warning: false
 #| message: false
-# tabel_intisari <- tar_read(summary_table_kec)|> 
-#   #dplyr::select(-Kepulauan) |> 
-#   dplyr::mutate(variable = dplyr::case_when(
-#     variable == "annual_mean_prec" ~ "curah hujan rata-rata tahunan",
-#     variable == "annual_mean_temp" ~ "suhu rata-rata tahunan",
-#     variable == "arable_land_percent" ~ "persentase lahan pertanian",
-#     variable == "aridity_index" ~ "indeks kekeringan",
-#     variable == "distance_to_burned_area" ~ "jarak ke area terbakar",
-#     variable == "distance_to_commodity_processing_factory" ~ "jarak ke pabrik pengolahan komoditas",
-#     variable == "distance_to_deforestation" ~ "jarak ke area deforestasi",
-#     variable == "distance_to_forest" ~ "jarak ke hutan",
-#     variable == "distance_to_plantation" ~ "jarak ke perkebunan",
-#     variable == "distance_to_plantation_concession" ~ "jarak ke konsesi perkebunan",
-#     variable == "distance_to_river" ~ "jarak ke sungai",
-#     variable == "distance_to_road" ~ "jarak ke jalan",
-#     variable == "erosion_risk_t_ha_1_yr_1" ~ "risiko erosi t ha per tahun",
-#     variable == "indeks_bahaya_banjir" ~ "indeks risiko banjir",
-#     variable == "indeks_bahaya_longsor" ~ "indeks risiko longsor",
-#     variable == "irrigated_land" ~ "lahan irigasi",
-#     variable == "percentage_deforestation_area_size" ~ "persentase ukuran area deforestasi",
-#     variable == "percentage_of_agricultural_area_small_holder_in_the_village" ~ "persentase area pertanian skala kecil",
-#     variable == "percentage_of_plantation_area_per_sub_district" ~ "persentase area perkebunan per kecamatan",
-#     variable == "prec_change" ~ "perubahan curah hujan",
-#     variable == "rasio_40pers_ekon_rendah_rt" ~ "rasio 40 persen ekonomi rendah RT",
-#     variable == "rasio_faskes_1" ~ "rasio fasilitas kesehatan 1",
-#     variable == "rasio_minimarket_swalayan" ~ "rasio minimarket swalayan",
-#     variable == "rasio_pt" ~ "rasio perguruan tinggi",
-#     variable == "rasio_rs" ~ "rasio rumah sakit",
-#     variable == "temp_change" ~ "perubahan suhu",
-#     variable == "total_kk_berdasarkan_pengguna_dan_non_pengguna_list…" ~ "total KK berdasarkan pengguna dan non pengguna listrik",
-#     variable == "wet_months" ~ "bulan basah",
-#     # Add other translations here
-#     TRUE ~ variable # default action to keep the original name if not matched
-#   )) |> 
-#   dplyr::mutate(variable = gsub("_", " ", variable)) |> 
-#   dplyr::rename(Variabel = variable)
-#   
-# tabel_intisari_formatted <- tabel_intisari |> 
-#   gt()|>
-#   tab_header(
-#     title = "Karakteristik Sosio-ekonomi dan Lingkungan di Berbagai Kelas Tipologi: Analisis Rata-rata dan Standar Deviasi") |> 
-#     opt_align_table_header(align = "left")
-# 
-# tabel_intisari_formatted
+readxl::read_xlsx("output/summary_table_sumsel_k8.xlsx") %>% DT::datatable(options = list(
+  pageLength = 5, autoWidth = FALSE
+))
+```
+## Daftar Desa dan Kelas Tipologi
+
+```{r}
+#| warning: false
+#| message: false
+pca_labeled %>% 
+  select(Kabupaten = district_name,
+         Kecamatan = subdistrict_name,
+         Desa = village_name,
+         Tipologi = Typology) %>%
+  DT::datatable(options = list(
+  pageLength = 5, autoWidth = FALSE
+))
 ```
 
+:::
+
+
 ::: callout-tip
-## Apa itu rata-rata dan standar deviasi?
+## Statistik Deskriptif
 
 **Rata-Rata**
 
 Rata-rata adalah angka yang sering kita gunakan untuk mengetahui gambaran umum dari sekelompok data. Misalnya, jika rata-rata jarak ke jalan terdekat di daerah urban cuma 0,24 km, ini menunjukkan bahwa umumnya daerah tersebut dekat dengan jalan raya.
 
-**Standar Deviasi**
+**Modus**
 
-Standar deviasi (SD) memberitahu kita seberapa besar variasi atau perbedaan antar angka dalam sekelompok data. Semakin tinggi SD, makin besar juga variasinya. Misalnya, rata-rata jarak ke jalan terdekat di daerah urban adalah 0,24 km dengan SD 0,45 km. Ini artinya yang sangat dekat dengan jalan, tetapi juga ada yang jauh---bahkan lebih dari dua kali lipat dari rata-rata.
+Modus (Modulus) memberitahu kita ......
 
-Nilai standar deviasi (SD) yang besar, seperti contoh diatas, menjadi indikasi bahwa, rata-rata mungkin tidak memberikan gambaran yang mewakili suatu tipologi. Dalam hal ini, standar deviasi memberikan konteks tambahan yang penting untuk memahami sejauh mana data bervariasi.
+
+**Median**
+
+Nilai tengah (median) memberitahu kita ......
+
 :::
-
-## Tabel Interpretasi tipologi (Berwarna)
-
-Kode warna pada tabel dibawah menunjukkan rentang nilai dari variabel yang diberikan untuk masing-masing tipe wilayah. Warna biru gelap menunjukkan nilai yang lebih tinggi, sementara warna yang lebih merah terang menunjukkan nilai yang lebih rendah.
-
-```{r color coded table}
-#| warning: false
-#| message: false
-
-# tar_read(summary_table_color)
-
-```
-
-<!-- ## Tabel ranking tipologi 1 -->
-
-<!-- ```{r ranking 1} -->
-
-<!-- #| warning: false -->
-
-<!-- #| message: false -->
-
-<!-- # List all files in the 'output' folder -->
-
-<!-- files <- list.files("output", pattern = "^Cluster 1", full.names = TRUE) -->
-
-<!-- # Assuming there is only one file that begins with "Cluster 1" -->
-
-<!-- file_to_read <- files[1] -->
-
-<!-- # Read the file using read_csv -->
-
-<!-- cluster_1_data <- read_csv(file_to_read) |> arrange(rank) -->
-
-<!-- cluster_1_data |> gt() -->
-
-<!-- ``` -->
-
-<!-- ## Tabel ranking tipologi 2 -->
-
-<!-- ```{r ranking 2} -->
-
-<!-- #| warning: false -->
-
-<!-- #| message: false -->
-
-<!-- # List all files in the 'output' folder -->
-
-<!-- files <- list.files("output", pattern = "^Cluster 2", full.names = TRUE) -->
-
-<!-- # Assuming there is only one file that begins with "Cluster 2" -->
-
-<!-- file_to_read <- files[1] -->
-
-<!-- # Read the file using read_csv -->
-
-<!-- cluster_2_data <- read_csv(file_to_read) |> arrange(rank) -->
-
-<!-- cluster_2_data |> gt() -->
-
-<!-- ``` -->
-
-<!-- ## Tabel ranking tipologi 3 -->
-
-<!-- ```{r ranking 3} -->
-
-<!-- #| warning: false -->
-
-<!-- #| message: false -->
-
-<!-- # List all files in the 'output' folder -->
-
-<!-- files <- list.files("output", pattern = "^Cluster 3", full.names = TRUE) -->
-
-<!-- # Assuming there is only one file that begins with "Cluster 3" -->
-
-<!-- file_to_read <- files[1] -->
-
-<!-- # Read the file using read_csv -->
-
-<!-- cluster_3_data <- read_csv(file_to_read) |> arrange(rank) -->
-
-<!-- cluster_3_data |> gt() -->
-
-<!-- ``` -->
-
-<!-- ## Tabel ranking tipologi 4 -->
-
-<!-- ```{r ranking 4} -->
-
-<!-- #| warning: false -->
-
-<!-- #| message: false -->
-
-<!-- # List all files in the 'output' folder -->
-
-<!-- files <- list.files("output", pattern = "^Cluster 4", full.names = TRUE) -->
-
-<!-- # Assuming there is only one file that begins with "Cluster 4" -->
-
-<!-- file_to_read <- files[1] -->
-
-<!-- # Read the file using read_csv -->
-
-<!-- cluster_4_data <- read_csv(file_to_read) |> arrange(rank) -->
-
-<!-- cluster_4_data |> gt() -->
-
-<!-- ``` -->
-
-<!-- ## Tabel ranking tipologi 5 -->
-
-<!-- ```{r ranking 5} -->
-
-<!-- #| warning: false -->
-
-<!-- #| message: false -->
-
-<!-- # List all files in the 'output' folder -->
-
-<!-- files <- list.files("output", pattern = "^Cluster 5", full.names = TRUE) -->
-
-<!-- # Assuming there is only one file that begins with "Cluster 5" -->
-
-<!-- file_to_read <- files[1] -->
-
-<!-- # Read the file using read_csv -->
-
-<!-- cluster_5_data <- read_csv(file_to_read) |> arrange(rank) -->
-
-<!-- cluster_5_data |> gt() -->
-
-<!-- ``` -->
-
-<!-- ## Tabel ranking tipologi 6 -->
-
-<!-- ```{r ranking 6} -->
-
-<!-- #| warning: false -->
-
-<!-- #| message: false -->
-
-<!-- # List all files in the 'output' folder -->
-
-<!-- files <- list.files("output", pattern = "^Cluster 6", full.names = TRUE) -->
-
-<!-- # Assuming there is only one file that begins with "Cluster 6" -->
-
-<!-- file_to_read <- files[1] -->
-
-<!-- # Read the file using read_csv -->
-
-<!-- cluster_6_data <- read_csv(file_to_read) |> arrange(rank) -->
-
-<!-- cluster_6_data |> gt() -->
-
-<!-- ``` -->
-::::
