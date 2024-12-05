@@ -51,7 +51,7 @@ library(factoextra)
 
 # Pendahuluan
 
-::: panel-tabset
+:::: panel-tabset
 ## Abstrak
 
 Sumatera Selatan memiliki keragaman lanskap perdesaan yang kompleks, dengan masyarakat yang bergantung pada penghidupan berbasis lahan. Penghidupan berbasis lahan disinyalir semakin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi masih terbatas. Draft dokumen ini disusun untuk mengisi kekosongan ini dengan memahami berbagai jenis kerentanan yang mempengaruhi penghidupan berbasis lahan di Sumatera Selatan.
@@ -74,7 +74,6 @@ Provinsi Sumatera Selatan dengan ibukota Kota Palembang merupakan wilayah datara
 
 Secara administratif, Provinsi Sumatera Selatan terdiri dari 13 kabupaten dan empat kota. Kabupaten Ogan Komering Ilir merupakan wilayah terluas dengan area 17.071,33 km2, sementara Kota Palembang menjadi wilayah terkecil dengan luas 352,51 km2.
 
-
 **Iklim dan Kondisi Lingkungan**
 
 Berdasarkan data BMKG tahun 2023, Sumatera Selatan memiliki suhu rata-rata 30,2ºC dengan curah hujan mencapai 2.218,9 mm dan 199 hari hujan. Wilayah hutan di Sumatera Selatan mencakup area seluas 3.385,01 ribu ha, yang terbagi menjadi hutan lindung (566,62 ribu ha), konservasi (511,97 ribu ha), suaka alam dan pelestarian alam (256,23 ribu ha), serta hutan produksi (2.050,22 ribu ha).
@@ -94,11 +93,11 @@ Perkembangan ekonomi yang diukur melalui PDRB menunjukkan peningkatan dari 453,4
 **Tantangan Sosial Ekonomi**
 
 Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami penurunan dari 5,23 persen (2022) menjadi 5,08 persen (2023). Dalam konteks regional Sumatera bagian Selatan, Sumatera Selatan mencatat jumlah penduduk miskin tertinggi sebesar 1,04 juta jiwa pada 2023, jauh di atas Provinsi Kepulauan Bangka Belitung yang hanya memiliki 0,068 juta jiwa penduduk miskin.
-:::
+::::
 
 # Skema Teknis Pembuatan Tipologi
 
-:::{.column-page}
+::: column-page
 ![](output/flowchart_typology.svg){fig-align="center"}
 :::
 
@@ -112,15 +111,11 @@ Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami p
 read_csv("data_preprocessed/metadata_bahasa_indonesia.csv") |> DT::datatable()
 ```
 
-
-
-
-
-
 # Intisari Hasil PCA
 
 ::: panel-tabset
 ## Tabel Kontribusi Komponen Utama (PCs)
+
 ```{r PCA Summary}
 #| warning: false
 #| message: false
@@ -163,13 +158,11 @@ pca_df |>
   )
 ```
 
-
 ## Interpretasi 3 Komponen Utama (PCs) Paling Berpengaruh
 
 **PC1: Predominan Gradien Daratan Rendah-Tinggi**
 
 Komponen Utama 1 (PC1) menunjukkan gradien daratan tinggi-rendah (elevasi) yang dicerminkan dari variabel-variabel seperti jarak ke kanal dan gambut, rata-rata temperatur, indeks bahaya longsor, serta potensi perubahan temperatur di masa mendatang.
-
 
 ```{r loadings_PC1}
 #| warning: false
@@ -179,10 +172,10 @@ var <- get_pca_var(pca_result)
 fviz_cos2(pca_result, choice = "var", axes = 1, top=10)
 ```
 
-
 **PC2: Predominan Gradien Demografi**
 
 Komponen Utama 2 (PC2) menunjukkan gradien aspek demografi yang dicerminkan dari variabel-variabel seperti jumlah penduduk, jumlah penduduk dengan pekerjaan yang bergantung pada sumber daya alam (SDA), derajat kemiskinan, dan jenis mata-pencaharian utama.
+
 ```{r loadings_PC2}
 #| warning: false
 #| message: false
@@ -191,9 +184,10 @@ var <- get_pca_var(pca_result)
 fviz_cos2(pca_result, choice = "var", axes = 2, top=10)
 ```
 
-**PC3: Predominan Gradien Intensitas Penggunaan Lahan** 
+**PC3: Predominan Gradien Intensitas Penggunaan Lahan**
 
 Komponen Utama 3 (PC3) menunjukkan gradien intensitas penggunaan lahan yang dicerminkan dari variabel-variabel seperti jarak ke perkebunan karet, hutan alami, kejadian deforestasi, dan luasan area budidaya.
+
 ```{r loadings_PC3}
 #| warning: false
 #| message: false
@@ -203,6 +197,7 @@ fviz_cos2(pca_result, choice = "var", axes = 3, top=10)
 ```
 
 ## Evaluasi Hasil Analisis Komponen Utama
+
 ![](output/plot_pca_eval_SumSEL.png)
 
 Grafik Eigenvalue (atas) menunjukkan nilai eigen untuk setiap komponen utama (PC), di mana PC1 memiliki nilai tertinggi sekitar 8 dan nilai semakin menurun untuk PC berikutnya. Garis merah pada nilai 1 menandakan batas minimum nilai eigen yang biasanya digunakan sebagai acuan pemilihan komponen yang penting.
@@ -210,11 +205,10 @@ Grafik Eigenvalue (atas) menunjukkan nilai eigen untuk setiap komponen utama (PC
 **Grafik CVE (Cumulative Variance Explained,** kiri bawah**)** menunjukkan total variasi data yang dapat dijelaskan secara kumulatif, di mana dengan 20 PC pertama dapat menjelaskan sekitar 65% variasi data. **PVE (Proportion of Variance Explained,** kiri bawah**)** memperlihatkan kontribusi masing-masing PC, dengan PC1 menjelaskan sekitar 15% variasi data.
 
 Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap komponen utama. Titik 'siku' dari sebuah grafik scree adalah titik di mana menambahkan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru. Hal tersebut dapat terlihat penurunan tajam dari PC1 hingga PC5 dan kemudian mulai mendatar. Bentuk kurva ini membantu kita menentukan berapa banyak komponen yang sebaiknya dipertahankan dalam analisis.
-
 :::
 
-
 # Pengelompokan K-means
+
 ::: panel-tabset
 ## Validasi Klaster
 
@@ -222,10 +216,9 @@ Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap kompon
 
 Grafik Elbow Method (A) menunjukkan penurunan total variasi dalam kelompok seiring bertambahnya jumlah kelompok (k). Titik siku (elbow) menandakan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru.
 
-Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain. 
+Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain.
 
-Grafik Gap Statistic (C)  membandingkan pengelompokan data asli dengan data acak. Semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan.
-
+Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak. Semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan.
 
 ## Diagram pencar 3D tipologi desa-desa di Provinsi Sumatera Selatan
 
@@ -297,14 +290,12 @@ pca_plot_3d
 ```
 :::
 
-
-
 # Hasil & Interpretasi Sementara (Draft)
-
 
 ## Peta Tipologi
 
 **Tipologi Kerentanan Terhadap Perubahan Iklim Pada Penghidupan Berbasis Lahan di Provinsi Sumatera Selatan**
+
 ```{r Map}
 #| warning: false
 #| message: false
@@ -316,9 +307,10 @@ tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", clu
 
 tp_map
 ```
-## Karakteristik Tipologi
-::::::::::::::: panel-tabset
 
+## Karakteristik Tipologi
+
+::::::::::::::::::: panel-tabset
 <!-- ## Komposisi Luas Wilayah -->
 
 ```{r komposisi kecamatan}
@@ -396,14 +388,13 @@ Tipologi desa-desa dekat hutan dengan topografi berbukit dan berada disekitar ka
 ### Karakteristik berdasarkan analisis SWOT
 
 ::: {layout-ncol="2"}
-
 #### Kekuatan (*Strengths*)
 
 Faktor-faktor internal yang membantu pencapaian tujuan:
 
-- Memiliki tutupan hutan yang cenderung lebih baik dibanding daerah lainnya.
+-   Memiliki tutupan hutan yang cenderung lebih baik dibanding daerah lainnya.
 
-- Berada pada daerah bergunung sehingga memiliki ketersediaan sumber air yang baik (dekat dengan sumber air).
+-   Berada pada daerah bergunung sehingga memiliki ketersediaan sumber air yang baik (dekat dengan sumber air).
 
     ------------------------------------------------------------------------
 
@@ -413,9 +404,9 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 -   Masyarakat cenderung miskin
 
-- Aksesibilitas dan infrastrukur jalan yang terbatas.
+-   Aksesibilitas dan infrastrukur jalan yang terbatas.
 
-- Daerah berhutan dengan ancaman deforestasi yang tinggi disbanding daerah lain.
+-   Daerah berhutan dengan ancaman deforestasi yang tinggi disbanding daerah lain.
 
     ------------------------------------------------------------------------
 
@@ -423,9 +414,9 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
-- Jasa ekosistem air di daerah ini menunjukkan potensi besar untuk mendukung berbagai aktivitas ekonomi, seperti penyediaan air bersih, energi terbarukan, dan pariwisata alam
+-   Jasa ekosistem air di daerah ini menunjukkan potensi besar untuk mendukung berbagai aktivitas ekonomi, seperti penyediaan air bersih, energi terbarukan, dan pariwisata alam
 
-- Daerah pegunungan berbukit yang potensial untuk pengembangan komoditi kopi
+-   Daerah pegunungan berbukit yang potensial untuk pengembangan komoditi kopi
 
     ------------------------------------------------------------------------
 
@@ -435,14 +426,12 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
 -   Ancaman bencana longsor karena berada pada daerah bergunung dan berbukit.
 
-- Rentan terhadap perubahan suhu udara yang ekstrem (variabilitas di siang dan malam hari).
+-   Rentan terhadap perubahan suhu udara yang ekstrem (variabilitas di siang dan malam hari).
 
-- Naiknya suhu global dapat mempengaruhi pola hujan, yang dapat berdampak pada ketersediaan air di daerah pegunungan, mengurangi ketahanan terhadap kekeringan, atau meningkatkan risiko banjir.
+-   Naiknya suhu global dapat mempengaruhi pola hujan, yang dapat berdampak pada ketersediaan air di daerah pegunungan, mengurangi ketahanan terhadap kekeringan, atau meningkatkan risiko banjir.
 
-- Budidaya pertanian yang luas pada daerah ini dapat memberi tekanan kepada area konservasi.
-
+-   Budidaya pertanian yang luas pada daerah ini dapat memberi tekanan kepada area konservasi.
 :::
-
 
 ## **Tipologi 2**
 
@@ -457,11 +446,11 @@ Desa dengan basis aktivitas pertanian dan perkebunan serta agroforestri.
 
 Faktor-faktor internal yang membantu pencapaian tujuan:
 
-- Memiliki tutupan hutan yang relatif masih baik dibandingkan klister lain.
+-   Memiliki tutupan hutan yang relatif masih baik dibandingkan klister lain.
 
-- Merupakan daerah dengan pengembangan agroforestry terutama kopi.
+-   Merupakan daerah dengan pengembangan agroforestry terutama kopi.
 
-- Merupakan daerah budidaya dengan kesesuaian lahan yang baik untuk berbagai komoditi pertanian dan Perkebunan seperti karet dan kopi.
+-   Merupakan daerah budidaya dengan kesesuaian lahan yang baik untuk berbagai komoditi pertanian dan Perkebunan seperti karet dan kopi.
 
     ------------------------------------------------------------------------
 
@@ -469,7 +458,7 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
-- Aksesibilitas dan infrastrukur jalan yang terbatas.
+-   Aksesibilitas dan infrastrukur jalan yang terbatas.
 
     ------------------------------------------------------------------------
 
@@ -477,7 +466,7 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
-- Desa yang mengandalkan pertanian dan perkebunan dapat memanfaatkan peluang untuk hilirisasi dan diversifikasi produk turunan komoditas.
+-   Desa yang mengandalkan pertanian dan perkebunan dapat memanfaatkan peluang untuk hilirisasi dan diversifikasi produk turunan komoditas.
 
     ------------------------------------------------------------------------
 
@@ -485,11 +474,11 @@ Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
 Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
-- Merupakan daerah dengan potensi ancaman bencana longsor karena berada pada daerah bergunung dan berbukit.
+-   Merupakan daerah dengan potensi ancaman bencana longsor karena berada pada daerah bergunung dan berbukit.
 
-- Rentan terhadap perubahan temperature udara yang dapat mempengaruhi altivitas pengelolaan lahan maupun Kesehatan.
+-   Rentan terhadap perubahan temperature udara yang dapat mempengaruhi altivitas pengelolaan lahan maupun Kesehatan.
 
-- Memiliki potensi ancaman kekeringan.
+-   Memiliki potensi ancaman kekeringan.
 :::
 
 ## **Tipologi 3**
@@ -505,17 +494,17 @@ Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan popu
 
 Faktor-faktor internal yang membantu pencapaian tujuan:
 
-- Terdapat potensi perkebunan karet dan sawit dan hutan tanaman dengan proximitas ke konsesi yang cenderung dekat.
+-   Terdapat potensi perkebunan karet dan sawit dan hutan tanaman dengan proximitas ke konsesi yang cenderung dekat.
 
-- Terdapat area ekosistem gambut dengan fungsi budidaya (5,59%) lebih luas dibanding EG dengan fungsi lindung (0,88%).
+-   Terdapat area ekosistem gambut dengan fungsi budidaya (5,59%) lebih luas dibanding EG dengan fungsi lindung (0,88%).
 
-- Sebagian besar lahan merupakan area budidaya (65,14%) dengan tutupan lahan perkebunan (sawit) sebesar 18,25%.
+-   Sebagian besar lahan merupakan area budidaya (65,14%) dengan tutupan lahan perkebunan (sawit) sebesar 18,25%.
 
-- Jenis komoditas unggulan berupa ...
+-   Jenis komoditas unggulan berupa karet dan kelapa sawit.
 
-- Terdapat lahan garapan potensial sebanyak 83,40% dari total wilayah tipologi.
+-   Terdapat lahan garapan potensial sebanyak 83,40% dari total wilayah tipologi.
 
-- Sebagian masyarakat memiliki mata pencaharian yang bergantung pada kondisi alam.
+-   Sebagian masyarakat memiliki mata pencaharian yang bergantung pada kondisi alam.
 
     ------------------------------------------------------------------------
 
@@ -525,13 +514,13 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 -   Masyarakat memiliki kebiasaan membakar ladang kebun untuk proses usaha pertanian selama setahun terakhir.
 
-- Jarak ke gambut (18.489,16 m) dan kanal cukup dekat (22.053,46 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau.
+-   Jarak ke gambut (18.489,16 m) dan kanal cukup dekat (22.053,46 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau.
 
-- Persentase hutan alami rendah (0,38%) dan luas deforestasi mencapai 37,89 ha.
+-   Persentase hutan alami rendah (0,38%) dan luas deforestasi mencapai 37,89 ha.
 
-- Jarak terhadap jalan (372,73 m) dan pabrik pemrosesan (26.542,48 m) jauh, mengindikasikan akses terhadap bahan baku dan pasar yang relative sulit.
+-   Jarak terhadap jalan (372,73 m) dan pabrik pemrosesan (26.542,48 m) jauh, mengindikasikan akses terhadap bahan baku dan pasar yang relative sulit.
 
-- Tingkat kemiskinan masyarakat cenderung tinggi (17,43%).
+-   Tingkat kemiskinan masyarakat cenderung tinggi (17,43%).
 
     ------------------------------------------------------------------------
 
@@ -539,7 +528,7 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
-- 
+-   
 
     ------------------------------------------------------------------------
 
@@ -547,11 +536,10 @@ Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
 Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
-- Musim kemarau meningkatkan risiko terjadinya kebakaran hutan dan lahan gambut.
+-   Musim kemarau meningkatkan risiko terjadinya kebakaran hutan dan lahan gambut.
 
-- Fluktuasi harga komoditas perkebunan
+-   Fluktuasi harga komoditas perkebunan
 :::
-
 
 ## **Tipologi 4**
 
@@ -566,19 +554,19 @@ Desa bertanah gambut yang dekat dengan konsesi hutan tanaman dan desa transmigra
 
 Faktor-faktor internal yang membantu pencapaian tujuan:
 
-- Terdapat potensi perkebunan karet dan sawit dan hutan tanaman dengan proximitas ke konsesi yang cenderung dekat.
+-   Terdapat potensi perkebunan karet dan sawit dan hutan tanaman dengan proximitas ke konsesi yang cenderung dekat.
 
-- Terdapat area ekosistem gambut dengan fungsi budidaya (55,44%) lebih luas dibanding EG dengan fungsi lindung (15,75%).
+-   Terdapat area ekosistem gambut dengan fungsi budidaya (55,44%) lebih luas dibanding EG dengan fungsi lindung (15,75%).
 
-- Memiliki area budidaya seluas 47,32% dengan 22,56%-nya adalah kebun dan 14,62% adalah Semak belukar.
+-   Memiliki area budidaya seluas 47,32% dengan 22,56%-nya adalah kebun dan 14,62% adalah Semak belukar.
 
-- Jenis komoditas unggulan berupa …
+-   Jenis komoditas unggulan berupa …
 
-- Terdapat lahan garapan potensial sebanyak 69,88% dari total wilayah tipologi.
+-   Terdapat lahan garapan potensial sebanyak 69,88% dari total wilayah tipologi.
 
-- Terdapat Sebagian area yang teraliri irigasi (10,63%).
+-   Terdapat Sebagian area yang teraliri irigasi (10,63%).
 
-- Sebagian masyarakat memiliki mata pencaharian yang bergantung pada kondisi alam.
+-   Sebagian masyarakat memiliki mata pencaharian yang bergantung pada kondisi alam.
 
     ------------------------------------------------------------------------
 
@@ -588,19 +576,19 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 -   Masyarakat memiliki kebiasaan membakar ladang kebun untuk proses usaha pertanian selama setahun terakhir.
 
-- Jarak ke gambut (10,04 m) dan kanal paling dekat (1.339,01 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau.
+-   Jarak ke gambut (10,04 m) dan kanal paling dekat (1.339,01 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau.
 
-- Persentase hutan alami rendah (2,36%) dan luas deforestasi paling tinggi mencapai 95,60 ha.
+-   Persentase hutan alami rendah (2,36%) dan luas deforestasi paling tinggi mencapai 95,60 ha.
 
-- Jarak terhadap jalan relative dekat tapi jauh dari pabrik pemrosesan, mengindikasikan produktivitas industry hilir masih rendah.
+-   Jarak terhadap jalan relative dekat tapi jauh dari pabrik pemrosesan, mengindikasikan produktivitas industry hilir masih rendah.
 
-- Tingkat kemiskinan masyarakat tinggi (28,89%).
+-   Tingkat kemiskinan masyarakat tinggi (28,89%).
 
-- Jarak terhadap area terbakar paling rendah, mengindikasikan luasnya area yang rawan terbakar.
+-   Jarak terhadap area terbakar paling rendah, mengindikasikan luasnya area yang rawan terbakar.
 
-- Terdapat risiko banjir.
+-   Terdapat risiko banjir.
 
-- Curah hujan paling rendah, mengindikasikan sulitnya akses air pada saat kemarau.
+-   Curah hujan paling rendah, mengindikasikan sulitnya akses air pada saat kemarau.
 
     ------------------------------------------------------------------------
 
@@ -610,16 +598,15 @@ Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
 -   Jumlah KK dan penduduk paling tinggi, tapi kepadatan penduduk paling rendah
 
-
     ------------------------------------------------------------------------
 
 #### Ancaman (*Threats*)
 
 Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
-- Musim kemarau meningkatkan risiko terjadinya kebakaran hutan dan lahan gambut
+-   Musim kemarau meningkatkan risiko terjadinya kebakaran hutan dan lahan gambut
 
-- Fluktuasi harga komoditas perkebunan
+-   Fluktuasi harga komoditas perkebunan
 :::
 
 ## **Tipologi 5**
@@ -637,8 +624,7 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 -   Keberadaan lahan gambut yang menjadi kawasan penyerap karbon dan pengatur tata air jika dikelola dengan baik.
 
-- Dominasi area perkebunan karet dan kelapa sawit yang dapat mendukung ekonomi masyarakat dan daerah dengan pengelolaan berkelanjutan.
-
+-   Dominasi area perkebunan karet dan kelapa sawit yang dapat mendukung ekonomi masyarakat dan daerah dengan pengelolaan berkelanjutan.
 
     ------------------------------------------------------------------------
 
@@ -648,9 +634,9 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 -   Risiko kebakaran lahan tinggi, yang sering terjadi pada ekosistem gambut terutama di musim kemarau.
 
-- Kerentanan tanah gambut terhadap kerusakan, seperti subsiden dan kehilangan fungsi ekosistem akibat pengelolaan tidak ramah gambut.
+-   Kerentanan tanah gambut terhadap kerusakan, seperti subsiden dan kehilangan fungsi ekosistem akibat pengelolaan tidak ramah gambut.
 
-- Ketergantungan pada sumber air tadah hujan, menjadikan desa sangat rentan terhadap kekeringan saat musim kering.
+-   Ketergantungan pada sumber air tadah hujan, menjadikan desa sangat rentan terhadap kekeringan saat musim kering.
 
     ------------------------------------------------------------------------
 
@@ -658,9 +644,9 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
-- Mengembangkan program mitigasi kebakaran gambut dan konservasi yang terintegrasi dengan kebijakan nasional.
+-   Mengembangkan program mitigasi kebakaran gambut dan konservasi yang terintegrasi dengan kebijakan nasional.
 
-- Potensi peningkatan sistem manajemen air untuk meningkatkan akses air bersih dan mengurangi ketergantungan pada hujan.
+-   Potensi peningkatan sistem manajemen air untuk meningkatkan akses air bersih dan mengurangi ketergantungan pada hujan.
 
     ------------------------------------------------------------------------
 
@@ -668,12 +654,11 @@ Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
 Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
-- Kondisi iklim ekstrem seperti kekeringan yang memperburuk risiko kebakaran gambut.
+-   Kondisi iklim ekstrem seperti kekeringan yang memperburuk risiko kebakaran gambut.
 
-- Degradasi lahan gambut yang berdampak langsung pada fungsi ekosistem, seperti penyediaan air dan penyimpanan karbon.
+-   Degradasi lahan gambut yang berdampak langsung pada fungsi ekosistem, seperti penyediaan air dan penyimpanan karbon.
 
-- Minimnya akses ke tambang, membatasi diversifikasi ekonomi untuk mendukung pemulihan pascabencana.
-
+-   Minimnya akses ke tambang, membatasi diversifikasi ekonomi untuk mendukung pemulihan pascabencana.
 :::
 
 ## **Tipologi 6**
@@ -691,9 +676,9 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 -   Secara umum merupakan daratan rendah yang landai, memudahkan aktivitas pertanian dan pengembangan infrastruktur.
 
-- Dekat dengan kawasan hutan, mendapatkan manfaat jasa lingkungan paling tinggi berupa kualitas udara dan ketersediaan air.
+-   Dekat dengan kawasan hutan, mendapatkan manfaat jasa lingkungan paling tinggi berupa kualitas udara dan ketersediaan air.
 
-- Akses ke jaringan irigasi cukup baik, mendukung kegiatan pertanian produktif.
+-   Akses ke jaringan irigasi cukup baik, mendukung kegiatan pertanian produktif.
 
     ------------------------------------------------------------------------
 
@@ -701,9 +686,9 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
-- Kerusakan ekologis akibat deforestasi tinggi, mengakibatkan turunnya kapasitas ekosistem untuk menahan bencana seperti banjir atau longsor.
+-   Kerusakan ekologis akibat deforestasi tinggi, mengakibatkan turunnya kapasitas ekosistem untuk menahan bencana seperti banjir atau longsor.
 
-- Ketergantungan pada sumber daya hutan dan perkebunan yang rentan terhadap perubahan harga pasar dan dampak lingkungan.
+-   Ketergantungan pada sumber daya hutan dan perkebunan yang rentan terhadap perubahan harga pasar dan dampak lingkungan.
 
     ------------------------------------------------------------------------
 
@@ -711,7 +696,7 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
-- Restorasi kawasan deforestasi untuk memulihkan ekosistem/jasa lingkungan dan memperkuat perlindungan biofisik desa.
+-   Restorasi kawasan deforestasi untuk memulihkan ekosistem/jasa lingkungan dan memperkuat perlindungan biofisik desa.
 
     ------------------------------------------------------------------------
 
@@ -719,12 +704,11 @@ Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
 Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
-- Degradasi lingkungan akibat deforestasi tinggi, yang dapat meningkatkan potensi bencana ekologis.
+-   Degradasi lingkungan akibat deforestasi tinggi, yang dapat meningkatkan potensi bencana ekologis.
 
-- Perubahan pola curah hujan akibat perubahan iklim, yang memengaruhi produktivitas sawah irigasi dan perkebunan.
+-   Perubahan pola curah hujan akibat perubahan iklim, yang memengaruhi produktivitas sawah irigasi dan perkebunan.
 
-- Krisis air bersih dan dampak lingkungan jika ekosistem hutan di sekitar desa tidak dikelola dengan baik.
-
+-   Krisis air bersih dan dampak lingkungan jika ekosistem hutan di sekitar desa tidak dikelola dengan baik.
 :::
 
 ## **Tipologi 7**
@@ -740,9 +724,9 @@ Peri-urban atau kota perantara (intermediary urban area)
 
 Faktor-faktor internal yang membantu pencapaian tujuan:
 
-- Memiliki kedekatan dengan sungai yang menyediakan sumber daya air untuk irigasi maupun keperluan industri pengolahan.
+-   Memiliki kedekatan dengan sungai yang menyediakan sumber daya air untuk irigasi maupun keperluan industri pengolahan.
 
-- Infrastruktur energi yang memadai dengan hampir seluruh area terelektrifikasi.
+-   Infrastruktur energi yang memadai dengan hampir seluruh area terelektrifikasi.
 
     ------------------------------------------------------------------------
 
@@ -750,7 +734,7 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
-- Konflik penggunaan lahan di daerah pinggiran kota akibat perluasan lahan untuk pertanian dan pemukiman mengancam keseimbangan ekologi.
+-   Konflik penggunaan lahan di daerah pinggiran kota akibat perluasan lahan untuk pertanian dan pemukiman mengancam keseimbangan ekologi.
 
     ------------------------------------------------------------------------
 
@@ -758,7 +742,7 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
-- Infrastruktur dan konektivitas logistik yang menunjang distribusi barang dan jasa antara pusat perkotaan dengan kota perantara dapat menunjang kegiatan ekonomi masyarakat (terutama dalam menopang kegiatan utama pertanian yang cenderung tersebar).
+-   Infrastruktur dan konektivitas logistik yang menunjang distribusi barang dan jasa antara pusat perkotaan dengan kota perantara dapat menunjang kegiatan ekonomi masyarakat (terutama dalam menopang kegiatan utama pertanian yang cenderung tersebar).
 
     ------------------------------------------------------------------------
 
@@ -766,10 +750,9 @@ Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
 Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
-- Praktik penggunaan lahan yang tidak berkelanjutan, penggundulan hutan, dan polusi industri mengancam penyediaan jasa ekosistem dan kelayakan hidup di pinggiran kota.
+-   Praktik penggunaan lahan yang tidak berkelanjutan, penggundulan hutan, dan polusi industri mengancam penyediaan jasa ekosistem dan kelayakan hidup di pinggiran kota.
 
-- Distribusi sumber daya dan layanan yang tidak merata antara pusat kota (pusat pemerintahan) dan pusat kota kecamatan yang tersebar dapat memicu ketimpangan pembangunan.
-
+-   Distribusi sumber daya dan layanan yang tidak merata antara pusat kota (pusat pemerintahan) dan pusat kota kecamatan yang tersebar dapat memicu ketimpangan pembangunan.
 :::
 
 ## **Tipologi 8**
@@ -785,13 +768,13 @@ Perkotaan
 
 Faktor-faktor internal yang membantu pencapaian tujuan:
 
-- Mencakup Kota Palembang, ibu kota provinsi, dengan kepadatan penduduk 4.874,87 jiwa/km² (2024), berfungsi sebagai pusat ekonomi dan infrastruktur, pendidikan, dan jasa
+-   Mencakup Kota Palembang, ibu kota provinsi, dengan kepadatan penduduk 4.874,87 jiwa/km² (2024), berfungsi sebagai pusat ekonomi dan infrastruktur, pendidikan, dan jasa
 
-- Pusat perdagangan dan ekonomi jasa regional
+-   Pusat perdagangan dan ekonomi jasa regional
 
-- Memiliki fasilitas pengolahan serta sarana prasarana penunjang yang cenderung lebih lengkap dibandingkan wilayah lainnya
+-   Memiliki fasilitas pengolahan serta sarana prasarana penunjang yang cenderung lebih lengkap dibandingkan wilayah lainnya
 
-- Rasio elektrifikasi tinggi menunjukkan kelengkapan infrastruktur
+-   Rasio elektrifikasi tinggi menunjukkan kelengkapan infrastruktur
 
     ------------------------------------------------------------------------
 
@@ -799,11 +782,11 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
-- Rentan terhadap bencana banjir akibat alih fungsi lahan (kurangnya daerah resapan air) dan sistem drainase yang kurang mampu menangani curah hujan
+-   Rentan terhadap bencana banjir akibat alih fungsi lahan (kurangnya daerah resapan air) dan sistem drainase yang kurang mampu menangani curah hujan
 
-- Terbatasnya ruang untuk hunian layak dan pemukiman kumuh perkotaan
+-   Terbatasnya ruang untuk hunian layak dan pemukiman kumuh perkotaan
 
-- Polusi air di Sungai Musi (serta anak-anak Sungai perkotaan) dan badan air lainnya yang terkontaminasi limbah domestik maupun industri pengolahan
+-   Polusi air di Sungai Musi (serta anak-anak Sungai perkotaan) dan badan air lainnya yang terkontaminasi limbah domestik maupun industri pengolahan
 
     ------------------------------------------------------------------------
 
@@ -811,9 +794,9 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
-- Pertumbuhan ekonomi non-ekstraktif dapat didorong melalui peningkatan layanan jasa dan perdagangan perkotaan.
+-   Pertumbuhan ekonomi non-ekstraktif dapat didorong melalui peningkatan layanan jasa dan perdagangan perkotaan.
 
-- Pengembangan perkotaan yang compact dapat mengurangi laju alih fungsi lahan di wilayah lain (mengurangi leapfrogging development).
+-   Pengembangan perkotaan yang compact dapat mengurangi laju alih fungsi lahan di wilayah lain (mengurangi leapfrogging development).
 
     ------------------------------------------------------------------------
 
@@ -821,19 +804,16 @@ Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
 Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
-- Peningkatan suhu (dengan rerata saat ini 27,4 C, tertinggi dibanding area lainnya), Urban Heat Island (UHI) terjadi ketika daerah perkotaan seperti Palembang mengalami suhu yang lebih tinggi dibandingkan daerah pedesaan atau pinggiran kota di sekitarnya akibat aktivitas manusia yang terkonsentrasi dan alih fungsi lahan.
+-   Peningkatan suhu (dengan rerata saat ini 27,4 C, tertinggi dibanding area lainnya), Urban Heat Island (UHI) terjadi ketika daerah perkotaan seperti Palembang mengalami suhu yang lebih tinggi dibandingkan daerah pedesaan atau pinggiran kota di sekitarnya akibat aktivitas manusia yang terkonsentrasi dan alih fungsi lahan.
 
-- Ekspansi kota yang tidak terencana (urban sprawl) mendorong penggunaan lahan yang tidak efisien di wilayah pinggiran.
-
+-   Ekspansi kota yang tidak terencana (urban sprawl) mendorong penggunaan lahan yang tidak efisien di wilayah pinggiran.
 :::
+:::::::::::::::::::
 
-:::::::::::::::
-
-#  Informasi Lanjutan
+# Informasi Lanjutan
 
 ::: panel-tabset
-
-## Tabel Interpretasi (Nilai Variabel Tiap Tipologi) 
+## Tabel Interpretasi (Nilai Variabel Tiap Tipologi)
 
 ```{r}
 #| warning: false
@@ -842,6 +822,7 @@ readxl::read_xlsx("output/summary_table_sumsel_k8.xlsx") %>% DT::datatable(optio
   pageLength = 5, autoWidth = FALSE
 ))
 ```
+
 ## Daftar Desa dan Kelas Tipologi
 
 ```{r}
@@ -856,9 +837,7 @@ pca_labeled %>%
   pageLength = 5, autoWidth = FALSE
 ))
 ```
-
 :::
-
 
 ::: callout-tip
 ## Statistik Deskriptif
@@ -871,19 +850,19 @@ Rata-rata adalah angka yang sering kita gunakan untuk mengetahui gambaran umum d
 
 Modus (Modulus) memberitahu kita ......
 
-
 **Median**
 
 Nilai tengah (median) memberitahu kita ......
-
 :::
----
+
+------------------------------------------------------------------------
 
 **Catatan**
 
 <p class="small">
-- Dokumen ini merupakan draft awal yang masih dalam proses pengembangan dan penelaahan. Seluruh informasi, analisis, dan temuan yang disajikan bersifat tentatif dan dapat mengalami perubahan substansial pada versi finalnya. Data dan interpretasi yang terkandung dalam dokumen ini tidak dapat dijadikan acuan untuk pengambilan keputusan atau kebijakan dalam bentuk apapun.
 
-- Setiap kesalahan, ketidakakuratan, atau inkonsistensi yang ditemukan dalam dokumen ini akan menjadi subjek revisi pada tahap-tahap berikutnya. Pembaca diharapkan untuk merujuk pada dokumen final yang nantinya telah divalidasi dan dipublikasikan secara resmi untuk keperluan pengutipan atau referensi.
+-   Dokumen ini merupakan draft awal yang masih dalam proses pengembangan dan penelaahan. Seluruh informasi, analisis, dan temuan yang disajikan bersifat tentatif dan dapat mengalami perubahan substansial pada versi finalnya. Data dan interpretasi yang terkandung dalam dokumen ini tidak dapat dijadikan acuan untuk pengambilan keputusan atau kebijakan dalam bentuk apapun.
+
+-   Setiap kesalahan, ketidakakuratan, atau inkonsistensi yang ditemukan dalam dokumen ini akan menjadi subjek revisi pada tahap-tahap berikutnya. Pembaca diharapkan untuk merujuk pada dokumen final yang nantinya telah divalidasi dan dipublikasikan secara resmi untuk keperluan pengutipan atau referensi.
 
 </p>
