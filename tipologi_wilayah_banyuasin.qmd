@@ -51,7 +51,7 @@ library(factoextra)
 
 # Pendahuluan
 
-:::: panel-tabset
+::: panel-tabset
 ## Abstrak
 
 Sumatera Selatan memiliki keragaman lanskap perdesaan yang kompleks, dengan masyarakat yang bergantung pada penghidupan berbasis lahan. Penghidupan berbasis lahan disinyalir semakin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi masih terbatas. Draft dokumen ini disusun untuk mengisi kekosongan ini dengan memahami berbagai jenis kerentanan yang mempengaruhi penghidupan berbasis lahan di Sumatera Selatan.
@@ -93,7 +93,7 @@ Perkembangan ekonomi yang diukur melalui PDRB menunjukkan peningkatan dari 453,4
 **Tantangan Sosial Ekonomi**
 
 Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami penurunan dari 5,23 persen (2022) menjadi 5,08 persen (2023). Dalam konteks regional Sumatera bagian Selatan, Sumatera Selatan mencatat jumlah penduduk miskin tertinggi sebesar 1,04 juta jiwa pada 2023, jauh di atas Provinsi Kepulauan Bangka Belitung yang hanya memiliki 0,068 juta jiwa penduduk miskin.
-::::
+:::
 
 # Skema Teknis Pembuatan Tipologi
 
@@ -303,14 +303,14 @@ pca_plot_3d
 
 source("R/utilities.R")
 
-tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", cluster_lookup = "data_preprocessed/cluster_names.csv", col_names = "k_8")
+tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_Banyuasin.shp", cluster_lookup = "data_preprocessed/cluster_names.csv", col_names = "k_8")
 
 tp_map
 ```
 
 ## Karakteristik Tipologi
 
-::::::::::::::::::: panel-tabset
+::: panel-tabset
 <!-- ## Komposisi Luas Wilayah -->
 
 ```{r komposisi kecamatan}
@@ -808,7 +808,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
 -   Ekspansi kota yang tidak terencana (urban sprawl) mendorong penggunaan lahan yang tidak efisien di wilayah pinggiran.
 :::
-:::::::::::::::::::
+:::
 
 # Informasi Lanjutan
 
