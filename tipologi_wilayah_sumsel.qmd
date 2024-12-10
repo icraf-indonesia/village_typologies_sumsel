@@ -146,6 +146,10 @@ Sumatera Selatan menjadi salah satu wilayah yang tidak luput dari rangkaian benc
 
 ::: column-page
 ![](output/flowchart_typology.svg){fig-align="center"}
+**Diagram alir pengembangan tipologi wilayah berbasis data dan analisis spasial**. Alur kerja dimulai dari (1) penyiapan data melalui pemilihan variabel, pengumpulan, dan penanganan data kosong, dilanjutkan dengan (2) pengolahan data untuk memastikan kualitas analisis statistik. Tahapan (3) reduksi dimensi dilakukan menggunakan metode Analisis Komponen Utama (PCA) untuk menyederhanakan kompleksitas data, sementara (4) analisis jarak antar desa menangkap aspek spasial. Kedua hasil ini dikombinasikan dalam (5) analisis klaster untuk mengidentifikasi kelompok-kelompok wilayah yang memiliki karakteristik serupa. Terakhir, hasil pengelompokan dirangkum dalam (6) tabel ringkasan dan (7) divisualisasikan dalam bentuk peta interaktif untuk memudahkan interpretasi.
+
+Analisis tipologi wilayah dilakukan menggunakan bahasa pemrograman `R` dengan memanfaatkan _library `tidyverse`_ untuk pengolahan data, _`sf`_ untuk analisis spasial, _`leaflet`_ untuk peta interaktif, serta beberapa _`library`_ pendukung lainnya. Laman interaktif ini disusun menggunakan _`Quarto`_.
+
 :::
 
 # Daftar Variabel Penyusun Tipologi
@@ -206,6 +210,13 @@ pca_df |>
 ```
 
 ## Interpretasi 3 Komponen Utama (PCs) Paling Berpengaruh
+
+
+::: callout-note
+
+**Diagram batang cos² (kosinus kuadrat)** di bawah menampilkan tingkat representasi setiap variabel pada komponen utama hasil analisis PCA. Nilai cos² berkisar antara 0 hingga 1, di mana nilai yang mendekati 1 menunjukkan variabel tersebut memiliki kontribusi yang kuat pada komponen utama yang bersangkutan. Sebaliknya, nilai yang mendekati 0 mengindikasikan variabel tersebut kurang berkontribusi pada komponen tersebut.
+
+:::
 
 **PC1: Predominan Gradien Daratan Rendah-Tinggi**
 
