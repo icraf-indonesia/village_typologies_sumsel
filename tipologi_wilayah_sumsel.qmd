@@ -258,11 +258,11 @@ fviz_cos2(pca_result, choice = "var", axes = 3, top=10)
 
 ![](output/plot_pca_eval_SumSEL.png)
 
-Grafik Eigenvalue (atas) menunjukkan nilai eigen untuk setiap komponen utama (PC), di mana PC1 memiliki nilai tertinggi sekitar 8 dan nilai semakin menurun untuk PC berikutnya. Garis merah pada nilai 1 menandakan batas minimum nilai eigen yang biasanya digunakan sebagai acuan pemilihan komponen yang penting.
+Hasil analisis komponen utama (PCA) ditampilkan dalam tiga grafik Grafik atas menunjukkan nilai eigen untuk setiap komponen utama, dengan garis merah horizontal menandai nilai eigen = 1, yang merupakan salah satu praktik umum dalam mencari keseimbangan antara penyederhanaan data dan menjaga kekayaan informasi data aslinya. Dari grafik tersebut, teridentifikasi 16 komponen utama pertama yang memiliki nilai eigen lebih besar dari 1, yang kemudian digunakan dalam langkah selanjutnya, analisis klaster.
 
-**Grafik CVE (Cumulative Variance Explained,** kiri bawah**)** menunjukkan total variasi data yang dapat dijelaskan secara kumulatif, di mana dengan 20 PC pertama dapat menjelaskan sekitar 65% variasi data. **PVE (Proportion of Variance Explained,** kiri bawah**)** memperlihatkan kontribusi masing-masing PC, dengan PC1 menjelaskan sekitar 15% variasi data.
+Panel tengah menampilkan Cumulative Variance Explained (CVE) dan Proportion of Variance Explained (PVE). Ke-16 komponen utama yang dipilih ini secara kumulatif menjelaskan lebih dari 60% variasi dalam dataset, memadai untuk menangkap intisari dari data biofisik dan sosial-ekonomi wilayah yang sudah dikumpulkan. Panel bawah menunjukkan scree plot yang memperlihatkan penurunan kontribusi dari setiap komponen tambahan.
 
-Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap komponen utama. Titik 'siku' dari sebuah grafik scree adalah titik di mana menambahkan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru. Hal tersebut dapat terlihat penurunan tajam dari PC1 hingga PC5 dan kemudian mulai mendatar. Bentuk kurva ini membantu kita menentukan berapa banyak komponen yang sebaiknya dipertahankan dalam analisis.
+Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap komponen utama. Titik 'siku' dari sebuah grafik scree adalah titik di mana menambahkan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru. Pola ini mendukung keputusan untuk menggunakan 16 komponen utama, karena setelah PC16, kontribusi tambahan dari komponen-komponen berikutnya relatif kecil.
 :::
 
 # Pengelompokan K-means
@@ -272,11 +272,19 @@ Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap kompon
 
 ![](output/plot_hclust_eval_SumSel.png)
 
-Grafik Elbow Method (A) menunjukkan penurunan total variasi dalam kelompok seiring bertambahnya jumlah kelompok (k). Titik siku (elbow) menandakan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru.
+Untuk menentukan jumlah klaster optimal dalam analisis tipologi perdesaan di Sumatera Selatan, tiga metode evaluasi digunakan sebagaimana ditampilkan dalam grafik. Penentuan jumlah klaster mempertimbangkan keseimbangan antara kompleksitas (jumlah klaster) dengan keberagaman variasi yang ada pada data, sambil tetap mempertahankan interpretabilitas hasil.
 
-Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain.
+Grafik Elbow Method (A) menunjukkan penurunan total variasi dalam kelompok seiring bertambahnya jumlah kelompok (k). Titik siku (elbow) menandakan penambahan jumlah klaster tidak banyak memberikan tambahan informasi baru. Dalam hal ini, penurunan Total Within Sum of Square semakin landai setelah jumlah klaster melebihi 4.
 
-Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak. Semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan.
+Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain. Grafik ini memperlihatkan nilai tertinggi pada k=2, namun nilainya relatif stabil (di sekitar 0.3) untuk jumlah klaster yang lebih besar.
+
+Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak, di mana semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan. Grafik menunjukkan peningkatan yang konsisten.
+
+::: callout-note
+
+Berdasarkan pertimbangan ketiga metrik dan kebutuhan untuk menangkap keragaman karakteristik perdesaan di Sumatera Selatan, dipilih 11 klaster sebagai jumlah yang relevan untuk analisis tipologi.
+
+:::
 
 ## Diagram pencar 3D tipologi desa-desa di Provinsi Sumatera Selatan
 
@@ -286,6 +294,7 @@ Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak.
     -   **PC3: Predominan Gradien Intensitas Penggunaan Lahan**
 -   Tiap-titiknya mewakili sebuah desa di Provinsi Sumatera Selatan
 -   Titik yang berwarna sama berarti tergolong dalam tipologi yang sama.
+-   Pola sebaran titik memperlihatkan bahwa desa-desa yang berada pada spektrum yang berseberangan (misalnya pada ujung-ujung gradien elevasi) memiliki karakteristik yang sangat berbeda pada dimensi tersebut (desa daratan tinggi (pegunungan) vs desa daratan rendah (pesisir)).
 
 ```{r K-means cluster}
 #| warning: false
@@ -365,7 +374,12 @@ suppressPackageStartupMessages({
 
 source("R/utilities.R")
 
-tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", cluster_lookup = "data_preprocessed/cluster_names.csv", col_names = "k_8") %>% bslib::card(full_screen = TRUE)
+cluster_lookup_<- tibble(village_metadata
+) %>% 
+  left_join(lookup_cluster, by="cluster") %>% 
+  rename(Typology = name)
+
+tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", cluster_lookup = cluster_lookup_, col_names = "k_8") %>% bslib::card(full_screen = TRUE)
 
 tp_map
 ```

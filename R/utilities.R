@@ -239,31 +239,35 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
     clusters_kec <- clusters_kec |> select(any_of(col_names)) %>% rename(cluster=1)
   }
   
-  # Read the cluster lookup table
-  if (is.character(cluster_lookup)) {
-    cluster_lookup <- readr::read_csv(cluster_lookup)
-  }
+  # # Read the cluster lookup table
+  # if (is.character(cluster_lookup)) {
+  #   cluster_lookup <- readr::read_csv(cluster_lookup)
+  # }
+  
   
   # Join the data with cluster names
-  clusters_kec_with_name <- clusters_kec |> 
-    right_join(cluster_lookup, by = "cluster") |> 
-    mutate_at(.vars = c("cluster", "name"), .funs = as.factor)
+  clusters_kec_with_name <- clusters_kec |> select(-cluster) %>% 
+    bind_cols(cluster_lookup) |> 
+    mutate_at(.vars = c("cluster", "Typology"), .funs = as.factor)
   
   # Set up the color palette
-  pal <- colorFactor(palette = "Set1", domain = clusters_kec_with_name$name)
+  pal <- colorFactor(palette = "Set1", domain = clusters_kec_with_name$Typology)
 
   # Constructing the label string
   clusters_kec_with_name$label_content <- with(
     clusters_kec_with_name,
     paste0(
-      # "<strong>Kabupaten:</strong> ",
-      # nmkab,
-      # "<br>",
-      # "<strong>Kecamatan:</strong> ",
-      # nmkec,
-      # "<br>",
+      "<strong>Kabupaten:</strong> ",
+      district_name,
+      "<br>",
+      "<strong>Kecamatan:</strong> ",
+      subdistrict_name,
+      "<br>",
+      "<strong>Desa:</strong> ",
+      village_name,
+      "<br>",
       "<strong>Tipologi:</strong> ",
-      name
+      Typology                       
     )
   ) |> lapply(htmltools::HTML)
   
@@ -271,7 +275,7 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
   leaflet_map <- leaflet(clusters_kec_with_name) |>
     addProviderTiles(providers$CyclOSM) |>
     addPolygons(
-      fillColor = ~ pal(name),
+      fillColor = ~ pal(Typology),
       weight = 0.5,
       opacity = 1,
       color = "white",
@@ -287,7 +291,7 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
       label = ~ label_content,
       labelOptions = labelOptions(noHide = FALSE, direction = 'auto')
     ) |>
-    addLegend(pal = pal, values = ~ name, title = "Typology")
+    addLegend(pal = pal, values = ~ Typology, title = "Typology")
   
   return(leaflet_map)
 }
