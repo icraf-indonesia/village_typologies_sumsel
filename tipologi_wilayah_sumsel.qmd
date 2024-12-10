@@ -92,7 +92,54 @@ Perkembangan ekonomi yang diukur melalui PDRB menunjukkan peningkatan dari 453,4
 
 **Tantangan Sosial Ekonomi**
 
-Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami penurunan dari 5,23 persen (2022) menjadi 5,08 persen (2023). Dalam konteks regional Sumatera bagian Selatan, Sumatera Selatan mencatat jumlah penduduk miskin tertinggi sebesar 1,04 juta jiwa pada 2023, jauh di atas Provinsi Kepulauan Bangka Belitung yang hanya memiliki 0,068 juta jiwa penduduk miskin.
+Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami penurunan dari 5,23 persen (2022) menjadi 5,08 persen (2023). ~~Dalam konteks regional Sumatera bagian Selatan, Sumatera Selatan mencatat jumlah penduduk miskin tertinggi sebesar 1,04 juta jiwa pada 2023, jauh di atas Provinsi Kepulauan Bangka Belitung yang hanya memiliki 0,068 juta jiwa penduduk miskin.~~
+
+## Risiko Perubahan Iklim di Sumatera Selatan
+
+**Peningkatan Temperatur**
+
+::: callout-note
+Sumatera Selatan telah mengalami peningkatan rata-rata temperatur antara 0,6 hingga 0,93 derajat Celcius berdasarkan data historis dari tahun 1976 hingga 2021 (periode 46 tahun). Ini menunjukkan laju peningkatan temperatur di Sumatera Selatan berkisar antara 0,03-0,04 derajat Celsius per tahun.
+:::
+
+Peningkatan suhu di Sumatera Selatan diprediksi akan meningkatkan kerentanan terhadap kebakaran hutan dan lahan (karhutla). Kerentanan tersebut tercermin, salah satunya,  melalui data yang menunjukkan Sumatera Selatan mengalami kejadian karhutla setiap tahunnya selama periode 2019 hingga 2023 (Balai Pengendalian Perubahan Iklim dan Kebakaran Hutan dan Lahan (PPIKHL) Wilayah Sumatera, Kementerian Lingkungan Hidup dan Kehutanan (KLHK)).
+
+
+**Perubahan Pola Musim Hujan**
+
+Variasi pola musim di Sumatera Selatan dipengaruhi oleh siklus iklim yang lebih luas seperti ENSO dan Indian Ocean Dipole (IOD). Namun secara umum, data historis menunjukkan:
+
+::: callout-note
+- Musim kemarau terjadi pada bulan Juli, Agustus, dan September
+- Musim hujan umumnya terjadi pada bulan November, Desember, hingga Maret
+:::
+
+Ketika terjadi El Nino dan fase IOD positif, Sumatera Selatan mengalami musim kering yang lebih panjang dan intensif. Fenomena ini pernah terjadi pada tahun 1997, 2015, dan 2019 yang mengakibatkan kebakaran hutan dan lahan di sepanjang pesisir Timur Sumatera, termasuk Sumatera Selatan. Musim kemarau yang lebih panjang berpotensi menyebabkan penurunan hasil panen.
+
+Studi proyeksi iklim menunjukkan Sumatera bagian Selatan diprediksi akan semakin kering (jumlah hari kering yang semakin panjang) pada periode 2021-2050. Curah hujan cenderung meningkat khususnya saat terjadi La Nina, seperti yang terjadi pada tahun 2020 hingga 2023 (Fenomena triple dip).
+
+**Dampak Banjir dan Kenaikan Muka Air Laut**
+
+Studi proyeksi iklim dan oseanografi menunjukkan sebagian pesisir pantai timur Sumatera Selatan akan semakin terpapar bahaya banjir akibat peningkatan muka air laut. Kondisi ini utamanya akan terjadi di sekitar bulan November hingga April (diperkuat dengan kondisi La Nina), ketika Sungai Musi, Sungai Ogan, dan Sungai Komering meluap dan membanjiri area pertanian, perkebunan, dan pemukiman, termasuk Kota Palembang.
+
+Sumatera Selatan menjadi salah satu wilayah yang tidak luput dari rangkaian bencana hidrometeorologi yang melanda Indonesia. Menurut Tim Prediksi dan Peringatan Dini Cuaca BMKG, hampir 95 persen bencana yang terjadi di Indonesia merupakan bencana hidrometeorologi. Bencana-bencana ini hadir dalam berbagai bentuk, mulai dari banjir dan banjir bandang, tanah longsor, kebakaran hutan dan lahan (karhutla), kekeringan, hingga angin puting beliung. Di tengah meningkatnya perubahan iklim global, pola cuaca diperkirakan menjadi semakin tidak menentu dan berpotensi memicu intensitas bencana hidrometeorologi yang lebih tinggi.
+
+
+::: {style="font-size: 70%;"}
+
+
+**Referensi**
+
+- Adrian Fajriansyah. 2024. "Suhu Meningkat 6 Derajat Celsius dalam 30 Tahun, Masa Depan Lingkungan Sumsel Terancam." Kompas, August 19, 2024.
+- Akhsan, H., Irfan, M. & Iskandar, I. (2023). Dynamics of Extreme Rainfall and Its Impact on Forest and Land Fires in the Eastern Coast of Sumatra. Science and Technology Indonesia, 8(3), 403-413.
+- BMKG. (2024). Climate Early Warning System. Kedeputian Bidang Klimatologi. Accessed December 10, 2024.https://cews.bmkg.go.id/.
+- Nurlatifah, A., et al. (2024). Impact of climate change on extreme precipitation events over Sumatera Island and the Malay Peninsula. International Journal of Global Warming, 32(4), 374-398.
+- Muharomah, R. & Setiawan, B.I. (2022). Identification of climate trends and patterns in South Sumatra. Agromet, 36(2), 79-87.
+- Mulhern, O. 2020. "Sea Level Rise Projection Map – Palembang."Earth.org. July 28, 2020.https://earth.org/data_visualization/sea-level-rise-by-2100-palembang/
+- Sopaheluwakan, A., Radjab, A.F., Supari, A.,  et al. 2024. Prediksi Musim Hujan 2024/2025 di Indonesia. Jakarta: Badan Meteorologi, Klimatologi, dan Geofisika, Pusat Informasi Perubahan Iklim
+
+:::
+
 ::::
 
 # Skema Teknis Pembuatan Tipologi
@@ -857,12 +904,13 @@ Nilai tengah (median) memberitahu kita ......
 
 ------------------------------------------------------------------------
 
-**Catatan**
 
-<p class="small">
+::: {style="font-size: 70%;"}
+
+**Catatan**
 
 -   Dokumen ini merupakan draft awal yang masih dalam proses pengembangan dan penelaahan. Seluruh informasi, analisis, dan temuan yang disajikan bersifat tentatif dan dapat mengalami perubahan substansial pada versi finalnya. Data dan interpretasi yang terkandung dalam dokumen ini tidak dapat dijadikan acuan untuk pengambilan keputusan atau kebijakan dalam bentuk apapun.
 
 -   Setiap kesalahan, ketidakakuratan, atau inkonsistensi yang ditemukan dalam dokumen ini akan menjadi subjek revisi pada tahap-tahap berikutnya. Pembaca diharapkan untuk merujuk pada dokumen final yang nantinya telah divalidasi dan dipublikasikan secara resmi untuk keperluan pengutipan atau referensi.
 
-</p>
+:::
