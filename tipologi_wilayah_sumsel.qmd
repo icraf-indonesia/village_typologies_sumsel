@@ -70,9 +70,9 @@ Menggunakan pendekatan analisis klaster berbasis K-means yang dipadukan dengan P
 
 **Kondisi Geografis dan Administrasi**
 
-Provinsi Sumatera Selatan dengan ibukota Kota Palembang merupakan wilayah dataran rendah dengan ketinggian rata-rata 8 meter di atas permukaan laut. Secara geografis, provinsi ini terletak pada posisi 1'-4' Lintang Selatan dan antara 102'-106' Bujur Timur, dengan luas daratan mencapai 86.771,68 km2. Wilayah ini berbatasan dengan Provinsi Jambi di utara, Provinsi Bangka-Belitung di timur, Provinsi Lampung di selatan, dan Provinsi Bengkulu di barat.
+Provinsi Sumatera Selatan dengan ibukota Kota Palembang merupakan wilayah dataran rendah dengan ketinggian rata-rata 8 meter di atas permukaan laut. Secara geografis, provinsi ini terletak pada posisi 1'-4' Lintang Selatan dan antara 102'-106' Bujur Timur, dengan luas daratan mencapai 86.771,68 km^2^. Wilayah ini berbatasan dengan Provinsi Jambi di utara, Provinsi Bangka-Belitung di timur, Provinsi Lampung di selatan, dan Provinsi Bengkulu di barat.
 
-Secara administratif, Provinsi Sumatera Selatan terdiri dari 13 kabupaten dan empat kota. Kabupaten Ogan Komering Ilir merupakan wilayah terluas dengan area 17.071,33 km2, sementara Kota Palembang menjadi wilayah terkecil dengan luas 352,51 km2.
+Secara administratif, Provinsi Sumatera Selatan terdiri dari 13 kabupaten dan empat kota. Kabupaten Ogan Komering Ilir merupakan wilayah terluas dengan area 17.071,33 km^2^, sementara Kota Palembang menjadi wilayah terkecil dengan luas 352,51 km^2^.
 
 **Iklim dan Kondisi Lingkungan**
 
@@ -116,7 +116,7 @@ Variasi pola musim di Sumatera Selatan dipengaruhi oleh siklus iklim yang lebih 
 
 Ketika terjadi El Nino dan fase IOD positif, Sumatera Selatan mengalami musim kering yang lebih panjang dan intensif. Fenomena ini pernah terjadi pada tahun 1997, 2015, dan 2019 yang mengakibatkan kebakaran hutan dan lahan di sepanjang pesisir Timur Sumatera, termasuk Sumatera Selatan. Musim kemarau yang lebih panjang berpotensi menyebabkan penurunan hasil panen.
 
-Studi proyeksi iklim menunjukkan Sumatera bagian Selatan diprediksi akan semakin kering (jumlah hari kering yang semakin panjang) pada periode 2021-2050. Curah hujan cenderung meningkat khususnya saat terjadi La Nina, seperti yang terjadi pada tahun 2020 hingga 2023 (Fenomena triple dip).
+Meski curah hujan dirasa meningkat di tahun 2020 hingga 2023 akibat fenomena La Nina _(triple dip)_, studi proyeksi iklim menunjukkan Sumatera bagian Selatan diprediksi akan semakin kering (jumlah hari kering yang semakin panjang) pada periode 2021-2050.
 
 **Dampak Banjir dan Kenaikan Muka Air Laut**
 
