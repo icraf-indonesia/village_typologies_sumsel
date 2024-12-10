@@ -282,7 +282,7 @@ Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak,
 
 ::: callout-note
 
-Berdasarkan pertimbangan ketiga metrik dan kebutuhan untuk menangkap keragaman karakteristik perdesaan di Sumatera Selatan, dipilih 11 klaster sebagai jumlah yang relevan untuk analisis tipologi.
+Berdasarkan pertimbangan ketiga metrik dan kebutuhan untuk menangkap keragaman karakteristik perdesaan di Sumatera Selatan, dipilih 8 klaster sebagai jumlah yang relevan untuk analisis tipologi.
 
 :::
 
