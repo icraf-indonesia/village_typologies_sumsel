@@ -348,9 +348,13 @@ pca_plot_3d
 #| message: false
 #| column: screen
 
+suppressPackageStartupMessages({
+  library(bslib)
+})
+
 source("R/utilities.R")
 
-tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", cluster_lookup = "data_preprocessed/cluster_names.csv", col_names = "k_8")
+tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", cluster_lookup = "data_preprocessed/cluster_names.csv", col_names = "k_8") %>% bslib::card(full_screen = TRUE)
 
 tp_map
 ```
