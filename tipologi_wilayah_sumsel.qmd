@@ -915,22 +915,6 @@ pca_labeled %>%
 ```
 :::
 
-::: callout-tip
-## Statistik Deskriptif
-
-**Rata-Rata**
-
-Rata-rata adalah angka yang sering kita gunakan untuk mengetahui gambaran umum dari sekelompok data. Misalnya, jika rata-rata jarak ke jalan terdekat di daerah urban cuma 0,24 km, ini menunjukkan bahwa umumnya daerah tersebut dekat dengan jalan raya.
-
-**Modus**
-
-Modus (Modulus) memberitahu kita ......
-
-**Median**
-
-Nilai tengah (median) memberitahu kita ......
-:::
-
 ------------------------------------------------------------------------
 
 
