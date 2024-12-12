@@ -296,7 +296,7 @@ pca_plot_3d
 
 ## Peta Tipologi
 
-**Tipologi Kerentanan Terhadap Perubahan Iklim Pada Penghidupan Berbasis Lahan di Provinsi Sumatera Selatan**
+**Tipologi Kerentanan Terhadap Perubahan Iklim Pada Penghidupan Berbasis Lahan di Kabupaten Banyuasin**
 
 ```{r Map}
 #| warning: false
@@ -483,7 +483,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Memiliki potensi ancaman kekeringan.
 :::
 
-## **Tipologi 3 (Tidak ditemukan di Kabupaten Banyuasin)**
+## **Tipologi 3 (tidak ditemukan di Kabupaten Banyuasin)**
 
 ::: callout-tip
 Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan populasi yang rendah
@@ -611,7 +611,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Fluktuasi harga komoditas perkebunan
 :::
 
-## **Tipologi 5 (Tidak ditemukan di Kabupaten Banyuasin)**
+## **Tipologi 5 (tidak ditemukan di Kabupaten Banyuasin)**
 
 ::: callout-tip
 Desa dataran rendah yang sebagian bertanah gambut dan jarak yang jauh dari konsesi hutan tanaman.
@@ -713,7 +713,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Krisis air bersih dan dampak lingkungan jika ekosistem hutan di sekitar desa tidak dikelola dengan baik.
 :::
 
-## **Tipologi 7 (Tidak ditemukan di Kabupaten Banyuasin)**
+## **Tipologi 7 (tidak ditemukan di Kabupaten Banyuasin)**
 
 ::: callout-tip
 Peri-urban atau kota perantara (intermediary urban area)
