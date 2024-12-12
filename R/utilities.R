@@ -222,34 +222,34 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
   if (!inherits(clusters_kec, "sf")) {
     clusters_kec <- st_read(clusters_kec, quiet = TRUE)
   }
-  
+
   # Validate col_names if provided
   if (!is.null(col_names)) {
     # Check if col_names is a single string
     if (length(col_names) != 1) {
       stop("col_names must be a single character string")
     }
-    
+
     # Check if the column exists in clusters_kec
     if (!col_names %in% names(clusters_kec)) {
       stop(sprintf("Column '%s' not found in clusters_kec dataset", col_names))
     }
-    
+
     # Select the specified column if col_names is provided
     clusters_kec <- clusters_kec |> select(any_of(col_names)) %>% rename(cluster=1)
   }
-  
+
   # # Read the cluster lookup table
   # if (is.character(cluster_lookup)) {
   #   cluster_lookup <- readr::read_csv(cluster_lookup)
   # }
-  
-  
+
+
   # Join the data with cluster names
-  clusters_kec_with_name <- clusters_kec |> select(-cluster) %>% 
-    bind_cols(cluster_lookup) |> 
+  clusters_kec_with_name <- clusters_kec |> select(-cluster) %>%
+    bind_cols(cluster_lookup) |>
     mutate_at(.vars = c("cluster", "Typology"), .funs = as.factor)
-  
+
   # Set up the color palette
   pal <- colorFactor(palette = "Set1", domain = clusters_kec_with_name$Typology)
 
@@ -267,10 +267,10 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
       village_name,
       "<br>",
       "<strong>Tipologi:</strong> ",
-      Typology                       
+      Typology
     )
   ) |> lapply(htmltools::HTML)
-  
+
   # Create the leaflet map with HTML-rendered labels
   leaflet_map <- leaflet(clusters_kec_with_name) |>
     addProviderTiles(providers$CyclOSM) |>
@@ -292,6 +292,6 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
       labelOptions = labelOptions(noHide = FALSE, direction = 'auto')
     ) |>
     addLegend(pal = pal, values = ~ Typology, title = "Typology")
-  
+
   return(leaflet_map)
 }

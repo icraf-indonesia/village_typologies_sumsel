@@ -54,51 +54,55 @@ library(factoextra)
 ::: panel-tabset
 ## Abstrak
 
-Sumatera Selatan memiliki keragaman lanskap perdesaan yang kompleks, dengan masyarakat yang bergantung pada penghidupan berbasis lahan. Penghidupan berbasis lahan disinyalir semakin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi masih terbatas. Draft dokumen ini disusun untuk mengisi kekosongan ini dengan memahami berbagai jenis kerentanan yang mempengaruhi penghidupan berbasis lahan di Sumatera Selatan.
+Kabupaten Banyuasin memiliki keragaman lanskap perdesaan yang kompleks, dengan masyarakat yang bergantung pada penghidupan berbasis lahan. Penghidupan berbasis lahan disinyalir semakin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi masih terbatas. Draft dokumen ini disusun untuk mengisi kekosongan dengan memahami berbagai jenis kerentanan yang mempengaruhi penghidupan berbasis lahan di Kabupaten Banyuasin.
 
-Menggunakan pendekatan analisis klaster berbasis K-means yang dipadukan dengan Principal Component Analysis (PCA), kajian ini mengidentifikasi tipologi perdesaan berdasarkan karakteristik biofisik dan sosial-ekonomi yang homogen. Pengelompokan ini memungkinkan pemahaman yang lebih mendalam tentang pola kerentanan spesifik dan kebutuhan mitigasi dan adaptasi yang sesuai dengan konteks lokal. Hasil analisis diharapkan dapat mendukung pengembangan strategi adaptasi perubahan iklim yang lebih tepat sasaran untuk masing-masing tipologi di Sumatera Selatan.
+Menggunakan pendekatan analisis klaster berbasis K-means yang dipadukan dengan Principal Component Analysis (PCA), kajian ini mengidentifikasi tipologi perdesaan berdasarkan karakteristik biofisik dan sosial-ekonomi yang homogen. Pengelompokan ini memungkinkan pemahaman yang lebih mendalam tentang pola kerentanan spesifik dan kebutuhan mitigasi dan adaptasi yang sesuai dengan konteks lokal. Hasil analisis diharapkan dapat mendukung pengembangan strategi adaptasi perubahan iklim yang lebih tepat sasaran untuk masing-masing tipologi di Kabupaten Banyuasin.
 
 ::: callout-note
 **Tujuan**
 
--   Analisis ini bertujuan untuk mengidentifikasi ‘tipologi’ desa-desa, yang memiliki karakter sosial-ekonomi dan lingkungan yang mirip di Provinsi Sumatera Selatan, dengan menggunakan pengelompokan K-means pada data yang disederhanakan oleh PCA.
+-   Analisis ini bertujuan untuk mengidentifikasi ‘tipologi’ desa-desa, yang memiliki karakter sosial-ekonomi dan lingkungan yang mirip di Kabupaten Banyuasin, dengan menggunakan pengelompokan K-means pada data yang disederhanakan oleh PCA.
 
--   Tipologi tersebut kemudian digunakan untuk mendeskripsikan konteks kerentanan penghidupan berbasis lahan akibat perubahan iklim di Provinsi Sumatera Selatan dan potensi intervensi yang tepat sasaran untuk meningkatkan ketahanan terhadap perubahan iklim.
+-   Tipologi tersebut kemudian digunakan untuk mendeskripsikan konteks kerentanan penghidupan berbasis lahan akibat perubahan iklim di Kabupaten Banyuasin dan potensi intervensi yang tepat sasaran untuk meningkatkan ketahanan terhadap perubahan iklim.
 :::
 
 ## Deskripsi Kabupaten Banyuasin
 
 **Kondisi Geografis dan Administrasi**
 
-Kabupaten Banyuasin dengan ibukota Kota Palembang merupakan wilayah dataran rendah dengan ketinggian rata-rata 8 meter di atas permukaan laut. Secara geografis, provinsi ini terletak pada posisi 1'-4' Lintang Selatan dan antara 102'-106' Bujur Timur, dengan luas daratan mencapai 86.771,68 km2. Wilayah ini berbatasan dengan Provinsi Jambi di utara, Provinsi Bangka-Belitung di timur, Provinsi Lampung di selatan, dan Provinsi Bengkulu di barat.
+Kabupaten Banyuasin adalah salah satu kabupaten di Provinsi Sumatera Selatan dengan ibukota Pangkalan Balai. Secara geografis, Kabupaten Banyuasin terletak pada posisi antara 1,30' - 4,0' Lintang Selatan dan 104' - 105' Bujur Timur yang terbentang mulai dari bagian tengah Provinsi Sumatera Selatan sampai dengan bagian timur dengan luas wilayah seluruhnya 11.832,99 km2. Letak geografis Kabupaten Banyuasin yang demikian menempatkan Kabupaten Banyuasin pada posisi potensial dan strategis dalam hal perdagangan dan industri, maupun pertumbuhan sektor - sektor pertumbuhan baru.
 
-Secara administratif, Provinsi Sumatera Selatan terdiri dari 13 kabupaten dan empat kota. Kabupaten Ogan Komering Ilir merupakan wilayah terluas dengan area 17.071,33 km2, sementara Kota Palembang menjadi wilayah terkecil dengan luas 352,51 km2.
+Secara administratif, Kabupaten Banyuasin terdiri dari 21 kecamatan, 16 kelurahan dan 288 desa. Batas wilayah Kabupaten Banyuasin mengelilingi 2/3 wilayah Kota Palembang, sehingga Banyuasin dapat dikatakan sebagai wilayah penyangga ibu kota Provinsi Sumatera Selatan. Wilayah ini berbatasan dengan Provinsi Jambi sebelah utara, Kabupaten Muara Enim sebelah selatan, Kabupaten Musi Banyuasin sebelah barat, dan Selat Bangka sebelah timur. Kecamatan terluas yaitu Kecamatan Banyuasin II dengan luas wilayah 3.632,40 km atau sekitar 30,70% dari luas wilayah kabupaten. Sedangkan kecamatan dengan luas terkecil adalah Kecamatan Sumber Marga Telang dengan luas wilayah 174,89 km2 atau sekitar 1,48% dari luas wilayah keseluruhan kabupaten.
 
 **Iklim dan Kondisi Lingkungan**
 
-Berdasarkan data BMKG tahun 2023, Sumatera Selatan memiliki suhu rata-rata 30,2ºC dengan curah hujan mencapai 2.218,9 mm dan 199 hari hujan. Wilayah hutan di Sumatera Selatan mencakup area seluas 3.385,01 ribu ha, yang terbagi menjadi hutan lindung (566,62 ribu ha), konservasi (511,97 ribu ha), suaka alam dan pelestarian alam (256,23 ribu ha), serta hutan produksi (2.050,22 ribu ha).
+Seperti kebanyakan kondisi klimatologi di wilayah Indonesia, wilayah Kabupaten Banyuasin memiliki 2 musim, yaitu musim kemarau dan penghujan dengan suhu rata - rata 26,10' - 27,40' Celcius dan kelembaban rata - rata dan kelembaban relatif 69,4% - 85,5% sepanjang tahun. Kondisi iklim Kabupaten Banyuasin secara umum beriklim tropis basah dengan curah hujan rata - rata 2.723 mm/tahun.
+
+Kabupaten Banyuasin memiliki topografi 80% wilayah datar berupa lahan rawa pasang surut dan rawa lebak, sedangkan yang 20% lagi berombak sampai bergelombang berupa lahan kering dengan sebaran ketinggian 0 - 40 meter di atas permukaan laut. Dari sisi hidrologi berdasarkan sifat tata air, wilayah Kabupaten Banyuasin dapat dibedakan menjadi daerah dataran kering dan daerah dataran basah yang sangat dipengaruhi oleh pola aliran sungai.
 
 **Demografi**
 
-Menurut Hasil Proyeksi Penduduk Indonesia 2020-2050 berdasarkan Sensus Penduduk 2020, populasi Sumatera Selatan pada tahun 2023 mencapai 8,74 juta jiwa, terdiri dari 4,45 juta jiwa laki-laki dan 4,29 juta jiwa perempuan. Pertumbuhan penduduk sejak tahun 2020 tercatat sebesar 1,21 persen, dengan rasio jenis kelamin 103,83.
+Menurut hasil proyeksi penduduk Indonesia 2020-2050 berdasarkan Sensus Penduduk 2020, populasi Kabupaten Banyuasin pada tahun 2023 mencapai 850 ribu jiwa, terdiri dari 434 ribu jiwa laki-laki dan 416 ribu jiwa perempuan. Pertumbuhan penduduk sejak tahun 2020 tercatat sebesar 1,07 persen, dengan rasio jenis kelamin 104,69.
 
-Kepadatan penduduk provinsi ini mencapai 100,76 jiwa/km2, dengan variasi signifikan antar kabupaten/kota. Kota Palembang memiliki kepadatan tertinggi sebesar 4.840,63 jiwa/km2, sedangkan Kabupaten Musi Rawas Utara tercatat terendah dengan 33 jiwa/km2.
+Kepadatan penduduk provinsi ini mencapai 67,72 jiwa/km2, dengan variasi signifikan antar kecamatan. Kecamatan Talang Kelapa yang berbatasan langsung dengan Kota Palembang memiliki kepadatan tertinggi sebesar 320,90 jiwa/km2, sedangkan Banyuasin II tercatat terendah dengan 7,83 jiwa/km2.
 
 **Sektor Pertanian dan Ekonomi**
 
-Sektor pertanian tahun 2023 mencatat luas panen padi 502,16 ribu ha dengan produksi 2,76 juta ton GKG dan produktivitas 55,00 ku/ha. Produksi tanaman palawija mencapai 826,84 ribu ton jagung dan 48,79 ton kedelai.
+Sektor pertanian tahun 2023 didominasi pertanian karet dengan luas panen karet dengan luas panen 103,9 ribu hektar, kelapa sawit 53,2 ribu hektar, dan kelapa 46,9 ribu hektar. Sedangkan luas panen kopi dan kakao masing - masing hanya 736 hektar dan 37,75 hektar.
 
-Perkembangan ekonomi yang diukur melalui PDRB menunjukkan peningkatan dari 453,40 triliun rupiah pada 2019 menjadi 629,10 triliun rupiah pada 2023, atau naik 38,75 persen. Tiga sektor utama penyumbang PDRB tahun 2023 adalah pertambangan dan penggalian (26,61 persen), industri pengolahan (17,84 persen), dan pertanian, kehutanan, dan perikanan (13,10 persen).
+Perkembangan ekonomi yang diukur melalui PDRB menunjukkan peningkatan dari 28,6 triliun rupiah pada 2019 menjadi 37,4 triliun rupiah pada 2023, atau naik 30,77 %. Tiga sektor utama penyumbang PDRB tahun 2023 adalah pertanian, kehutanan, dan perikanan (31,16 %), industri pengolahan (26,82 %), dan perdagangan besar dan eceran (14,92 %).
 
 **Tantangan Sosial Ekonomi**
 
-Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami penurunan dari 5,23 persen (2022) menjadi 5,08 persen (2023). Dalam konteks regional Sumatera bagian Selatan, Sumatera Selatan mencatat jumlah penduduk miskin tertinggi sebesar 1,04 juta jiwa pada 2023, jauh di atas Provinsi Kepulauan Bangka Belitung yang hanya memiliki 0,068 juta jiwa penduduk miskin.
+Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami penurunan dari 5,32 % (2022) menjadi 5,06 % (2023). Kabupaten Banyuasin mencatat jumlah penduduk miskin tertinggi keempat di Sumatera Selatan sebesar 85,88 ribu jiwa pada 2023. Sedangkan Indeks Pembangunan Manusia Kabupaten Banyuasin tercatat 70,67 dan masih di bawah rata - rata provinsi dengan nilai indeks 73,18.
 :::
 
 # Skema Teknis Pembuatan Tipologi
 
 ::: column-page
-![](output/flowchart_typology.svg){fig-align="center"}
+![](output/flowchart_typology.svg){fig-align="center"} **Diagram alir pengembangan tipologi wilayah berbasis data dan analisis spasial**. Alur kerja dimulai dari (1) penyiapan data melalui pemilihan variabel, pengumpulan, dan penanganan data kosong, dilanjutkan dengan (2) pengolahan data untuk memastikan kualitas analisis statistik. Tahapan (3) reduksi dimensi dilakukan menggunakan metode Analisis Komponen Utama (PCA) untuk menyederhanakan kompleksitas data, sementara (4) analisis jarak antar desa menangkap aspek spasial. Kedua hasil ini dikombinasikan dalam (5) analisis klaster untuk mengidentifikasi kelompok-kelompok wilayah yang memiliki karakteristik serupa. Terakhir, hasil pengelompokan dirangkum dalam (6) tabel ringkasan dan (7) divisualisasikan dalam bentuk peta interaktif untuk memudahkan interpretasi.
+
+Analisis tipologi wilayah dilakukan menggunakan bahasa pemrograman `R` dengan memanfaatkan *library `tidyverse`* untuk pengolahan data, *`sf`* untuk analisis spasial, *`leaflet`* untuk peta interaktif, serta beberapa *`library`* pendukung lainnya. Laman interaktif ini disusun menggunakan *`Quarto`*.
 :::
 
 # Daftar Variabel Penyusun Tipologi
@@ -200,11 +204,11 @@ fviz_cos2(pca_result, choice = "var", axes = 3, top=10)
 
 ![](output/plot_pca_eval_SumSEL.png)
 
-Grafik Eigenvalue (atas) menunjukkan nilai eigen untuk setiap komponen utama (PC), di mana PC1 memiliki nilai tertinggi sekitar 8 dan nilai semakin menurun untuk PC berikutnya. Garis merah pada nilai 1 menandakan batas minimum nilai eigen yang biasanya digunakan sebagai acuan pemilihan komponen yang penting.
+Hasil analisis komponen utama (PCA) ditampilkan dalam tiga grafik Grafik atas menunjukkan nilai eigen untuk setiap komponen utama, dengan garis merah horizontal menandai nilai eigen = 1, yang merupakan salah satu praktik umum dalam mencari keseimbangan antara penyederhanaan data dan menjaga kekayaan informasi data aslinya. Dari grafik tersebut, teridentifikasi 16 komponen utama pertama yang memiliki nilai eigen lebih besar dari 1, yang kemudian digunakan dalam langkah selanjutnya, analisis klaster.
 
-**Grafik CVE (Cumulative Variance Explained,** kiri bawah**)** menunjukkan total variasi data yang dapat dijelaskan secara kumulatif, di mana dengan 20 PC pertama dapat menjelaskan sekitar 65% variasi data. **PVE (Proportion of Variance Explained,** kiri bawah**)** memperlihatkan kontribusi masing-masing PC, dengan PC1 menjelaskan sekitar 15% variasi data.
+Panel tengah menampilkan Cumulative Variance Explained (CVE) dan Proportion of Variance Explained (PVE). Ke-16 komponen utama yang dipilih ini secara kumulatif menjelaskan lebih dari 60% variasi dalam dataset, memadai untuk menangkap intisari dari data biofisik dan sosial-ekonomi wilayah yang sudah dikumpulkan. Panel bawah menunjukkan scree plot yang memperlihatkan penurunan kontribusi dari setiap komponen tambahan.
 
-Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap komponen utama. Titik 'siku' dari sebuah grafik scree adalah titik di mana menambahkan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru. Hal tersebut dapat terlihat penurunan tajam dari PC1 hingga PC5 dan kemudian mulai mendatar. Bentuk kurva ini membantu kita menentukan berapa banyak komponen yang sebaiknya dipertahankan dalam analisis.
+Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap komponen utama. Titik 'siku' dari sebuah grafik scree adalah titik di mana menambahkan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru. Pola ini mendukung keputusan untuk menggunakan 16 komponen utama, karena setelah PC16, kontribusi tambahan dari komponen-komponen berikutnya relatif kecil.
 :::
 
 # Pengelompokan K-means
@@ -214,20 +218,27 @@ Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap kompon
 
 ![](output/plot_hclust_eval_SumSel.png)
 
-Grafik Elbow Method (A) menunjukkan penurunan total variasi dalam kelompok seiring bertambahnya jumlah kelompok (k). Titik siku (elbow) menandakan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru.
+Untuk menentukan jumlah klaster optimal dalam analisis tipologi perdesaan di Kabupaten Banyuasin, tiga metode evaluasi digunakan sebagaimana ditampilkan dalam grafik. Penentuan jumlah klaster mempertimbangkan keseimbangan antara kompleksitas (jumlah klaster) dengan keberagaman variasi yang ada pada data, sambil tetap mempertahankan interpretabilitas hasil.
 
-Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain.
+Grafik Elbow Method (A) menunjukkan penurunan total variasi dalam kelompok seiring bertambahnya jumlah kelompok (k). Titik siku (elbow) menandakan penambahan jumlah klaster tidak banyak memberikan tambahan informasi baru. Dalam hal ini, penurunan Total Within Sum of Square semakin landai setelah jumlah klaster melebihi 4.
 
-Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak. Semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan.
+Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain. Grafik ini memperlihatkan nilai tertinggi pada k=2, namun nilainya relatif stabil (di sekitar 0.3) untuk jumlah klaster yang lebih besar.
 
-## Diagram pencar 3D tipologi desa-desa di Provinsi Sumatera Selatan
+Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak, di mana semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan. Grafik menunjukkan peningkatan yang konsisten.
+
+::: callout-note
+Berdasarkan pertimbangan ketiga metrik dan kebutuhan untuk menangkap keragaman karakteristik perdesaan di Kabupaten Banyuasin, dipilih 8 klaster sebagai jumlah yang relevan untuk analisis tipologi.
+:::
+
+## Diagram pencar 3D tipologi desa-desa di Kabupaten Banyuasin
 
 -   Sumbu x, y dan z dari diagram pencar merupakan tiga komponen utama teratas dari hasil PCA.
     -   **PC1: Predominan Gradien Daratan Rendah-Tinggi**
     -   **PC2: Predominan Gradien Demografi**
     -   **PC3: Predominan Gradien Intensitas Penggunaan Lahan**
--   Tiap-titiknya mewakili sebuah desa di Provinsi Sumatera Selatan
+-   Tiap-titiknya mewakili sebuah desa di Kabupaten Banyuasin
 -   Titik yang berwarna sama berarti tergolong dalam tipologi yang sama.
+-   Pola sebaran titik memperlihatkan bahwa desa-desa yang berada pada spektrum yang berseberangan (misalnya pada ujung-ujung gradien elevasi) memiliki karakteristik yang sangat berbeda pada dimensi tersebut (desa daratan tinggi (pegunungan) vs desa daratan rendah (pesisir)).
 
 ```{r K-means cluster}
 #| warning: false
@@ -244,29 +255,40 @@ village_data <- read_csv("data_preprocessed/main_df_sumsel.csv") %>%
 # Read cluster data
 cluster_data <- sf::st_read("output/cluster_map_SumSel.shp", quiet=TRUE) %>% 
   st_drop_geometry() %>% 
+  mutate(iddesa = as.character(iddesa)) %>%
   select(village_id = iddesa, cluster = k_8)
 
 # Combine village metadata with cluster assignments
 village_metadata <- village_data %>% 
-  mutate(iddesa=as.character(iddesa)) %>% 
   select(
-    village_id = iddesa,
+    village_id = iddesa, 
     district_name = nmkab,
     subdistrict_name = nmkec, 
     village_name = nmdesa
   ) %>% 
+  mutate(village_id = as.character(village_id))
+
+village_metadata <- village_metadata %>% 
   left_join(cluster_data, by = "village_id")
+
+# Subset village_metadata
+village_metadata_banyuasin <- village_metadata %>%
+  filter(district_name == "BANYU ASIN")
 
 # Create labeled PCA data frame
 pca_labeled <- tibble(
   cbind(village_metadata, pca_results$x[,1:3])
-) %>% 
-  left_join(lookup_cluster, by="cluster") %>% 
+) %>%
+  left_join(lookup_cluster, by="cluster") %>%
   rename(Typology = name) %>% select(-cluster)
+
+# Subset pca_labeled for banyuasin
+pca_labeled_banyuasin <- pca_labeled %>%
+  filter(district_name == "BANYU ASIN")
   
 # Create interactive 3D PCA plot
 pca_plot_3d <- plot_ly(
-  data = pca_labeled,
+  data = pca_labeled_banyuasin,
   x = ~PC1,
   y = ~PC2,
   z = ~PC3,
@@ -294,16 +316,25 @@ pca_plot_3d
 
 ## Peta Tipologi
 
-**Tipologi Kerentanan Terhadap Perubahan Iklim Pada Penghidupan Berbasis Lahan di Provinsi Sumatera Selatan**
+**Tipologi Kerentanan Terhadap Perubahan Iklim Pada Penghidupan Berbasis Lahan di Kabupaten Banyuasin**
 
 ```{r Map}
 #| warning: false
 #| message: false
 #| column: screen
 
+suppressPackageStartupMessages({
+  library(bslib)
+})
+
 source("R/utilities.R")
 
-tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_Banyuasin.shp", cluster_lookup = "data_preprocessed/cluster_names.csv", col_names = "k_8")
+cluster_lookup_<- tibble(village_metadata_banyuasin
+) %>% 
+  left_join(lookup_cluster, by="cluster") %>% 
+  rename(Typology = name)
+
+tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_Banyuasin.shp", cluster_lookup = cluster_lookup_, col_names = "k_8") %>% bslib::card(full_screen = TRUE)
 
 tp_map
 ```
@@ -481,10 +512,10 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Memiliki potensi ancaman kekeringan.
 :::
 
-## **Tipologi 3**
+## **Tipologi 3 (tidak ditemukan di Kabupaten Banyuasin)**
 
 ::: callout-tip
-Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan populasi yang rendah.
+Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan populasi yang rendah
 :::
 
 ### Karakteristik berdasarkan analisis SWOT
@@ -609,7 +640,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Fluktuasi harga komoditas perkebunan
 :::
 
-## **Tipologi 5**
+## **Tipologi 5 (tidak ditemukan di Kabupaten Banyuasin)**
 
 ::: callout-tip
 Desa dataran rendah yang sebagian bertanah gambut dan jarak yang jauh dari konsesi hutan tanaman.
@@ -711,7 +742,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Krisis air bersih dan dampak lingkungan jika ekosistem hutan di sekitar desa tidak dikelola dengan baik.
 :::
 
-## **Tipologi 7**
+## **Tipologi 7 (tidak ditemukan di Kabupaten Banyuasin)**
 
 ::: callout-tip
 Peri-urban atau kota perantara (intermediary urban area)
