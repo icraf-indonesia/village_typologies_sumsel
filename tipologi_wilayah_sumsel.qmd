@@ -51,7 +51,7 @@ library(factoextra)
 
 # Pendahuluan
 
-:::: panel-tabset
+::: panel-tabset
 ## Abstrak
 
 Sumatera Selatan memiliki keragaman lanskap perdesaan yang kompleks, dengan masyarakat yang bergantung pada penghidupan berbasis lahan. Penghidupan berbasis lahan disinyalir semakin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi masih terbatas. Draft dokumen ini disusun untuk mengisi kekosongan ini dengan memahami berbagai jenis kerentanan yang mempengaruhi penghidupan berbasis lahan di Sumatera Selatan.
@@ -102,21 +102,20 @@ Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami p
 Sumatera Selatan telah mengalami peningkatan rata-rata temperatur antara 0,6 hingga 0,93 derajat Celcius berdasarkan data historis dari tahun 1976 hingga 2021 (periode 46 tahun). Ini menunjukkan laju peningkatan temperatur di Sumatera Selatan berkisar antara 0,03-0,04 derajat Celsius per tahun.
 :::
 
-Peningkatan suhu di Sumatera Selatan diprediksi akan meningkatkan kerentanan terhadap kebakaran hutan dan lahan (karhutla). Kerentanan tersebut tercermin, salah satunya,  melalui data yang menunjukkan Sumatera Selatan mengalami kejadian karhutla setiap tahunnya selama periode 2019 hingga 2023 (Balai Pengendalian Perubahan Iklim dan Kebakaran Hutan dan Lahan (PPIKHL) Wilayah Sumatera, Kementerian Lingkungan Hidup dan Kehutanan (KLHK)).
-
+Peningkatan suhu di Sumatera Selatan diprediksi akan meningkatkan kerentanan terhadap kebakaran hutan dan lahan (karhutla). Kerentanan tersebut tercermin, salah satunya, melalui data yang menunjukkan Sumatera Selatan mengalami kejadian karhutla setiap tahunnya selama periode 2019 hingga 2023 (Balai Pengendalian Perubahan Iklim dan Kebakaran Hutan dan Lahan (PPIKHL) Wilayah Sumatera, Kementerian Lingkungan Hidup dan Kehutanan (KLHK)).
 
 **Perubahan Pola Musim Hujan**
 
 Variasi pola musim di Sumatera Selatan dipengaruhi oleh siklus iklim yang lebih luas seperti ENSO dan Indian Ocean Dipole (IOD). Namun secara umum, data historis menunjukkan:
 
 ::: callout-note
-- Musim kemarau terjadi pada bulan Juli, Agustus, dan September
-- Musim hujan umumnya terjadi pada bulan November, Desember, hingga Maret
+-   Musim kemarau terjadi pada bulan Juli, Agustus, dan September
+-   Musim hujan umumnya terjadi pada bulan November, Desember, hingga Maret
 :::
 
 Ketika terjadi El Nino dan fase IOD positif, Sumatera Selatan mengalami musim kering yang lebih panjang dan intensif. Fenomena ini pernah terjadi pada tahun 1997, 2015, dan 2019 yang mengakibatkan kebakaran hutan dan lahan di sepanjang pesisir Timur Sumatera, termasuk Sumatera Selatan. Musim kemarau yang lebih panjang berpotensi menyebabkan penurunan hasil panen.
 
-Meski curah hujan dirasa meningkat di tahun 2020 hingga 2023 akibat fenomena La Nina _(triple dip)_, studi proyeksi iklim menunjukkan Sumatera bagian Selatan diprediksi akan semakin kering (jumlah hari kering yang semakin panjang) pada periode 2021-2050.
+Meski curah hujan dirasa meningkat di tahun 2020 hingga 2023 akibat fenomena La Nina *(triple dip)*, studi proyeksi iklim menunjukkan Sumatera bagian Selatan diprediksi akan semakin kering (jumlah hari kering yang semakin panjang) pada periode 2021-2050.
 
 **Dampak Banjir dan Kenaikan Muka Air Laut**
 
@@ -124,32 +123,25 @@ Studi proyeksi iklim dan oseanografi menunjukkan sebagian pesisir pantai timur S
 
 Sumatera Selatan menjadi salah satu wilayah yang tidak luput dari rangkaian bencana hidrometeorologi yang melanda Indonesia. Menurut Tim Prediksi dan Peringatan Dini Cuaca BMKG, hampir 95 persen bencana yang terjadi di Indonesia merupakan bencana hidrometeorologi. Bencana-bencana ini hadir dalam berbagai bentuk, mulai dari banjir dan banjir bandang, tanah longsor, kebakaran hutan dan lahan (karhutla), kekeringan, hingga angin puting beliung. Di tengah meningkatnya perubahan iklim global, pola cuaca diperkirakan menjadi semakin tidak menentu dan berpotensi memicu intensitas bencana hidrometeorologi yang lebih tinggi.
 
-
 ::: {style="font-size: 70%;"}
-
-
 **Referensi**
 
-- Adrian Fajriansyah. 2024. "Suhu Meningkat 6 Derajat Celsius dalam 30 Tahun, Masa Depan Lingkungan Sumsel Terancam." Kompas, August 19, 2024.
-- Akhsan, H., Irfan, M. & Iskandar, I. (2023). Dynamics of Extreme Rainfall and Its Impact on Forest and Land Fires in the Eastern Coast of Sumatra. Science and Technology Indonesia, 8(3), 403-413.
-- BMKG. (2024). Climate Early Warning System. Kedeputian Bidang Klimatologi. Accessed December 10, 2024.https://cews.bmkg.go.id/.
-- Nurlatifah, A., et al. (2024). Impact of climate change on extreme precipitation events over Sumatera Island and the Malay Peninsula. International Journal of Global Warming, 32(4), 374-398.
-- Muharomah, R. & Setiawan, B.I. (2022). Identification of climate trends and patterns in South Sumatra. Agromet, 36(2), 79-87.
-- Mulhern, O. 2020. "Sea Level Rise Projection Map – Palembang."Earth.org. July 28, 2020.https://earth.org/data_visualization/sea-level-rise-by-2100-palembang/
-- Sopaheluwakan, A., Radjab, A.F., Supari, A.,  et al. 2024. Prediksi Musim Hujan 2024/2025 di Indonesia. Jakarta: Badan Meteorologi, Klimatologi, dan Geofisika, Pusat Informasi Perubahan Iklim
-
+-   Adrian Fajriansyah. 2024. "Suhu Meningkat 6 Derajat Celsius dalam 30 Tahun, Masa Depan Lingkungan Sumsel Terancam." Kompas, August 19, 2024.
+-   Akhsan, H., Irfan, M. & Iskandar, I. (2023). Dynamics of Extreme Rainfall and Its Impact on Forest and Land Fires in the Eastern Coast of Sumatra. Science and Technology Indonesia, 8(3), 403-413.
+-   BMKG. (2024). Climate Early Warning System. Kedeputian Bidang Klimatologi. Accessed December 10, 2024.https://cews.bmkg.go.id/.
+-   Nurlatifah, A., et al. (2024). Impact of climate change on extreme precipitation events over Sumatera Island and the Malay Peninsula. International Journal of Global Warming, 32(4), 374-398.
+-   Muharomah, R. & Setiawan, B.I. (2022). Identification of climate trends and patterns in South Sumatra. Agromet, 36(2), 79-87.
+-   Mulhern, O. 2020. "Sea Level Rise Projection Map – Palembang."Earth.org. July 28, 2020.https://earth.org/data_visualization/sea-level-rise-by-2100-palembang/
+-   Sopaheluwakan, A., Radjab, A.F., Supari, A., et al. 2024. Prediksi Musim Hujan 2024/2025 di Indonesia. Jakarta: Badan Meteorologi, Klimatologi, dan Geofisika, Pusat Informasi Perubahan Iklim
 :::
-
-::::
+:::
 
 # Skema Teknis Pembuatan Tipologi
 
 ::: column-page
-![](output/flowchart_typology.svg){fig-align="center"}
-**Diagram alir pengembangan tipologi wilayah berbasis data dan analisis spasial**. Alur kerja dimulai dari (1) penyiapan data melalui pemilihan variabel, pengumpulan, dan penanganan data kosong, dilanjutkan dengan (2) pengolahan data untuk memastikan kualitas analisis statistik. Tahapan (3) reduksi dimensi dilakukan menggunakan metode Analisis Komponen Utama (PCA) untuk menyederhanakan kompleksitas data, sementara (4) analisis jarak antar desa menangkap aspek spasial. Kedua hasil ini dikombinasikan dalam (5) analisis klaster untuk mengidentifikasi kelompok-kelompok wilayah yang memiliki karakteristik serupa. Terakhir, hasil pengelompokan dirangkum dalam (6) tabel ringkasan dan (7) divisualisasikan dalam bentuk peta interaktif untuk memudahkan interpretasi.
+![](output/flowchart_typology.svg){fig-align="center"} **Diagram alir pengembangan tipologi wilayah berbasis data dan analisis spasial**. Alur kerja dimulai dari (1) penyiapan data melalui pemilihan variabel, pengumpulan, dan penanganan data kosong, dilanjutkan dengan (2) pengolahan data untuk memastikan kualitas analisis statistik. Tahapan (3) reduksi dimensi dilakukan menggunakan metode Analisis Komponen Utama (PCA) untuk menyederhanakan kompleksitas data, sementara (4) analisis jarak antar desa menangkap aspek spasial. Kedua hasil ini dikombinasikan dalam (5) analisis klaster untuk mengidentifikasi kelompok-kelompok wilayah yang memiliki karakteristik serupa. Terakhir, hasil pengelompokan dirangkum dalam (6) tabel ringkasan dan (7) divisualisasikan dalam bentuk peta interaktif untuk memudahkan interpretasi.
 
-Analisis tipologi wilayah dilakukan menggunakan bahasa pemrograman `R` dengan memanfaatkan _library `tidyverse`_ untuk pengolahan data, _`sf`_ untuk analisis spasial, _`leaflet`_ untuk peta interaktif, serta beberapa _`library`_ pendukung lainnya. Laman interaktif ini disusun menggunakan _`Quarto`_.
-
+Analisis tipologi wilayah dilakukan menggunakan bahasa pemrograman `R` dengan memanfaatkan *library `tidyverse`* untuk pengolahan data, *`sf`* untuk analisis spasial, *`leaflet`* untuk peta interaktif, serta beberapa *`library`* pendukung lainnya. Laman interaktif ini disusun menggunakan *`Quarto`*.
 :::
 
 # Daftar Variabel Penyusun Tipologi
@@ -211,11 +203,8 @@ pca_df |>
 
 ## Interpretasi 3 Komponen Utama (PCs) Paling Berpengaruh
 
-
 ::: callout-note
-
 **Diagram batang cos² (kosinus kuadrat)** di bawah menampilkan tingkat representasi setiap variabel pada komponen utama hasil analisis PCA. Nilai cos² berkisar antara 0 hingga 1, di mana nilai yang mendekati 1 menunjukkan variabel tersebut memiliki kontribusi yang kuat pada komponen utama yang bersangkutan. Sebaliknya, nilai yang mendekati 0 mengindikasikan variabel tersebut kurang berkontribusi pada komponen tersebut.
-
 :::
 
 **PC1: Predominan Gradien Daratan Rendah-Tinggi**
@@ -281,9 +270,7 @@ Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan ke
 Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak, di mana semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan. Grafik menunjukkan peningkatan yang konsisten.
 
 ::: callout-note
-
 Berdasarkan pertimbangan ketiga metrik dan kebutuhan untuk menangkap keragaman karakteristik perdesaan di Sumatera Selatan, dipilih 8 klaster sebagai jumlah yang relevan untuk analisis tipologi.
-
 :::
 
 ## Diagram pencar 3D tipologi desa-desa di Provinsi Sumatera Selatan
@@ -311,17 +298,20 @@ village_data <- read_csv("data_preprocessed/main_df_sumsel.csv") %>%
 # Read cluster data
 cluster_data <- sf::st_read("output/cluster_map_SumSel.shp", quiet=TRUE) %>% 
   st_drop_geometry() %>% 
+  # mutate(iddesa = as.character(iddesa)) %>%
   select(village_id = iddesa, cluster = k_8)
 
 # Combine village metadata with cluster assignments
 village_metadata <- village_data %>% 
-  mutate(iddesa=as.character(iddesa)) %>% 
   select(
-    village_id = iddesa,
+    village_id = iddesa, 
     district_name = nmkab,
     subdistrict_name = nmkec, 
     village_name = nmdesa
   ) %>% 
+  mutate(village_id = as.character(village_id))
+
+village_metadata <- village_metadata %>%
   left_join(cluster_data, by = "village_id")
 
 # Create labeled PCA data frame
@@ -386,7 +376,7 @@ tp_map
 
 ## Karakteristik Tipologi
 
-::::::::::::::::::: panel-tabset
+::: panel-tabset
 <!-- ## Komposisi Luas Wilayah -->
 
 ```{r komposisi kecamatan}
@@ -884,7 +874,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
 -   Ekspansi kota yang tidak terencana (urban sprawl) mendorong penggunaan lahan yang tidak efisien di wilayah pinggiran.
 :::
-:::::::::::::::::::
+:::
 
 # Informasi Lanjutan
 
@@ -917,13 +907,10 @@ pca_labeled %>%
 
 ------------------------------------------------------------------------
 
-
 ::: {style="font-size: 70%;"}
-
 **Catatan**
 
 -   Dokumen ini merupakan draft awal yang masih dalam proses pengembangan dan penelaahan. Seluruh informasi, analisis, dan temuan yang disajikan bersifat tentatif dan dapat mengalami perubahan substansial pada versi finalnya. Data dan interpretasi yang terkandung dalam dokumen ini tidak dapat dijadikan acuan untuk pengambilan keputusan atau kebijakan dalam bentuk apapun.
 
 -   Setiap kesalahan, ketidakakuratan, atau inkonsistensi yang ditemukan dalam dokumen ini akan menjadi subjek revisi pada tahap-tahap berikutnya. Pembaca diharapkan untuk merujuk pada dokumen final yang nantinya telah divalidasi dan dipublikasikan secara resmi untuk keperluan pengutipan atau referensi.
-
 :::
