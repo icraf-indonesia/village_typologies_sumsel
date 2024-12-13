@@ -835,11 +835,11 @@ Rata-rata adalah angka yang sering kita gunakan untuk mengetahui gambaran umum d
 
 **Modus**
 
-Modus (Modulus) memberitahu kita tentang......
+Modus (Modulus) adalah nilai mayoritas atau nilai dengan frekuensi tinggi dari sekelompok data. Misalnya, jika modus sumber air untuk mandi/cuci sebagian besar keluarga bernilai 4, ini menunjukkan bahwa hampir semua daerah tersebut untuk keperluan mandi/cuci menggunakan air sumur.
 
 **Median**
 
-Nilai tengah (median) memberitahu kita ......
+Nilai tengah (median) memberitahu kita adalah suatu nilai yang membagi data dari sekelompok data menjadi dua bagian yang sama banyaknya setelah data tersebut diurutkan dari terendah ke tertinggi.
 :::
 
 ------------------------------------------------------------------------
