@@ -86,9 +86,16 @@ summary_df <- sumsel_map %>%
   bind_cols(cluster_data, .) %>%
   group_by(cluster) %>%
   summarise(
+    luas_klaster = sum(luas_desa),
     across(all_of(categorical_vars), ~ mode(.x)),
     across(all_of(skewed_vars), ~ median(.x, na.rm = TRUE)),
-    across(all_of(mean_vars), ~ mean(.x, na.rm = TRUE))
+    across(all_of(mean_vars), ~ sum((.x*luas_desa))),
+    .groups = "keep"
+    #across(all_of(mean_vars), ~ mean(.x, na.rm = TRUE))
+  ) %>%  ungroup() %>% 
+  mutate(
+    across(all_of(mean_vars), ~ .x/luas_klaster )
+    #across(all_of(mean_vars), ~ mean(.x, na.rm = TRUE))
   )
 
 # Transform summary dataframe to long format
