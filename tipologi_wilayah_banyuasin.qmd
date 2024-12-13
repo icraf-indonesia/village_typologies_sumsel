@@ -100,7 +100,9 @@ Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami p
 # Skema Teknis Pembuatan Tipologi
 
 ::: column-page
-![](output/flowchart_typology.svg){fig-align="center"}
+![](output/flowchart_typology.svg){fig-align="center"} **Diagram alir pengembangan tipologi wilayah berbasis data dan analisis spasial**. Alur kerja dimulai dari (1) penyiapan data melalui pemilihan variabel, pengumpulan, dan penanganan data kosong, dilanjutkan dengan (2) pengolahan data untuk memastikan kualitas analisis statistik. Tahapan (3) reduksi dimensi dilakukan menggunakan metode Analisis Komponen Utama (PCA) untuk menyederhanakan kompleksitas data, sementara (4) analisis jarak antar desa menangkap aspek spasial. Kedua hasil ini dikombinasikan dalam (5) analisis klaster untuk mengidentifikasi kelompok-kelompok wilayah yang memiliki karakteristik serupa. Terakhir, hasil pengelompokan dirangkum dalam (6) tabel ringkasan dan (7) divisualisasikan dalam bentuk peta interaktif untuk memudahkan interpretasi.
+
+Analisis tipologi wilayah dilakukan menggunakan bahasa pemrograman `R` dengan memanfaatkan *library `tidyverse`* untuk pengolahan data, *`sf`* untuk analisis spasial, *`leaflet`* untuk peta interaktif, serta beberapa *`library`* pendukung lainnya. Laman interaktif ini disusun menggunakan *`Quarto`*.
 :::
 
 # Daftar Variabel Penyusun Tipologi
@@ -202,11 +204,11 @@ fviz_cos2(pca_result, choice = "var", axes = 3, top=10)
 
 ![](output/plot_pca_eval_SumSEL.png)
 
-Grafik Eigenvalue (atas) menunjukkan nilai eigen untuk setiap komponen utama (PC), di mana PC1 memiliki nilai tertinggi sekitar 8 dan nilai semakin menurun untuk PC berikutnya. Garis merah pada nilai 1 menandakan batas minimum nilai eigen yang biasanya digunakan sebagai acuan pemilihan komponen yang penting.
+Hasil analisis komponen utama (PCA) ditampilkan dalam tiga grafik Grafik atas menunjukkan nilai eigen untuk setiap komponen utama, dengan garis merah horizontal menandai nilai eigen = 1, yang merupakan salah satu praktik umum dalam mencari keseimbangan antara penyederhanaan data dan menjaga kekayaan informasi data aslinya. Dari grafik tersebut, teridentifikasi 16 komponen utama pertama yang memiliki nilai eigen lebih besar dari 1, yang kemudian digunakan dalam langkah selanjutnya, analisis klaster.
 
-**Grafik CVE (Cumulative Variance Explained,** kiri bawah**)** menunjukkan total variasi data yang dapat dijelaskan secara kumulatif, di mana dengan 20 PC pertama dapat menjelaskan sekitar 65% variasi data. **PVE (Proportion of Variance Explained,** kiri bawah**)** memperlihatkan kontribusi masing-masing PC, dengan PC1 menjelaskan sekitar 15% variasi data.
+Panel tengah menampilkan Cumulative Variance Explained (CVE) dan Proportion of Variance Explained (PVE). Ke-16 komponen utama yang dipilih ini secara kumulatif menjelaskan lebih dari 60% variasi dalam dataset, memadai untuk menangkap intisari dari data biofisik dan sosial-ekonomi wilayah yang sudah dikumpulkan. Panel bawah menunjukkan scree plot yang memperlihatkan penurunan kontribusi dari setiap komponen tambahan.
 
-Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap komponen utama. Titik 'siku' dari sebuah grafik scree adalah titik di mana menambahkan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru. Hal tersebut dapat terlihat penurunan tajam dari PC1 hingga PC5 dan kemudian mulai mendatar. Bentuk kurva ini membantu kita menentukan berapa banyak komponen yang sebaiknya dipertahankan dalam analisis.
+Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap komponen utama. Titik 'siku' dari sebuah grafik scree adalah titik di mana menambahkan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru. Pola ini mendukung keputusan untuk menggunakan 16 komponen utama, karena setelah PC16, kontribusi tambahan dari komponen-komponen berikutnya relatif kecil.
 :::
 
 # Pengelompokan K-means
@@ -216,20 +218,27 @@ Grafik scree memperlihatkan penurunan proporsi variansi (PVE) dari setiap kompon
 
 ![](output/plot_hclust_eval_SumSel.png)
 
-Grafik Elbow Method (A) menunjukkan penurunan total variasi dalam kelompok seiring bertambahnya jumlah kelompok (k). Titik siku (elbow) menandakan penambahan jumlah kluster tidak banyak memberikan tambahan informasi baru.
+Untuk menentukan jumlah klaster optimal dalam analisis tipologi perdesaan di Kabupaten Banyuasin, tiga metode evaluasi digunakan sebagaimana ditampilkan dalam grafik. Penentuan jumlah klaster mempertimbangkan keseimbangan antara kompleksitas (jumlah klaster) dengan keberagaman variasi yang ada pada data, sambil tetap mempertahankan interpretabilitas hasil.
 
-Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain.
+Grafik Elbow Method (A) menunjukkan penurunan total variasi dalam kelompok seiring bertambahnya jumlah kelompok (k). Titik siku (elbow) menandakan penambahan jumlah klaster tidak banyak memberikan tambahan informasi baru. Dalam hal ini, penurunan Total Within Sum of Square semakin landai setelah jumlah klaster melebihi 4.
 
-Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak. Semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan.
+Grafik Silhouette Method (B) mengukur seberapa baik setiap objek cocok dengan kelompoknya sendiri dibandingkan dengan kelompok lain. Grafik ini memperlihatkan nilai tertinggi pada k=2, namun nilainya relatif stabil (di sekitar 0.3) untuk jumlah klaster yang lebih besar.
 
-## Diagram pencar 3D tipologi desa-desa di Provinsi Sumatera Selatan
+Grafik Gap Statistic (C) membandingkan pengelompokan data asli dengan data acak, di mana semakin tinggi nilai gap statistic, semakin baik kualitas pengelompokan yang dihasilkan. Grafik menunjukkan peningkatan yang konsisten.
+
+::: callout-note
+Berdasarkan pertimbangan ketiga metrik dan kebutuhan untuk menangkap keragaman karakteristik perdesaan di Kabupaten Banyuasin, dipilih 8 klaster sebagai jumlah yang relevan untuk analisis tipologi.
+:::
+
+## Diagram pencar 3D tipologi desa-desa di Kabupaten Banyuasin
 
 -   Sumbu x, y dan z dari diagram pencar merupakan tiga komponen utama teratas dari hasil PCA.
     -   **PC1: Predominan Gradien Daratan Rendah-Tinggi**
     -   **PC2: Predominan Gradien Demografi**
     -   **PC3: Predominan Gradien Intensitas Penggunaan Lahan**
--   Tiap-titiknya mewakili sebuah desa di Provinsi Sumatera Selatan
+-   Tiap-titiknya mewakili sebuah desa di Kabupaten Banyuasin
 -   Titik yang berwarna sama berarti tergolong dalam tipologi yang sama.
+-   Pola sebaran titik memperlihatkan bahwa desa-desa yang berada pada spektrum yang berseberangan (misalnya pada ujung-ujung gradien elevasi) memiliki karakteristik yang sangat berbeda pada dimensi tersebut (desa daratan tinggi (pegunungan) vs desa daratan rendah (pesisir)).
 
 ```{r K-means cluster}
 #| warning: false
@@ -246,29 +255,40 @@ village_data <- read_csv("data_preprocessed/main_df_sumsel.csv") %>%
 # Read cluster data
 cluster_data <- sf::st_read("output/cluster_map_SumSel.shp", quiet=TRUE) %>% 
   st_drop_geometry() %>% 
+  mutate(iddesa = as.character(iddesa)) %>%
   select(village_id = iddesa, cluster = k_8)
 
 # Combine village metadata with cluster assignments
 village_metadata <- village_data %>% 
-  mutate(iddesa=as.character(iddesa)) %>% 
   select(
-    village_id = iddesa,
+    village_id = iddesa, 
     district_name = nmkab,
     subdistrict_name = nmkec, 
     village_name = nmdesa
   ) %>% 
+  mutate(village_id = as.character(village_id))
+
+village_metadata <- village_metadata %>% 
   left_join(cluster_data, by = "village_id")
+
+# Subset village_metadata
+village_metadata_banyuasin <- village_metadata %>%
+  filter(district_name == "BANYU ASIN")
 
 # Create labeled PCA data frame
 pca_labeled <- tibble(
   cbind(village_metadata, pca_results$x[,1:3])
-) %>% 
-  left_join(lookup_cluster, by="cluster") %>% 
+) %>%
+  left_join(lookup_cluster, by="cluster") %>%
   rename(Typology = name) %>% select(-cluster)
+
+# Subset pca_labeled for banyuasin
+pca_labeled_banyuasin <- pca_labeled %>%
+  filter(district_name == "BANYU ASIN")
   
 # Create interactive 3D PCA plot
 pca_plot_3d <- plot_ly(
-  data = pca_labeled,
+  data = pca_labeled_banyuasin,
   x = ~PC1,
   y = ~PC2,
   z = ~PC3,
@@ -303,9 +323,18 @@ pca_plot_3d
 #| message: false
 #| column: screen
 
+suppressPackageStartupMessages({
+  library(bslib)
+})
+
 source("R/utilities.R")
 
-tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_Banyuasin.shp", cluster_lookup = "data_preprocessed/cluster_names.csv", col_names = "k_8")
+cluster_lookup_<- tibble(village_metadata_banyuasin
+) %>% 
+  left_join(lookup_cluster, by="cluster") %>% 
+  rename(Typology = name)
+
+tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_Banyuasin.shp", cluster_lookup = cluster_lookup_, col_names = "k_8") %>% bslib::card(full_screen = TRUE)
 
 tp_map
 ```
@@ -483,6 +512,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Memiliki potensi ancaman kekeringan.
 :::
 
+<<<<<<< HEAD
 ## **Tipologi 3 (tidak ditemukan di Kabupaten Banyuasin)**
 
 ::: callout-tip
@@ -611,57 +641,11 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Fluktuasi harga komoditas perkebunan
 :::
 
+<<<<<<< HEAD
 ## **Tipologi 5 (tidak ditemukan di Kabupaten Banyuasin)**
+=======
+>>>>>>> 171d5114134f6b5c3b972e1d314df717a8e1d075
 
-::: callout-tip
-Desa dataran rendah yang sebagian bertanah gambut dan jarak yang jauh dari konsesi hutan tanaman.
-:::
-
-### Karakteristik berdasarkan analisis SWOT
-
-::: {layout-ncol="2"}
-#### Kekuatan (*Strengths*)
-
-Faktor-faktor internal yang membantu pencapaian tujuan:
-
--   Keberadaan lahan gambut yang menjadi kawasan penyerap karbon dan pengatur tata air jika dikelola dengan baik.
-
--   Dominasi area perkebunan karet dan kelapa sawit yang dapat mendukung ekonomi masyarakat dan daerah dengan pengelolaan berkelanjutan.
-
-    ------------------------------------------------------------------------
-
-#### Kelemahan (*Weaknesses*)
-
-Faktor-faktor internal yang menghalangi pencapaian tujuan:
-
--   Risiko kebakaran lahan tinggi, yang sering terjadi pada ekosistem gambut terutama di musim kemarau.
-
--   Kerentanan tanah gambut terhadap kerusakan, seperti subsiden dan kehilangan fungsi ekosistem akibat pengelolaan tidak ramah gambut.
-
--   Ketergantungan pada sumber air tadah hujan, menjadikan desa sangat rentan terhadap kekeringan saat musim kering.
-
-    ------------------------------------------------------------------------
-
-#### Peluang (*Opportunities*)
-
-Faktor-faktor eksternal yang membantu pencapaian tujuan:
-
--   Mengembangkan program mitigasi kebakaran gambut dan konservasi yang terintegrasi dengan kebijakan nasional.
-
--   Potensi peningkatan sistem manajemen air untuk meningkatkan akses air bersih dan mengurangi ketergantungan pada hujan.
-
-    ------------------------------------------------------------------------
-
-#### Ancaman (*Threats*)
-
-Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
-
--   Kondisi iklim ekstrem seperti kekeringan yang memperburuk risiko kebakaran gambut.
-
--   Degradasi lahan gambut yang berdampak langsung pada fungsi ekosistem, seperti penyediaan air dan penyimpanan karbon.
-
--   Minimnya akses ke tambang, membatasi diversifikasi ekonomi untuk mendukung pemulihan pascabencana.
-:::
 
 ## **Tipologi 6**
 
@@ -713,6 +697,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Krisis air bersih dan dampak lingkungan jika ekosistem hutan di sekitar desa tidak dikelola dengan baik.
 :::
 
+<<<<<<< HEAD
 ## **Tipologi 7 (tidak ditemukan di Kabupaten Banyuasin)**
 
 ::: callout-tip

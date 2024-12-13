@@ -133,8 +133,9 @@ Sumatera Selatan menjadi salah satu wilayah yang tidak luput dari rangkaian benc
 -   Muharomah, R. & Setiawan, B.I. (2022). Identification of climate trends and patterns in South Sumatra. Agromet, 36(2), 79-87.
 -   Mulhern, O. 2020. "Sea Level Rise Projection Map – Palembang."Earth.org. July 28, 2020.https://earth.org/data_visualization/sea-level-rise-by-2100-palembang/
 -   Sopaheluwakan, A., Radjab, A.F., Supari, A., et al. 2024. Prediksi Musim Hujan 2024/2025 di Indonesia. Jakarta: Badan Meteorologi, Klimatologi, dan Geofisika, Pusat Informasi Perubahan Iklim
+
 :::
-:::::::
+:::
 
 # Skema Teknis Pembuatan Tipologi
 
@@ -298,17 +299,20 @@ village_data <- read_csv("data_preprocessed/main_df_sumsel.csv") %>%
 # Read cluster data
 cluster_data <- sf::st_read("output/cluster_map_SumSel.shp", quiet=TRUE) %>% 
   st_drop_geometry() %>% 
+  # mutate(iddesa = as.character(iddesa)) %>%
   select(village_id = iddesa, cluster = k_8)
 
 # Combine village metadata with cluster assignments
 village_metadata <- village_data %>% 
-  mutate(iddesa=as.character(iddesa)) %>% 
   select(
-    village_id = iddesa,
+    village_id = iddesa, 
     district_name = nmkab,
     subdistrict_name = nmkec, 
     village_name = nmdesa
   ) %>% 
+  mutate(village_id = as.character(village_id))
+
+village_metadata <- village_metadata %>%
   left_join(cluster_data, by = "village_id")
 
 # Create labeled PCA data frame
@@ -373,7 +377,7 @@ tp_map
 
 ## Karakteristik Tipologi
 
-::::::::::::::::::: panel-tabset
+::: panel-tabset
 <!-- ## Komposisi Luas Wilayah -->
 
 ```{r komposisi kecamatan}
@@ -871,7 +875,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
 -   Ekspansi kota yang tidak terencana (urban sprawl) mendorong penggunaan lahan yang tidak efisien di wilayah pinggiran.
 :::
-:::::::::::::::::::
+:::
 
 # Informasi Lanjutan
 
