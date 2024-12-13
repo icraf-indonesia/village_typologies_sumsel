@@ -512,65 +512,6 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Memiliki potensi ancaman kekeringan.
 :::
 
-## **Tipologi 3 (tidak ditemukan di Kabupaten Banyuasin)**
-
-::: callout-tip
-Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan populasi yang rendah
-:::
-
-### Karakteristik berdasarkan analisis SWOT
-
-::: {layout-ncol="2"}
-#### Kekuatan (*Strengths*)
-
-Faktor-faktor internal yang membantu pencapaian tujuan:
-
--   Terdapat potensi perkebunan karet dan sawit dan hutan tanaman dengan proximitas ke konsesi yang cenderung dekat.
-
--   Terdapat area ekosistem gambut dengan fungsi budidaya (5,59%) lebih luas dibanding EG dengan fungsi lindung (0,88%).
-
--   Sebagian besar lahan merupakan area budidaya (65,14%) dengan tutupan lahan perkebunan (sawit) sebesar 18,25%.
-
--   Jenis komoditas unggulan berupa karet dan kelapa sawit.
-
--   Terdapat lahan garapan potensial sebanyak 83,40% dari total wilayah tipologi.
-
--   Sebagian masyarakat memiliki mata pencaharian yang bergantung pada kondisi alam.
-
-    ------------------------------------------------------------------------
-
-#### Kelemahan (*Weaknesses*)
-
-Faktor-faktor internal yang menghalangi pencapaian tujuan:
-
--   Masyarakat memiliki kebiasaan membakar ladang kebun untuk proses usaha pertanian selama setahun terakhir.
-
--   Jarak ke gambut (18.489,16 m) dan kanal cukup dekat (22.053,46 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau.
-
--   Persentase hutan alami rendah (0,38%) dan luas deforestasi mencapai 37,89 ha.
-
--   Jarak terhadap jalan (372,73 m) dan pabrik pemrosesan (26.542,48 m) jauh, mengindikasikan akses terhadap bahan baku dan pasar yang relative sulit.
-
--   Tingkat kemiskinan masyarakat cenderung tinggi (17,43%).
-
-    ------------------------------------------------------------------------
-
-#### Peluang (*Opportunities*)
-
-Faktor-faktor eksternal yang membantu pencapaian tujuan:
-
--   
-
-    ------------------------------------------------------------------------
-
-#### Ancaman (*Threats*)
-
-Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
-
--   Musim kemarau meningkatkan risiko terjadinya kebakaran hutan dan lahan gambut.
-
--   Fluktuasi harga komoditas perkebunan
-:::
 
 ## **Tipologi 4**
 
@@ -640,57 +581,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Fluktuasi harga komoditas perkebunan
 :::
 
-## **Tipologi 5 (tidak ditemukan di Kabupaten Banyuasin)**
 
-::: callout-tip
-Desa dataran rendah yang sebagian bertanah gambut dan jarak yang jauh dari konsesi hutan tanaman.
-:::
-
-### Karakteristik berdasarkan analisis SWOT
-
-::: {layout-ncol="2"}
-#### Kekuatan (*Strengths*)
-
-Faktor-faktor internal yang membantu pencapaian tujuan:
-
--   Keberadaan lahan gambut yang menjadi kawasan penyerap karbon dan pengatur tata air jika dikelola dengan baik.
-
--   Dominasi area perkebunan karet dan kelapa sawit yang dapat mendukung ekonomi masyarakat dan daerah dengan pengelolaan berkelanjutan.
-
-    ------------------------------------------------------------------------
-
-#### Kelemahan (*Weaknesses*)
-
-Faktor-faktor internal yang menghalangi pencapaian tujuan:
-
--   Risiko kebakaran lahan tinggi, yang sering terjadi pada ekosistem gambut terutama di musim kemarau.
-
--   Kerentanan tanah gambut terhadap kerusakan, seperti subsiden dan kehilangan fungsi ekosistem akibat pengelolaan tidak ramah gambut.
-
--   Ketergantungan pada sumber air tadah hujan, menjadikan desa sangat rentan terhadap kekeringan saat musim kering.
-
-    ------------------------------------------------------------------------
-
-#### Peluang (*Opportunities*)
-
-Faktor-faktor eksternal yang membantu pencapaian tujuan:
-
--   Mengembangkan program mitigasi kebakaran gambut dan konservasi yang terintegrasi dengan kebijakan nasional.
-
--   Potensi peningkatan sistem manajemen air untuk meningkatkan akses air bersih dan mengurangi ketergantungan pada hujan.
-
-    ------------------------------------------------------------------------
-
-#### Ancaman (*Threats*)
-
-Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
-
--   Kondisi iklim ekstrem seperti kekeringan yang memperburuk risiko kebakaran gambut.
-
--   Degradasi lahan gambut yang berdampak langsung pada fungsi ekosistem, seperti penyediaan air dan penyimpanan karbon.
-
--   Minimnya akses ke tambang, membatasi diversifikasi ekonomi untuk mendukung pemulihan pascabencana.
-:::
 
 ## **Tipologi 6**
 
@@ -742,49 +633,6 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Krisis air bersih dan dampak lingkungan jika ekosistem hutan di sekitar desa tidak dikelola dengan baik.
 :::
 
-## **Tipologi 7 (tidak ditemukan di Kabupaten Banyuasin)**
-
-::: callout-tip
-Peri-urban atau kota perantara (intermediary urban area)
-:::
-
-### Karakteristik berdasarkan analisis SWOT
-
-::: {layout-ncol="2"}
-#### Kekuatan (*Strengths*)
-
-Faktor-faktor internal yang membantu pencapaian tujuan:
-
--   Memiliki kedekatan dengan sungai yang menyediakan sumber daya air untuk irigasi maupun keperluan industri pengolahan.
-
--   Infrastruktur energi yang memadai dengan hampir seluruh area terelektrifikasi.
-
-    ------------------------------------------------------------------------
-
-#### Kelemahan (*Weaknesses*)
-
-Faktor-faktor internal yang menghalangi pencapaian tujuan:
-
--   Konflik penggunaan lahan di daerah pinggiran kota akibat perluasan lahan untuk pertanian dan pemukiman mengancam keseimbangan ekologi.
-
-    ------------------------------------------------------------------------
-
-#### Peluang (*Opportunities*)
-
-Faktor-faktor eksternal yang membantu pencapaian tujuan:
-
--   Infrastruktur dan konektivitas logistik yang menunjang distribusi barang dan jasa antara pusat perkotaan dengan kota perantara dapat menunjang kegiatan ekonomi masyarakat (terutama dalam menopang kegiatan utama pertanian yang cenderung tersebar).
-
-    ------------------------------------------------------------------------
-
-#### Ancaman (*Threats*)
-
-Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
-
--   Praktik penggunaan lahan yang tidak berkelanjutan, penggundulan hutan, dan polusi industri mengancam penyediaan jasa ekosistem dan kelayakan hidup di pinggiran kota.
-
--   Distribusi sumber daya dan layanan yang tidak merata antara pusat kota (pusat pemerintahan) dan pusat kota kecamatan yang tersebar dapat memicu ketimpangan pembangunan.
-:::
 
 ## **Tipologi 8**
 
