@@ -835,7 +835,7 @@ Rata-rata adalah angka yang sering kita gunakan untuk mengetahui gambaran umum d
 
 **Modus**
 
-Modus (Modulus) memberitahu kita ......
+Modus (Modulus) memberitahu kita tentang......
 
 **Median**
 
