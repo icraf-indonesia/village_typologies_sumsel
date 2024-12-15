@@ -7,9 +7,9 @@ website:
   navbar:
     left:
       - href: tipologi_wilayah_sumsel.qmd
-        text: Home
-      - tipologi_wilayah_banyuasin.qmd
-      - tipologi_wilayah_sumsel.qmd
+        text: Sumsel
+      - href: tipologi_wilayah_banyuasin.qmd
+        text: Banyuasin
 
 format:
   html:
