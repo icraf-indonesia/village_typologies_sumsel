@@ -1,3 +1,19 @@
 project:
   type: website
   output-dir: docs
+
+website:
+  title: "Tipologi Kerentanan Perdesaan"
+  navbar:
+    left:
+      - href: tipologi_wilayah_sumsel.qmd
+        text: Home
+      - tipologi_wilayah_banyuasin.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
