@@ -8,7 +8,7 @@
  collate  Indonesian_Indonesia.utf8
  ctype    Indonesian_Indonesia.utf8
  tz       Asia/Bangkok
- date     2024-12-15
+ date     2024-12-16
  pandoc   3.2.1 @ C:/Users/fmahezs/AppData/Local/ANACON~1/envs/LUMENS~1/Library/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────

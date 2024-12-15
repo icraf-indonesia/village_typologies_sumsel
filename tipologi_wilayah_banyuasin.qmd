@@ -240,6 +240,10 @@ Berdasarkan pertimbangan ketiga metrik dan kebutuhan untuk menangkap keragaman k
 -   Titik yang berwarna sama berarti tergolong dalam tipologi yang sama.
 -   Pola sebaran titik memperlihatkan bahwa desa-desa yang berada pada spektrum yang berseberangan (misalnya pada ujung-ujung gradien elevasi) memiliki karakteristik yang sangat berbeda pada dimensi tersebut (desa daratan tinggi (pegunungan) vs desa daratan rendah (pesisir)).
 
+::: callout-note
+Analisis tipologi Kabupaten Banyuasin dilakukan berdasarkan bagian dari hasil analisis Provinsi Sumatera Selatan. **Hasil analisis menunjukkan bahwa terdapat 5 klaster tipologi di Kabupaten Banyuasin, yaitu klaster 3, 4, 5, 6, dan 8.**
+:::
+
 ```{r K-means cluster}
 #| warning: false
 #| message: false
@@ -270,10 +274,6 @@ village_metadata <- village_data %>%
 
 village_metadata <- village_metadata %>% 
   left_join(cluster_data, by = "village_id")
-
-# Subset village_metadata
-village_metadata_banyuasin <- village_metadata %>%
-  filter(district_name == "BANYU ASIN")
 
 # Create labeled PCA data frame
 pca_labeled <- tibble(
@@ -312,7 +312,7 @@ pca_plot_3d
 ```
 :::
 
-# Hasil & Interpretasi Sementara (Draft)
+# Hasil & Interpretasi
 
 ## Peta Tipologi
 
@@ -329,17 +329,31 @@ suppressPackageStartupMessages({
 
 source("R/utilities.R")
 
-cluster_lookup_<- tibble(village_metadata_banyuasin
+cluster_lookup_<- tibble(village_metadata
 ) %>% 
   left_join(lookup_cluster, by="cluster") %>% 
   rename(Typology = name)
 
-tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_Banyuasin.shp", cluster_lookup = cluster_lookup_, col_names = "k_8") %>% bslib::card(full_screen = TRUE)
+# Subset cluster for banyuasin
+cluster_lookup_banyuasin <- cluster_lookup_ %>%
+  filter(district_name == "BANYU ASIN")
+
+tp_map <- create_leaflet_map(
+  clusters_kec = "output/cluster_map_SumSel.shp",
+  cluster_lookup = cluster_lookup_,
+  col_names = "k_8",
+  show_only = "BANYU ASIN"
+) %>%
+  bslib::card(full_screen = TRUE)
 
 tp_map
 ```
 
 ## Karakteristik Tipologi
+
+::: callout-note
+Analisis tipologi Kabupaten Banyuasin dilakukan berdasarkan bagian dari hasil analisis Provinsi Sumatera Selatan. **Hasil analisis menunjukkan bahwa terdapat 5 klaster tipologi di Kabupaten Banyuasin, yaitu klaster 3, 4, 5, 6, dan 8.**
+:::
 
 ::::::::::::::::::: panel-tabset
 <!-- ## Komposisi Luas Wilayah -->
@@ -410,110 +424,109 @@ tp_map
 # fig_RT
 ```
 
-## **Tipologi 1**
+<!-- ## **Tipologi 1** -->
 
-::: callout-tip
-Tipologi desa-desa dekat hutan dengan topografi berbukit dan berada disekitar kawasan konservasi (dilindungi).
-:::
+<!-- ::: callout-tip -->
+<!-- Tipologi desa-desa dekat hutan dengan topografi berbukit dan berada disekitar kawasan konservasi (dilindungi). -->
+<!-- ::: -->
 
-### Karakteristik berdasarkan analisis SWOT
+<!-- ### Karakteristik berdasarkan analisis SWOT -->
 
-::: {layout-ncol="2"}
-#### Kekuatan (*Strengths*)
+<!-- ::: {layout-ncol="2"} -->
+<!-- #### Kekuatan (*Strengths*) -->
 
-Faktor-faktor internal yang membantu pencapaian tujuan:
+<!-- Faktor-faktor internal yang membantu pencapaian tujuan: -->
 
--   Memiliki tutupan hutan yang cenderung lebih baik dibanding daerah lainnya.
+<!-- -   Memiliki tutupan hutan yang cenderung lebih baik dibanding daerah lainnya. -->
 
--   Berada pada daerah bergunung sehingga memiliki ketersediaan sumber air yang baik (dekat dengan sumber air).
+<!-- -   Berada pada daerah bergunung sehingga memiliki ketersediaan sumber air yang baik (dekat dengan sumber air). -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Kelemahan (*Weaknesses*)
+<!-- #### Kelemahan (*Weaknesses*) -->
 
-Faktor-faktor internal yang menghalangi pencapaian tujuan:
+<!-- Faktor-faktor internal yang menghalangi pencapaian tujuan: -->
 
--   Masyarakat cenderung miskin
+<!-- -   Masyarakat cenderung miskin -->
 
--   Aksesibilitas dan infrastrukur jalan yang terbatas.
+<!-- -   Aksesibilitas dan infrastrukur jalan yang terbatas. -->
 
--   Daerah berhutan dengan ancaman deforestasi yang tinggi disbanding daerah lain.
+<!-- -   Daerah berhutan dengan ancaman deforestasi yang tinggi disbanding daerah lain. -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Peluang (*Opportunities*)
+<!-- #### Peluang (*Opportunities*) -->
 
-Faktor-faktor eksternal yang membantu pencapaian tujuan:
+<!-- Faktor-faktor eksternal yang membantu pencapaian tujuan: -->
 
--   Jasa ekosistem air di daerah ini menunjukkan potensi besar untuk mendukung berbagai aktivitas ekonomi, seperti penyediaan air bersih, energi terbarukan, dan pariwisata alam
+<!-- -   Jasa ekosistem air di daerah ini menunjukkan potensi besar untuk mendukung berbagai aktivitas ekonomi, seperti penyediaan air bersih, energi terbarukan, dan pariwisata alam -->
 
--   Daerah pegunungan berbukit yang potensial untuk pengembangan komoditi kopi
+<!-- -   Daerah pegunungan berbukit yang potensial untuk pengembangan komoditi kopi -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Ancaman (*Threats*)
+<!-- #### Ancaman (*Threats*) -->
 
-Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+<!-- Faktor-faktor eksternal yang menghalangi pencapaian tujuan: -->
 
--   Ancaman bencana longsor karena berada pada daerah bergunung dan berbukit.
+<!-- -   Ancaman bencana longsor karena berada pada daerah bergunung dan berbukit. -->
 
--   Rentan terhadap perubahan suhu udara yang ekstrem (variabilitas di siang dan malam hari).
+<!-- -   Rentan terhadap perubahan suhu udara yang ekstrem (variabilitas di siang dan malam hari). -->
 
--   Naiknya suhu global dapat mempengaruhi pola hujan, yang dapat berdampak pada ketersediaan air di daerah pegunungan, mengurangi ketahanan terhadap kekeringan, atau meningkatkan risiko banjir.
+<!-- -   Naiknya suhu global dapat mempengaruhi pola hujan, yang dapat berdampak pada ketersediaan air di daerah pegunungan, mengurangi ketahanan terhadap kekeringan, atau meningkatkan risiko banjir. -->
 
--   Budidaya pertanian yang luas pada daerah ini dapat memberi tekanan kepada area konservasi.
-:::
+<!-- -   Budidaya pertanian yang luas pada daerah ini dapat memberi tekanan kepada area konservasi. -->
+<!-- ::: -->
 
-## **Tipologi 2**
+<!-- ## **Tipologi 2** -->
 
-::: callout-tip
-Desa dengan basis aktivitas pertanian dan perkebunan serta agroforestri.
-:::
+<!-- ::: callout-tip -->
+<!-- Desa dengan basis aktivitas pertanian dan perkebunan serta agroforestri. -->
+<!-- ::: -->
 
-### Karakteristik berdasarkan analisis SWOT
+<!-- ### Karakteristik berdasarkan analisis SWOT -->
 
-::: {layout-ncol="2"}
-#### Kekuatan (*Strengths*)
+<!-- ::: {layout-ncol="2"} -->
+<!-- #### Kekuatan (*Strengths*) -->
 
-Faktor-faktor internal yang membantu pencapaian tujuan:
+<!-- Faktor-faktor internal yang membantu pencapaian tujuan: -->
 
--   Memiliki tutupan hutan yang relatif masih baik dibandingkan klister lain.
+<!-- -   Memiliki tutupan hutan yang relatif masih baik dibandingkan klister lain. -->
 
--   Merupakan daerah dengan pengembangan agroforestry terutama kopi.
+<!-- -   Merupakan daerah dengan pengembangan agroforestry terutama kopi. -->
 
--   Merupakan daerah budidaya dengan kesesuaian lahan yang baik untuk berbagai komoditi pertanian dan Perkebunan seperti karet dan kopi.
+<!-- -   Merupakan daerah budidaya dengan kesesuaian lahan yang baik untuk berbagai komoditi pertanian dan Perkebunan seperti karet dan kopi. -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Kelemahan (*Weaknesses*)
+<!-- #### Kelemahan (*Weaknesses*) -->
 
-Faktor-faktor internal yang menghalangi pencapaian tujuan:
+<!-- Faktor-faktor internal yang menghalangi pencapaian tujuan: -->
 
--   Aksesibilitas dan infrastrukur jalan yang terbatas.
+<!-- -   Aksesibilitas dan infrastrukur jalan yang terbatas. -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Peluang (*Opportunities*)
+<!-- #### Peluang (*Opportunities*) -->
 
-Faktor-faktor eksternal yang membantu pencapaian tujuan:
+<!-- Faktor-faktor eksternal yang membantu pencapaian tujuan: -->
 
--   Desa yang mengandalkan pertanian dan perkebunan dapat memanfaatkan peluang untuk hilirisasi dan diversifikasi produk turunan komoditas.
+<!-- -   Desa yang mengandalkan pertanian dan perkebunan dapat memanfaatkan peluang untuk hilirisasi dan diversifikasi produk turunan komoditas. -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Ancaman (*Threats*)
+<!-- #### Ancaman (*Threats*) -->
 
-Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+<!-- Faktor-faktor eksternal yang menghalangi pencapaian tujuan: -->
 
--   Merupakan daerah dengan potensi ancaman bencana longsor karena berada pada daerah bergunung dan berbukit.
+<!-- -   Merupakan daerah dengan potensi ancaman bencana longsor karena berada pada daerah bergunung dan berbukit. -->
 
--   Rentan terhadap perubahan temperature udara yang dapat mempengaruhi altivitas pengelolaan lahan maupun Kesehatan.
+<!-- -   Rentan terhadap perubahan temperature udara yang dapat mempengaruhi altivitas pengelolaan lahan maupun Kesehatan. -->
 
--   Memiliki potensi ancaman kekeringan.
-:::
+<!-- -   Memiliki potensi ancaman kekeringan. -->
+<!-- ::: -->
 
-<<<<<<< HEAD
-## **Tipologi 3 (tidak ditemukan di Kabupaten Banyuasin)**
+## **Tipologi 3**
 
 ::: callout-tip
 Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan populasi yang rendah
@@ -641,11 +654,57 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Fluktuasi harga komoditas perkebunan
 :::
 
-<<<<<<< HEAD
-## **Tipologi 5 (tidak ditemukan di Kabupaten Banyuasin)**
-=======
->>>>>>> 171d5114134f6b5c3b972e1d314df717a8e1d075
+## **Tipologi 5**
 
+::: callout-tip
+Desa dataran rendah yang sebagian bertanah gambut dan jarak yang jauh dari konsesi hutan tanaman.
+:::
+
+### Karakteristik berdasarkan analisis SWOT
+
+::: {layout-ncol="2"}
+#### Kekuatan (*Strengths*)
+
+Faktor-faktor internal yang membantu pencapaian tujuan:
+
+-   Keberadaan lahan gambut yang menjadi kawasan penyerap karbon dan pengatur tata air jika dikelola dengan baik.
+
+-   Dominasi area perkebunan karet dan kelapa sawit yang dapat mendukung ekonomi masyarakat dan daerah dengan pengelolaan berkelanjutan.
+
+    ------------------------------------------------------------------------
+
+#### Kelemahan (*Weaknesses*)
+
+Faktor-faktor internal yang menghalangi pencapaian tujuan:
+
+-   Risiko kebakaran lahan tinggi, yang sering terjadi pada ekosistem gambut terutama di musim kemarau.
+
+-   Kerentanan tanah gambut terhadap kerusakan, seperti subsiden dan kehilangan fungsi ekosistem akibat pengelolaan tidak ramah gambut.
+
+-   Ketergantungan pada sumber air tadah hujan, menjadikan desa sangat rentan terhadap kekeringan saat musim kering.
+
+    ------------------------------------------------------------------------
+
+#### Peluang (*Opportunities*)
+
+Faktor-faktor eksternal yang membantu pencapaian tujuan:
+
+-   Mengembangkan program mitigasi kebakaran gambut dan konservasi yang terintegrasi dengan kebijakan nasional.
+
+-   Potensi peningkatan sistem manajemen air untuk meningkatkan akses air bersih dan mengurangi ketergantungan pada hujan.
+
+    ------------------------------------------------------------------------
+
+#### Ancaman (*Threats*)
+
+Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+
+-   Kondisi iklim ekstrem seperti kekeringan yang memperburuk risiko kebakaran gambut.
+
+-   Degradasi lahan gambut yang berdampak langsung pada fungsi ekosistem, seperti penyediaan air dan penyimpanan karbon.
+
+-   Minimnya akses ke tambang, membatasi diversifikasi ekonomi untuk mendukung pemulihan pascabencana.
+:::
 
 ## **Tipologi 6**
 
@@ -697,50 +756,49 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 -   Krisis air bersih dan dampak lingkungan jika ekosistem hutan di sekitar desa tidak dikelola dengan baik.
 :::
 
-<<<<<<< HEAD
-## **Tipologi 7 (tidak ditemukan di Kabupaten Banyuasin)**
+<!-- ## **Tipologi 7 (tidak ditemukan di Kabupaten Banyuasin)** -->
 
-::: callout-tip
-Peri-urban atau kota perantara (intermediary urban area)
-:::
+<!-- ::: callout-tip -->
+<!-- Peri-urban atau kota perantara (intermediary urban area) -->
+<!-- ::: -->
 
-### Karakteristik berdasarkan analisis SWOT
+<!-- ### Karakteristik berdasarkan analisis SWOT -->
 
-::: {layout-ncol="2"}
-#### Kekuatan (*Strengths*)
+<!-- ::: {layout-ncol="2"} -->
+<!-- #### Kekuatan (*Strengths*) -->
 
-Faktor-faktor internal yang membantu pencapaian tujuan:
+<!-- Faktor-faktor internal yang membantu pencapaian tujuan: -->
 
--   Memiliki kedekatan dengan sungai yang menyediakan sumber daya air untuk irigasi maupun keperluan industri pengolahan.
+<!-- -   Memiliki kedekatan dengan sungai yang menyediakan sumber daya air untuk irigasi maupun keperluan industri pengolahan. -->
 
--   Infrastruktur energi yang memadai dengan hampir seluruh area terelektrifikasi.
+<!-- -   Infrastruktur energi yang memadai dengan hampir seluruh area terelektrifikasi. -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Kelemahan (*Weaknesses*)
+<!-- #### Kelemahan (*Weaknesses*) -->
 
-Faktor-faktor internal yang menghalangi pencapaian tujuan:
+<!-- Faktor-faktor internal yang menghalangi pencapaian tujuan: -->
 
--   Konflik penggunaan lahan di daerah pinggiran kota akibat perluasan lahan untuk pertanian dan pemukiman mengancam keseimbangan ekologi.
+<!-- -   Konflik penggunaan lahan di daerah pinggiran kota akibat perluasan lahan untuk pertanian dan pemukiman mengancam keseimbangan ekologi. -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Peluang (*Opportunities*)
+<!-- #### Peluang (*Opportunities*) -->
 
-Faktor-faktor eksternal yang membantu pencapaian tujuan:
+<!-- Faktor-faktor eksternal yang membantu pencapaian tujuan: -->
 
--   Infrastruktur dan konektivitas logistik yang menunjang distribusi barang dan jasa antara pusat perkotaan dengan kota perantara dapat menunjang kegiatan ekonomi masyarakat (terutama dalam menopang kegiatan utama pertanian yang cenderung tersebar).
+<!-- -   Infrastruktur dan konektivitas logistik yang menunjang distribusi barang dan jasa antara pusat perkotaan dengan kota perantara dapat menunjang kegiatan ekonomi masyarakat (terutama dalam menopang kegiatan utama pertanian yang cenderung tersebar). -->
 
-    ------------------------------------------------------------------------
+<!--     ------------------------------------------------------------------------ -->
 
-#### Ancaman (*Threats*)
+<!-- #### Ancaman (*Threats*) -->
 
-Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
+<!-- Faktor-faktor eksternal yang menghalangi pencapaian tujuan: -->
 
--   Praktik penggunaan lahan yang tidak berkelanjutan, penggundulan hutan, dan polusi industri mengancam penyediaan jasa ekosistem dan kelayakan hidup di pinggiran kota.
+<!-- -   Praktik penggunaan lahan yang tidak berkelanjutan, penggundulan hutan, dan polusi industri mengancam penyediaan jasa ekosistem dan kelayakan hidup di pinggiran kota. -->
 
--   Distribusi sumber daya dan layanan yang tidak merata antara pusat kota (pusat pemerintahan) dan pusat kota kecamatan yang tersebar dapat memicu ketimpangan pembangunan.
-:::
+<!-- -   Distribusi sumber daya dan layanan yang tidak merata antara pusat kota (pusat pemerintahan) dan pusat kota kecamatan yang tersebar dapat memicu ketimpangan pembangunan. -->
+<!-- ::: -->
 
 ## **Tipologi 8**
 
@@ -815,7 +873,7 @@ readxl::read_xlsx("output/summary_table_sumsel_k8.xlsx") %>% DT::datatable(optio
 ```{r}
 #| warning: false
 #| message: false
-pca_labeled %>% 
+pca_labeled_banyuasin %>% 
   select(Kabupaten = district_name,
          Kecamatan = subdistrict_name,
          Desa = village_name,
@@ -844,12 +902,11 @@ Nilai tengah (median) memberitahu kita adalah suatu nilai yang membagi data dari
 
 ------------------------------------------------------------------------
 
+::: {style="font-size: 70%;"}
 **Catatan**
-
-<p class="small">
 
 -   Dokumen ini merupakan draft awal yang masih dalam proses pengembangan dan penelaahan. Seluruh informasi, analisis, dan temuan yang disajikan bersifat tentatif dan dapat mengalami perubahan substansial pada versi finalnya. Data dan interpretasi yang terkandung dalam dokumen ini tidak dapat dijadikan acuan untuk pengambilan keputusan atau kebijakan dalam bentuk apapun.
 
 -   Setiap kesalahan, ketidakakuratan, atau inkonsistensi yang ditemukan dalam dokumen ini akan menjadi subjek revisi pada tahap-tahap berikutnya. Pembaca diharapkan untuk merujuk pada dokumen final yang nantinya telah divalidasi dan dipublikasikan secara resmi untuk keperluan pengutipan atau referensi.
 
-</p>
+:::

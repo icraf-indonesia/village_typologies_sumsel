@@ -66,7 +66,7 @@ Menggunakan pendekatan analisis klaster berbasis K-means yang dipadukan dengan P
 -   Tipologi tersebut kemudian digunakan untuk mendeskripsikan konteks kerentanan penghidupan berbasis lahan akibat perubahan iklim di Provinsi Sumatera Selatan dan potensi intervensi yang tepat sasaran untuk meningkatkan ketahanan terhadap perubahan iklim.
 :::
 
-## Deskripsi Sumatera Selatan
+## Deskripsi Provinsi Sumatera Selatan
 
 **Kondisi Geografis dan Administrasi**
 
@@ -348,7 +348,7 @@ pca_plot_3d
 ```
 ::::
 
-# Hasil & Interpretasi Sementara (Draft)
+# Hasil & Interpretasi
 
 ## Peta Tipologi
 
@@ -370,7 +370,12 @@ cluster_lookup_<- tibble(village_metadata
   left_join(lookup_cluster, by="cluster") %>% 
   rename(Typology = name)
 
-tp_map <- create_leaflet_map(clusters_kec = "output/cluster_map_SumSel.shp", cluster_lookup = cluster_lookup_, col_names = "k_8") %>% bslib::card(full_screen = TRUE)
+tp_map <- create_leaflet_map(
+  clusters_kec = "output/cluster_map_SumSel.shp",
+  cluster_lookup = cluster_lookup_,
+  col_names = "k_8"
+) %>%
+  bslib::card(full_screen = TRUE)
 
 tp_map
 ```

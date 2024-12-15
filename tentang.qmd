@@ -1,0 +1,15 @@
+---
+title: "Tentang"
+---
+
+![CIFOR-ICRAF Indonesia](output/CIFOR-ICRAF-1024x576.png){fig-align="left" width="141"}
+
+Analisis ini merupakan hasil studi yang dilakukan oleh **CIFOR-ICRAF Indonesia** tahun 2024. Informasi yang disajikan bersifat terbuka untuk publik dan dapat digunakan kembali dengan tetap menyertakan sumber asli sebagai bentuk penghargaan atas karya ini.
+
+::: callout-note
+**Catatan**
+
+-   Dokumen ini merupakan draft awal yang masih dalam proses pengembangan dan penelaahan. Seluruh informasi, analisis, dan temuan yang disajikan bersifat tentatif dan dapat mengalami perubahan substansial pada versi finalnya. Data dan interpretasi yang terkandung dalam dokumen ini tidak dapat dijadikan acuan untuk pengambilan keputusan atau kebijakan dalam bentuk apapun.
+
+-   Setiap kesalahan, ketidakakuratan, atau inkonsistensi yang ditemukan dalam dokumen ini akan menjadi subjek revisi pada tahap-tahap berikutnya. Pembaca diharapkan untuk merujuk pada dokumen final yang nantinya telah divalidasi dan dipublikasikan secara resmi untuk keperluan pengutipan atau referensi.
+:::

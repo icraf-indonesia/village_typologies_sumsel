@@ -3,13 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "Tipologi Kerentanan Perdesaan"
+  title: "Tipologi Perdesaan"
   navbar:
     left:
       - href: tipologi_wilayah_sumsel.qmd
         text: Provinsi Sumatera Selatan
       - href: tipologi_wilayah_banyuasin.qmd
         text: Kabupaten Banyuasin
+      - href: tentang.qmd
+        text: Tentang
 
 format:
   html:

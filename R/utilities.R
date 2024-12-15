@@ -217,7 +217,7 @@ visualize_pca_results <- function(pca_result, n_components = 5) {
   return(plot_pca_evaluation_criterion_combined)
 }
 
-create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
+create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL, show_only = NULL) {
   # Ensure clusters_kec is read as an sf object
   if (!inherits(clusters_kec, "sf")) {
     clusters_kec <- st_read(clusters_kec, quiet = TRUE)
@@ -236,23 +236,33 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
     }
     
     # Select the specified column if col_names is provided
-    clusters_kec <- clusters_kec |> select(any_of(col_names)) %>% rename(cluster=1)
+    clusters_kec <- clusters_kec |> select(any_of(col_names)) %>% rename(cluster = 1)
   }
-  
-  # # Read the cluster lookup table
-  # if (is.character(cluster_lookup)) {
-  #   cluster_lookup <- readr::read_csv(cluster_lookup)
-  # }
-  
   
   # Join the data with cluster names
   clusters_kec_with_name <- clusters_kec |> select(-cluster) %>% 
     bind_cols(cluster_lookup) |> 
     mutate_at(.vars = c("cluster", "Typology"), .funs = as.factor)
   
+  # Group the data by district_name for layer control
+  clusters_kec_with_name <- clusters_kec_with_name %>%
+    mutate(district_group = district_name)  
+  
+  # Filter the data if show_only is provided
+  if (!is.null(show_only)) {
+    # Ensure show_only is a character vector
+    if (!is.character(show_only)) {
+      stop("show_only must be a character vector")
+    }
+    
+    # Filter the data to include only the specified districts
+    clusters_kec_with_name <- clusters_kec_with_name %>%
+      filter(district_name %in% show_only)
+  }
+  
   # Set up the color palette
   pal <- colorFactor(palette = "Set1", domain = clusters_kec_with_name$Typology)
-
+  
   # Constructing the label string
   clusters_kec_with_name$label_content <- with(
     clusters_kec_with_name,
@@ -271,7 +281,7 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
     )
   ) |> lapply(htmltools::HTML)
   
-  # Create the leaflet map with HTML-rendered labels
+  # Create the leaflet map
   leaflet_map <- leaflet(clusters_kec_with_name) |>
     addProviderTiles(providers$CyclOSM) |>
     addPolygons(
@@ -289,9 +299,22 @@ create_leaflet_map <- function(clusters_kec, cluster_lookup, col_names = NULL) {
         bringToFront = TRUE
       ),
       label = ~ label_content,
-      labelOptions = labelOptions(noHide = FALSE, direction = 'auto')
+      labelOptions = labelOptions(noHide = FALSE, direction = 'auto'),
+      group = ~ district_group
     ) |>
-    addLegend(pal = pal, values = ~ Typology, title = "Typology")
+    addLegend(
+      pal = pal,
+      values = ~ Typology,
+      title = "Typology",
+      opacity = 0.7
+    )
+  
+  # Hide all groups except the selected ones
+  if (!is.null(show_only)) {
+    leaflet_map <- leaflet_map |>
+      hideGroup(setdiff(unique(clusters_kec_with_name$district_group), show_only)) |>
+      showGroup(show_only)
+  }
   
   return(leaflet_map)
 }
