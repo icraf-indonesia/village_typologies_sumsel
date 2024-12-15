@@ -1,0 +1,34 @@
+─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.3.1 (2023-06-16 ucrt)
+ os       Windows 11 x64 (build 22000)
+ system   x86_64, mingw32
+ ui       RTerm
+ language (EN)
+ collate  Indonesian_Indonesia.utf8
+ ctype    Indonesian_Indonesia.utf8
+ tz       Asia/Bangkok
+ date     2024-12-15
+ pandoc   3.2.1 @ C:/Users/fmahezs/AppData/Local/ANACON~1/envs/LUMENS~1/Library/bin/ (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ cli           3.6.3   2024-06-21 [1] CRAN (R 4.3.3)
+ digest        0.6.36  2024-06-23 [1] CRAN (R 4.3.3)
+ evaluate      0.24.0  2024-06-10 [1] CRAN (R 4.3.3)
+ fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.3.3)
+ htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.3.3)
+ htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.3.3)
+ jsonlite      1.8.8   2023-12-04 [1] CRAN (R 4.3.3)
+ knitr         1.48    2024-07-07 [1] CRAN (R 4.3.3)
+ rlang         1.1.4   2024-06-04 [1] CRAN (R 4.3.3)
+ rmarkdown     2.27    2024-05-17 [1] CRAN (R 4.3.3)
+ rstudioapi    0.15.0  2023-07-07 [1] CRAN (R 4.3.1)
+ sessioninfo   1.2.2   2021-12-06 [1] CRAN (R 4.3.1)
+ xfun          0.46    2024-07-18 [1] CRAN (R 4.3.3)
+ yaml          2.3.10  2024-07-26 [1] CRAN (R 4.3.3)
+
+ [1] C:/Users/fmahezs/Documents/LUMENS/library
+ [2] C:/Program Files/R/R-4.3.1/library
+
+──────────────────────────────────────────────────────────────────────────────

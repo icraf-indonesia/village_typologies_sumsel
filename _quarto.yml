@@ -7,9 +7,9 @@ website:
   navbar:
     left:
       - href: tipologi_wilayah_sumsel.qmd
-        text: Sumsel
+        text: Provinsi Sumatera Selatan
       - href: tipologi_wilayah_banyuasin.qmd
-        text: Banyuasin
+        text: Kabupaten Banyuasin
 
 format:
   html:
