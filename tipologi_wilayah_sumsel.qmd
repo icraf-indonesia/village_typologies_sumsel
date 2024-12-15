@@ -1,5 +1,5 @@
 ---
-title: "[DRAFT] Tipologi Perdesaan Provinsi Sumatera Selatan"
+title: "Tipologi Perdesaan Provinsi Sumatera Selatan"
 subtitle: "Analisis Kerentanan Penghidupan Berbasis Lahan Terhadap Perubahan Iklim"
 format: 
   html:

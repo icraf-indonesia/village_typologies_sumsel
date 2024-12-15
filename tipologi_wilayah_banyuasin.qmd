@@ -1,5 +1,5 @@
 ---
-title: "[DRAFT] Tipologi Perdesaan Kabupaten Banyuasin"
+title: "Tipologi Perdesaan Kabupaten Banyuasin"
 subtitle: "Analisis Kerentanan Penghidupan Berbasis Lahan Terhadap Perubahan Iklim"
 format: 
   html:
