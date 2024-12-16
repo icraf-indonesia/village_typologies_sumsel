@@ -51,7 +51,7 @@ library(factoextra)
 
 # Pendahuluan
 
-:::: panel-tabset
+::: panel-tabset
 ## Abstrak
 
 Kabupaten Banyuasin memiliki keragaman lanskap perdesaan yang kompleks, dengan masyarakat yang bergantung pada penghidupan berbasis lahan. Penghidupan berbasis lahan disinyalir semakin rentan terhadap perubahan iklim, tetapi informasi mengenai potensi resiko dan kebutuhan adaptasi masih terbatas. Draft dokumen ini disusun untuk mengisi kekosongan dengan memahami berbagai jenis kerentanan yang mempengaruhi penghidupan berbasis lahan di Kabupaten Banyuasin.
@@ -95,7 +95,7 @@ Perkembangan ekonomi yang diukur melalui PDRB menunjukkan peningkatan dari 28,6 
 **Tantangan Sosial Ekonomi**
 
 Meski pertumbuhan ekonomi menunjukkan tren positif, laju pertumbuhan mengalami penurunan dari 5,32 % (2022) menjadi 5,06 % (2023). Kabupaten Banyuasin mencatat jumlah penduduk miskin tertinggi keempat di Sumatera Selatan sebesar 85,88 ribu jiwa pada 2023. Sedangkan Indeks Pembangunan Manusia Kabupaten Banyuasin tercatat 70,67 dan masih di bawah rata - rata provinsi dengan nilai indeks 73,18.
-::::
+:::
 
 # Skema Teknis Pembuatan Tipologi
 
@@ -355,7 +355,7 @@ tp_map
 Analisis tipologi Kabupaten Banyuasin dilakukan berdasarkan bagian dari hasil analisis Provinsi Sumatera Selatan. **Hasil analisis menunjukkan bahwa terdapat 5 klaster tipologi di Kabupaten Banyuasin, yaitu klaster 3, 4, 5, 6, dan 8.**
 :::
 
-::::::::::::::::::: panel-tabset
+::: panel-tabset
 <!-- ## Komposisi Luas Wilayah -->
 
 ```{r komposisi kecamatan}
@@ -427,12 +427,15 @@ Analisis tipologi Kabupaten Banyuasin dilakukan berdasarkan bagian dari hasil an
 <!-- ## **Tipologi 1** -->
 
 <!-- ::: callout-tip -->
+
 <!-- Tipologi desa-desa dekat hutan dengan topografi berbukit dan berada disekitar kawasan konservasi (dilindungi). -->
+
 <!-- ::: -->
 
 <!-- ### Karakteristik berdasarkan analisis SWOT -->
 
 <!-- ::: {layout-ncol="2"} -->
+
 <!-- #### Kekuatan (*Strengths*) -->
 
 <!-- Faktor-faktor internal yang membantu pencapaian tujuan: -->
@@ -476,17 +479,21 @@ Analisis tipologi Kabupaten Banyuasin dilakukan berdasarkan bagian dari hasil an
 <!-- -   Naiknya suhu global dapat mempengaruhi pola hujan, yang dapat berdampak pada ketersediaan air di daerah pegunungan, mengurangi ketahanan terhadap kekeringan, atau meningkatkan risiko banjir. -->
 
 <!-- -   Budidaya pertanian yang luas pada daerah ini dapat memberi tekanan kepada area konservasi. -->
+
 <!-- ::: -->
 
 <!-- ## **Tipologi 2** -->
 
 <!-- ::: callout-tip -->
+
 <!-- Desa dengan basis aktivitas pertanian dan perkebunan serta agroforestri. -->
+
 <!-- ::: -->
 
 <!-- ### Karakteristik berdasarkan analisis SWOT -->
 
 <!-- ::: {layout-ncol="2"} -->
+
 <!-- #### Kekuatan (*Strengths*) -->
 
 <!-- Faktor-faktor internal yang membantu pencapaian tujuan: -->
@@ -524,12 +531,13 @@ Analisis tipologi Kabupaten Banyuasin dilakukan berdasarkan bagian dari hasil an
 <!-- -   Rentan terhadap perubahan temperature udara yang dapat mempengaruhi altivitas pengelolaan lahan maupun Kesehatan. -->
 
 <!-- -   Memiliki potensi ancaman kekeringan. -->
+
 <!-- ::: -->
 
 ## **Tipologi 3**
 
 ::: callout-tip
-Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan populasi yang rendah
+Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan populasi yang rendah.
 :::
 
 ### Karakteristik berdasarkan analisis SWOT
@@ -539,17 +547,15 @@ Desa perkebunan karet dan kelapa sawit serta hutan tanaman dengan kepadatan popu
 
 Faktor-faktor internal yang membantu pencapaian tujuan:
 
--   Terdapat potensi perkebunan karet dan sawit dan hutan tanaman dengan proximitas ke konsesi yang cenderung dekat.
+-   Terdapat potensi perkebunan karet dan sawit dan hutan tanaman dengan proximitas ke konsesi yang cenderung dekat (14.038,60 m).
 
--   Terdapat area ekosistem gambut dengan fungsi budidaya (5,59%) lebih luas dibanding EG dengan fungsi lindung (0,88%).
+-   Terdapat area ekosistem gambut dengan fungsi budidaya (9,85%) lebih luas dibanding EG dengan fungsi lindung (4,64%)
+Sebagian besar lahan merupakan area budidaya (55,20%) dengan tutupan lahan perkebunan (sawit) sebesar 26,4%
 
--   Sebagian besar lahan merupakan area budidaya (65,14%) dengan tutupan lahan perkebunan (sawit) sebesar 18,25%.
-
--   Jenis komoditas unggulan berupa karet dan kelapa sawit.
-
--   Terdapat lahan garapan potensial sebanyak 83,40% dari total wilayah tipologi.
+-   Terdapat lahan garapan potensial sebanyak 81,63% dari total wilayah tipologi.
 
 -   Sebagian masyarakat memiliki mata pencaharian yang bergantung pada kondisi alam.
+
 
     ------------------------------------------------------------------------
 
@@ -557,15 +563,16 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
--   Masyarakat memiliki kebiasaan membakar ladang kebun untuk proses usaha pertanian selama setahun terakhir.
+-   Masyarakat memiliki kebiasaan membakar ladang kebun untuk proses usaha pertanian selama setahun terakhir  
 
--   Jarak ke gambut (18.489,16 m) dan kanal cukup dekat (22.053,46 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau.
+-   Jarak ke gambut jauh (18.489 m) dan kanal cukup dekat (22.053 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau
 
--   Persentase hutan alami rendah (0,38%) dan luas deforestasi mencapai 37,89 ha.
+-   Persentase hutan alami rendah (4,02%) dan luas deforestasi mencapai 837,73 ha.
 
--   Jarak terhadap jalan (372,73 m) dan pabrik pemrosesan (26.542,48 m) jauh, mengindikasikan akses terhadap bahan baku dan pasar yang relative sulit.
+-   Jarak terhadap pabrik pemrosesan (26.542,48 m) jauh, mengindikasikan akses pengolahan dan pergudangan yang relative sulit.
 
--   Tingkat kemiskinan masyarakat cenderung tinggi (17,43%).
+-   Tingkat kemiskinan masyarakat cenderung tinggi (16,90%)
+
 
     ------------------------------------------------------------------------
 
@@ -573,7 +580,7 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
--   
+-   Harga karet dan sawit yang cenderung tinggi berpeluang untuk dilakukan pengembangan secara berkelanjutan
 
     ------------------------------------------------------------------------
 
@@ -601,17 +608,14 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 -   Terdapat potensi perkebunan karet dan sawit dan hutan tanaman dengan proximitas ke konsesi yang cenderung dekat.
 
--   Terdapat area ekosistem gambut dengan fungsi budidaya (55,44%) lebih luas dibanding EG dengan fungsi lindung (15,75%).
+-   Memiliki area budidaya seluas 16,42%, 33,72% adalah kebun dan 30,75% adalah semak belukar.
 
--   Memiliki area budidaya seluas 47,32% dengan 22,56%-nya adalah kebun dan 14,62% adalah Semak belukar.
+-   Terdapat lahan garapan potensial sebanyak 50,14% dari total wilayah tipologi.
 
--   Jenis komoditas unggulan berupa …
-
--   Terdapat lahan garapan potensial sebanyak 69,88% dari total wilayah tipologi.
-
--   Terdapat Sebagian area yang teraliri irigasi (10,63%).
+-   Terdapat Sebagian area yang teraliri irigasi (22,19%)
 
 -   Sebagian masyarakat memiliki mata pencaharian yang bergantung pada kondisi alam.
+
 
     ------------------------------------------------------------------------
 
@@ -619,21 +623,22 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
--   Masyarakat memiliki kebiasaan membakar ladang kebun untuk proses usaha pertanian selama setahun terakhir.
+-   Masyarakat memiliki kebiasaan membakar ladang kebun untuk proses usaha pertanian selama setahun terakhir  
 
--   Jarak ke gambut (10,04 m) dan kanal paling dekat (1.339,01 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau.
+-   Jarak ke gambut (10,04 m) dan kanal paling dekat (1.339,01 m) sehingga potensi kebakaran lahan gambut tinggi terutama musim kemarau
 
--   Persentase hutan alami rendah (2,36%) dan luas deforestasi paling tinggi mencapai 95,60 ha.
+-   Persentase hutan alami rendah (10,15%) dan luas deforestasi tinggi mencapai 781,92 ha.
 
--   Jarak terhadap jalan relative dekat tapi jauh dari pabrik pemrosesan, mengindikasikan produktivitas industry hilir masih rendah.
+-   Jarak terhadap jalan relative dekat (166,62 m) tapi jauh dari pabrik pemrosesan (40.749,11 m), mengindikasikan produktivitas industry hilir masih rendah.
 
--   Tingkat kemiskinan masyarakat tinggi (28,89%).
+-   Tingkat kemiskinan masyarakat tinggi (34,56%)
 
--   Jarak terhadap area terbakar paling rendah, mengindikasikan luasnya area yang rawan terbakar.
+-   Jarak terhadap area terbakar paling rendah, mengindikasikan luasnya area yang rawan terbakar. 
 
 -   Terdapat risiko banjir.
 
 -   Curah hujan paling rendah, mengindikasikan sulitnya akses air pada saat kemarau.
+
 
     ------------------------------------------------------------------------
 
@@ -641,7 +646,7 @@ Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
 Faktor-faktor eksternal yang membantu pencapaian tujuan:
 
--   Jumlah KK dan penduduk paling tinggi, tapi kepadatan penduduk paling rendah
+-   Jumlah KK/penduduk paling tinggi (rata – rata 3.415 jiwa/desa), tapi kepadatan penduduk paling rendah (0,27 jiwa/hektar)
 
     ------------------------------------------------------------------------
 
@@ -703,7 +708,8 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
 -   Degradasi lahan gambut yang berdampak langsung pada fungsi ekosistem, seperti penyediaan air dan penyimpanan karbon.
 
--   Minimnya akses ke tambang, membatasi diversifikasi ekonomi untuk mendukung pemulihan pascabencana.
+-   Minimnya akses ke tambang (75.333 m), membatasi diversifikasi ekonomi untuk mendukung pemulihan pascabencana.
+
 :::
 
 ## **Tipologi 6**
@@ -719,11 +725,10 @@ Desa Perkebunan kelapa sawit dan karet dengan kegiatan pertanian sawah irigasi
 
 Faktor-faktor internal yang membantu pencapaian tujuan:
 
--   Secara umum merupakan daratan rendah yang landai, memudahkan aktivitas pertanian dan pengembangan infrastruktur.
-
--   Dekat dengan kawasan hutan, mendapatkan manfaat jasa lingkungan paling tinggi berupa kualitas udara dan ketersediaan air.
+-   Dekat dengan kawasan hutan (33.309,73 m), mendapatkan manfaat jasa lingkungan paling tinggi berupa kualitas udara dan ketersediaan air.
 
 -   Akses ke jaringan irigasi cukup baik, mendukung kegiatan pertanian produktif.
+
 
     ------------------------------------------------------------------------
 
@@ -731,9 +736,10 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 
 Faktor-faktor internal yang menghalangi pencapaian tujuan:
 
--   Kerusakan ekologis akibat deforestasi tinggi, mengakibatkan turunnya kapasitas ekosistem untuk menahan bencana seperti banjir atau longsor.
+-   Kerusakan ekologis akibat deforestasi relative rendah (12 km²), mengakibatkan turunnya kapasitas ekosistem untuk menahan bencana seperti banjir atau longsor.
 
 -   Ketergantungan pada sumber daya hutan dan perkebunan yang rentan terhadap perubahan harga pasar dan dampak lingkungan.
+
 
     ------------------------------------------------------------------------
 
@@ -759,12 +765,15 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 <!-- ## **Tipologi 7 (tidak ditemukan di Kabupaten Banyuasin)** -->
 
 <!-- ::: callout-tip -->
+
 <!-- Peri-urban atau kota perantara (intermediary urban area) -->
+
 <!-- ::: -->
 
 <!-- ### Karakteristik berdasarkan analisis SWOT -->
 
 <!-- ::: {layout-ncol="2"} -->
+
 <!-- #### Kekuatan (*Strengths*) -->
 
 <!-- Faktor-faktor internal yang membantu pencapaian tujuan: -->
@@ -798,6 +807,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 <!-- -   Praktik penggunaan lahan yang tidak berkelanjutan, penggundulan hutan, dan polusi industri mengancam penyediaan jasa ekosistem dan kelayakan hidup di pinggiran kota. -->
 
 <!-- -   Distribusi sumber daya dan layanan yang tidak merata antara pusat kota (pusat pemerintahan) dan pusat kota kecamatan yang tersebar dapat memicu ketimpangan pembangunan. -->
+
 <!-- ::: -->
 
 ## **Tipologi 8**
@@ -816,10 +826,10 @@ Faktor-faktor internal yang membantu pencapaian tujuan:
 -   Mencakup Kota Palembang, ibu kota provinsi, dengan kepadatan penduduk 4.874,87 jiwa/km² (2024), berfungsi sebagai pusat ekonomi dan infrastruktur, pendidikan, dan jasa
 
 -   Pusat perdagangan dan ekonomi jasa regional
+Memiliki fasilitas pengolahan serta sarana prasarana penunjang yang cenderung lebih lengkap dibandingkan wilayah lainnya
 
--   Memiliki fasilitas pengolahan serta sarana prasarana penunjang yang cenderung lebih lengkap dibandingkan wilayah lainnya
+-   Rasio elektrifikasi tinggi (99,93%)  menunjukkan kelengkapan infrastruktur
 
--   Rasio elektrifikasi tinggi menunjukkan kelengkapan infrastruktur
 
     ------------------------------------------------------------------------
 
@@ -853,7 +863,7 @@ Faktor-faktor eksternal yang menghalangi pencapaian tujuan:
 
 -   Ekspansi kota yang tidak terencana (urban sprawl) mendorong penggunaan lahan yang tidak efisien di wilayah pinggiran.
 :::
-:::::::::::::::::::
+:::
 
 # Informasi Lanjutan
 
@@ -908,5 +918,4 @@ Nilai tengah (median) memberitahu kita adalah suatu nilai yang membagi data dari
 -   Dokumen ini merupakan draft awal yang masih dalam proses pengembangan dan penelaahan. Seluruh informasi, analisis, dan temuan yang disajikan bersifat tentatif dan dapat mengalami perubahan substansial pada versi finalnya. Data dan interpretasi yang terkandung dalam dokumen ini tidak dapat dijadikan acuan untuk pengambilan keputusan atau kebijakan dalam bentuk apapun.
 
 -   Setiap kesalahan, ketidakakuratan, atau inkonsistensi yang ditemukan dalam dokumen ini akan menjadi subjek revisi pada tahap-tahap berikutnya. Pembaca diharapkan untuk merujuk pada dokumen final yang nantinya telah divalidasi dan dipublikasikan secara resmi untuk keperluan pengutipan atau referensi.
-
 :::
